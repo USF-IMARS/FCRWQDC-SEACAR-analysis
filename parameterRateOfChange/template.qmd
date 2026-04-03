@@ -40,9 +40,7 @@ samples_df <- df %>%
 
 # add statistics for each station
 sample_stats_df <- samples_df %>%
-  # Filter to only include stations with at least 2 years of data
   group_by(Source, Site) %>%
-  filter(length(unique(year(datetime))) >= 2) %>%
   summarize(
     mk_results = list(seasonalMannKendall(datetime, Value)),
     n_values = n(),
