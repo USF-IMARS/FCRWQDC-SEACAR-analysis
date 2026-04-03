@@ -1,6 +1,6 @@
 ---
-title: "Seasonal Mann Kendall"
-description: "Rate of change analysis for each parameter."
+title: "Parameter Rates of Change"
+description: "Seasonal Mann Kendall slopes for each parameter."
 code-fold: true
 listing:
   contents: batched_reports
