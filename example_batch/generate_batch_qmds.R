@@ -13,7 +13,7 @@ BATCH_NAME <- "example_batch"  # must match folder name
 # =====================================================================
 TEMPLATE_REPLACEMENTS <- list(
   # raw string = replacement string
-  "example_1" = "{{batch_value}}", # must match value in template.qmd
+  "example_1 (test)" = "{{batch_value}}", # must match value in template.qmd
   "BATCH_NAME" = BATCH_NAME
 )
 REPORT_TEMPLATE <- here::here(glue::glue("{BATCH_NAME}/template.qmd"))
@@ -50,7 +50,7 @@ templ <- readLines(REPORT_TEMPLATE)
 
 for (raw_string in names(TEMPLATE_REPLACEMENTS)){
   templ <- gsub(
-    raw_string, TEMPLATE_REPLACEMENTS[[raw_string]], templ
+    raw_string, TEMPLATE_REPLACEMENTS[[raw_string]], templ, fixed = TRUE
   )
 }
 

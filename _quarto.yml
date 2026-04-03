@@ -1,23 +1,20 @@
 project:
   type: website
   pre-render:
-  - example_batch/generate_batch_qmds.R
   - parameterRateOfChange/generate_batch_qmds.R
   render:
   - index.qmd
-  - example_batch/batched_reports/*.qmd
-  - example_batch/listing.qmd
   - parameterRateOfChange/batched_reports/*.qmd
   - parameterRateOfChange/listing.qmd
 website:
-  title: QuartoBatch Example
+  title: FCRWQDC SEACAR Analysis
   navbar:
     left:
     - href: index.qmd
       text: Home
     - example_batch/listing.qmd
     - parameterRateOfChange/listing.qmd
-    - href: https://github.com/7yl4r/quartobatch
+    - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis
       text: Source Code on GitHub
 format:
   html:
