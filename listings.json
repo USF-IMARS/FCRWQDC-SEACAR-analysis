@@ -1,0 +1,19 @@
+[
+  {
+    "listing": "/parameterRateOfChange/listing.html",
+    "items": [
+      "/parameterRateOfChange/batched_reports/Ammonia (N).html",
+      "/parameterRateOfChange/batched_reports/Ammonium (N).html",
+      "/parameterRateOfChange/batched_reports/Chlorophyll a.html",
+      "/parameterRateOfChange/batched_reports/Nitrate (N).html",
+      "/parameterRateOfChange/batched_reports/Nitrate-Nitrite (N).html",
+      "/parameterRateOfChange/batched_reports/Nitrite (N).html",
+      "/parameterRateOfChange/batched_reports/Nitrogen- Total Kjeldahl.html",
+      "/parameterRateOfChange/batched_reports/Nitrogen- Total.html",
+      "/parameterRateOfChange/batched_reports/Orthophosphate (P).html",
+      "/parameterRateOfChange/batched_reports/Phosphorus- Total.html",
+      "/parameterRateOfChange/batched_reports/Silica.html",
+      "/parameterRateOfChange/batched_reports/Turbidity.html"
+    ]
+  }
+]
