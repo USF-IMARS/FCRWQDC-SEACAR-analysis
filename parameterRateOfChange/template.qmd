@@ -87,10 +87,21 @@ sample_stats_df %>%
   write.csv(paste0(dataDir, "/", params$batch_value, ".csv"))
 ```
 
+```{R, plot distribution of slopes}
+#| code-summary: plot distribution of slopes
+#| warning: false  # suppress warning about NAs
+library(ggplot2)
+
+ggplot(sample_stats_df, aes(x = slope)) +
+  geom_density(fill = "steelblue", alpha = 0.7) +
+  labs(title = "Density Plot of Site Slopes (Log Scale)",
+       x = "Slope (rate of change)",
+       y = "Density (log scale)") +
+  theme_minimal()
+```
 
 ```{R, display with gt}
 #| code-summary: display with gt
-
 library(gt)
 library(scales)
 library(tidyselect)  # for all_of()
