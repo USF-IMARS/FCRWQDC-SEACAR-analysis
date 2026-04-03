@@ -1,0 +1,83 @@
+---
+title: "Ammonia (N) Report"
+format: html
+params:
+  batch_value: "Ammonia (N)"  # must match value in generate_batch_qmds.R
+  batch_name: "parameterRateOfChange"
+---
+
+<!-- 
+This is the template that will be generated for
+each batch_value.
+-->
+
+```{R, get data for params$batch_value}
+#| code-summary: get data for params$batch_value
+source(here::here(glue::glue("{params$batch_name}/getData.R")))
+
+df <- getData(params$batch_value)
+```
+
+
+```{R, create station statistics dataframe}
+#| code-summary: create station statistics dataframe
+
+source(here("R/seasonalMannKendall.R"))
+library(lubridate)  # for mdy_hms()
+library(pander)  # for display
+
+# create table of samples for each station
+samples_df <- df %>%
+  # drop any with empty Monitoring.Location.ID
+  filter(!is.na(site)) %>%
+  # drop any with empty Activity.Start.Date.Time
+  filter(!is.na(datetime)) %>%
+  # parse the "YYYY-MM-DD" strings into POSIXct
+  mutate(datetime = ymd(
+          datetime,
+          tz = "UTC")) %>%
+  distinct()
+
+
+# add statistics for each station
+sample_stats_df <- samples_df %>%
+  group_by(source, site) %>%
+  reframe(
+    {
+      tmp <- seasonalMannKendallVectorized(
+        datetime,
+        value
+      )
+    },
+    n_values = n(),
+    mean = mean(value),
+    min = min(value),
+    max = max(value),
+    coefficient.of.variation = sd(value) / mean(value)
+  ) %>%
+  mutate(
+    # create column significant_slope
+    significant_slope = ifelse(z <= 0.05, slope, NA_real_),
+    pvalue = z
+  ) %>%
+  # drop unwanted columns added by seasonalMannKendall
+  select(
+    -z,
+    -tau,
+    -chi_square
+  )
+
+# print(head(sample_stats_df))
+# # display sample_stats_df with pander
+# pander(sample_stats_df)
+```
+
+```{R, save stats to csv}
+#| code-summary: save stats to csv
+sample_stats_df %>%
+  write.csv(here(
+    "data", "exports", "seasonal-mann-kendall-stats", paste0(params$analyte, ".csv")))
+```
+
+
+
