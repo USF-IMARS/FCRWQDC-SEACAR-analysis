@@ -23,12 +23,15 @@ library(here)
 library(lubridate)  # for mdy_hms()
 library(pander)  # for display
 library(dplyr)  # for %>%
+library(tidyr)  # for unnest_wider
 source(here("R/seasonalMannKendall.R"))
 
 # create table of samples for each station
 samples_df <- df %>%
   # construct datetime column from Month,Day,Year
   mutate(datetime = ymd(paste(Year, Month, Day))) %>%
+  # convert Value to numeric
+  mutate(Value = as.numeric(Value)) %>%
   # drop any with empty required columns
   filter(!is.na(Site) & !is.na(datetime) & !is.na(Value)) %>%
   # parse the "YYYY-MM-DD" strings into POSIXct
@@ -37,20 +40,24 @@ samples_df <- df %>%
 
 # add statistics for each station
 sample_stats_df <- samples_df %>%
+  # Filter to only include stations with at least 2 years of data
   group_by(Source, Site) %>%
-  reframe(
-    {
-      tmp <- seasonalMannKendall(
-        datetime,
-        Value
-      )
-    },
+  filter(length(unique(year(datetime))) >= 2) %>%
+  summarize(
+    mk_results = list(seasonalMannKendall(datetime, Value)),
     n_values = n(),
-    mean = mean(Value),
-    min = min(Value),
-    max = max(Value),
-    coefficient.of.variation = sd(Value) / mean(Value)
-  ) %>%
+    mean = mean(Value, na.rm = TRUE),
+    min = as.numeric(min(Value, na.rm = TRUE)),
+    max = as.numeric(max(Value, na.rm = TRUE)),
+    coefficient.of.variation = sd(Value, na.rm = TRUE) / mean(Value, na.rm = TRUE),
+    .groups = 'drop'
+  )
+
+# unnest the seasonal Mann Kendall results
+sample_stats_df <- sample_stats_df %>%
+  tidyr::unnest_wider(mk_results)
+
+sample_stats_df <- sample_stats_df %>%
   mutate(
     # create column significant_slope
     significant_slope = ifelse(z <= 0.05, slope, NA_real_),
