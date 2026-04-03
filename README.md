@@ -1,7 +1,21 @@
-# quartobatch
-Batch generate quarto reports from a common template across a dataset.
+# FCRWQCD SEACAR Analysis
+This project:
+1. compares SEACAR standard exports to an aggregated dataset developed in previous years
+2. generates rate of change analyses for each water quality parameter
+3. creates a `dashboard_data.csv` for use in the [FCRWQDC Data Visualization Tool](https://github.com/USF-IMARS/FCRWQDC_data_dashboard)
 
-# To Create a New Batch:
+# Upstream Data
+The following data sources should be downloaded and placed in `./data/`:
+* `Unified_WQ_Database\(2023\ updated\).csv` from [SEACAR standard export page](https://data.florida-seacar.org/programs/details/10006).
+* `allData.csv` from [this gdrive folder](https://drive.google.com/drive/folders/1QMUpJOwfAMG9dB_fYT0Yva3IBVRg27fr) produced by [USF-IMARS/FCRWQDC_data_ingest](https://github.com/USF-IMARS/FCRWQDC_data_ingest/tree/main)
+
+# Usage
+## Deployment
+```bash
+quarto publish
+```
+
+## Create a New Batch
 1. Use create_batch R function:
     ```R
     source("create_batch.R")
@@ -11,8 +25,9 @@ Batch generate quarto reports from a common template across a dataset.
 3. modify the {batch_name}/template.yml
 4. `quarto publish`
 
-# Notes
-This project is a generalized implementation inspired by the following projects:
+----------------------------------------------------------------------------
 
-* [FCRWQDC_data_ingest](https://github.com/USF-IMARS/FCRWQDC_data_ingest) : Applies a common template across water quality analytes & data providers from multiple data file sources
-* [seus-mbon-cruise-ctd-processing](https://github.com/USF-IMARS/seus-mbon-cruise-ctd-processing) : Applies a common template across CTD casts and research cruises.
+# Attribution
+This project is powered by the [quartobatch template](https://github.com/7yl4r/quartobatch).
+
+----------------------------------------------------------------------------
