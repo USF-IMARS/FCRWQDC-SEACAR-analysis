@@ -1,5 +1,5 @@
 ---
-title: "Ammonia (N) Report"
+title: "Ammonia (N) Rate of Change Analysis"
 format: html
 params:
   batch_value: "Ammonia (N)"  # must match value in generate_batch_qmds.R

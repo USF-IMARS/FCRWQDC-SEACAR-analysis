@@ -1,6 +1,6 @@
 ---
-title: "parameterRateOfChange"
-description: "Reports for each value in the batch."
+title: "Seasonal Mann Kendall"
+description: "Rate of change analysis for each parameter."
 code-fold: true
 listing:
   contents: batched_reports
