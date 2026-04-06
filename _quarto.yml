@@ -18,12 +18,13 @@ website:
     left:
     - href: index.qmd
       text: Home
-    - example_batch/listing.qmd
     - parameterRateOfChange/listing.qmd
+    - text: "SEACAR Comparisons"
+      menu:
+      - SEACARParameterCompare/listing.qmd
+      - SEACARProgramCompare/listing.qmd
     - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis
       text: Source Code on GitHub
-    - SEACARParameterCompare/listing.qmd
-    - SEACARProgramCompare/listing.qmd
 format:
   html:
     theme: cosmo
