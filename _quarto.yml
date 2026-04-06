@@ -2,10 +2,16 @@ project:
   type: website
   pre-render:
   - parameterRateOfChange/generate_batch_qmds.R
+  - SEACARParameterCompare/generate_batch_qmds.R
+  - SEACARProgramCompare/generate_batch_qmds.R
   render:
   - index.qmd
   - parameterRateOfChange/batched_reports/*.qmd
   - parameterRateOfChange/listing.qmd
+  - SEACARParameterCompare/batched_reports/*.qmd
+  - SEACARParameterCompare/listing.qmd
+  - SEACARProgramCompare/batched_reports/*.qmd
+  - SEACARProgramCompare/listing.qmd
 website:
   title: FCRWQDC SEACAR Analysis
   navbar:
@@ -16,6 +22,8 @@ website:
     - parameterRateOfChange/listing.qmd
     - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis
       text: Source Code on GitHub
+    - SEACARParameterCompare/listing.qmd
+    - SEACARProgramCompare/listing.qmd
 format:
   html:
     theme: cosmo

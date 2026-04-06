@@ -1,0 +1,20 @@
+---
+title: "DERM Report"
+format: html
+params:
+  batch_value: "DERM"  # must match value in generate_batch_qmds.R
+  batch_name: "SEACARProgramCompare"
+---
+
+<!-- 
+This is the template that will be generated for
+each batch_value.
+-->
+
+```{R, get data for params$batch_value}
+#| code-summary: get data for params$batch_value
+source(here::here(glue::glue("{params$batch_name}/getData.R")))
+
+df <- getData(params$batch_value)
+head(df)
+```
