@@ -1,0 +1,25 @@
+---
+title: "DVT Dataset Prep"
+format: html
+---
+
+This workflow prepares an export of the data modified for display on the [FCRWQDC Data Visualization Tool](https://github.com/USF-IMARS/FCRWQDC_data_dashboard).
+
+```{R, load and prep file}
+df <- read.csv(here::here("data", "Unified_WQ_Database(2023 updated).csv"))
+
+# prepare datetime col from Y M D & drop old cols
+df$datetime <- as.Date(paste(df$Year, df$Month, df$Day, sep = "-"), format = "%Y-%m-%d")
+df$Year <- NULL
+df$Month <- NULL
+df$Day <- NULL
+
+# drop other unnecessary cols
+df$Total.Depth <- NULL
+
+# create data/exports if DNE
+dir.create(here::here("data", "exports"), showWarnings = FALSE)
+
+# save to csv
+write.csv(df, here::here("data", "exports", "dashboardDataSEACAR.csv"), row.names = FALSE)
+```
