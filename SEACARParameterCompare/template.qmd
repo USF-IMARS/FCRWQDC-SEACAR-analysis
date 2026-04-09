@@ -6,7 +6,7 @@ params:
   batch_name: "SEACARParameterCompare"
 ---
 
-The `Unified_WQ_Database\(2023\ updated\).csv` output from SEACAR is not using the SEACAR standard columns [[ref spreadsheet](https://github.com/USF-IMARS/FCRWQDC_data_ingest/blob/main/SEACAR_Metadata_UnifiedWQ_ID10006.xlsx)]. 
+The `Unified_WQ_Database(2023 updated).csv` output from SEACAR is not using the SEACAR standard columns [[ref spreadsheet](https://github.com/USF-IMARS/FCRWQDC_data_ingest/blob/main/SEACAR_Metadata_UnifiedWQ_ID10006.xlsx)]. 
 There are fewer columns in the SEACAR STD export and the column names are non-standard.
 
 To work around this columns coming from the SEACAR STD dataset have been remapped using the `R/remapSEACAROutput.R` script.
