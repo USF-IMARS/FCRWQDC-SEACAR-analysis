@@ -6,15 +6,71 @@ params:
   batch_name: "SEACARParameterCompare"
 ---
 
-<!-- 
-This is the template that will be generated for
-each batch_value.
--->
+The `Unified_WQ_Database\(2023\ updated\).csv` output from SEACAR is not using the SEACAR standard columns [[ref spreadsheet](https://github.com/USF-IMARS/FCRWQDC_data_ingest/blob/main/SEACAR_Metadata_UnifiedWQ_ID10006.xlsx)]. 
+There are fewer columns in the SEACAR STD export and the column names are non-standard.
+
+To work around this columns coming from the SEACAR STD dataset have been remapped using the `R/remapSEACAROutput.R` script.
+
 
 ```{R, get data for params$batch_value}
 #| code-summary: get data for params$batch_value
 source(here::here(glue::glue("{params$batch_name}/getData.R")))
 
-df <- getData(params$batch_value)
-head(df)
+# returns two dataframes in a named list
+dfs <- getData(params$batch_value)
 ```
+
+```{R, compare column names}
+#| code-summary: compare column names
+c1 <- colnames(dfs$SEACAR_STD)
+c2 <- colnames(dfs$OLD)
+
+comparison <- data.frame(
+  column = union(c1, c2),
+  in_SEACAR = union(c1, c2) %in% c1,
+  in_OLD    = union(c1, c2) %in% c2
+)
+
+print(comparison)
+```
+
+
+```{R, show comparison of unique units}
+#| code-summary: show comparison of unique units
+library(dplyr)
+
+u1 <- unique(dfs$SEACAR_STD$ParameterUnits)
+u2 <- unique(dfs$OLD$ParameterUnits)
+
+comparison <- tibble(value = union(u1, u2)) %>%
+  mutate(
+    in_SEACAR = value %in% u1,
+    in_OLD    = value %in% u2
+  )
+
+print(comparison)
+```
+
+```{R, split violin plot comparison of values}
+#| code-summary: split violin plot comparison of values
+library(ggplot2)
+
+# Combine dataframes with a source column
+df_combined <- bind_rows(
+  dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
+  dfs$OLD_STD %>% mutate(source = "OLD_STD")
+)
+
+# Create split violin plot
+ggplot(df_combined, aes(x = source, y = Value, fill = source)) +
+  geom_violin(alpha = 0.6) +
+  geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
+  labs(
+    title = "Value Distribution Comparison",
+    x = "Dataset",
+    y = "Value"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+

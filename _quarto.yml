@@ -1,6 +1,7 @@
 project:
   type: website
   pre-render:
+  - R/remapSEACAROutput.R
   - parameterRateOfChange/generate_batch_qmds.R
   - SEACARParameterCompare/generate_batch_qmds.R
   - SEACARProgramCompare/generate_batch_qmds.R

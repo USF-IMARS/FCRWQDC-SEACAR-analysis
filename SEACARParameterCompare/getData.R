@@ -1,14 +1,10 @@
-getData <- function(batch_value, n_rows = 10) {
-  print(paste('getting data for', batch_value))
-  # seed based on batch_value so the data is reproducible
-  set.seed(sum(as.integer(charToRaw(batch_value))))
+getData <- function(batch_value) {
+  # print(paste('getting data for', batch_value,'...'))
+  df1 <- read.csv(here::here("data/Unified_WQ_Database(2023 updated)_remapped.csv"))
+  df2 <- read.csv(here::here("data/allDataSEACAR.csv"))
   
-  data <- data.frame(
-    id = 1:n_rows,
-    value = runif(n_rows, min = 0, max = 100),
-    category = sample(c("A", "B", "C"), n_rows, replace = TRUE),
-    timestamp = seq(as.POSIXct("2024-01-01"), by = "day", length.out = n_rows)
-  )
+  df1 <- df1[df1$ParameterName == batch_value, ]
+  df2 <- df2[df2$ParameterName == batch_value, ]
   
-  return(data)
+  return(list(SEACAR_STD = df1, OLD = df2))
 }
