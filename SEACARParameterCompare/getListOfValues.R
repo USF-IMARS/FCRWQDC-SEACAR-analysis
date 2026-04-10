@@ -1,10 +1,8 @@
 getListOfValues <- function() {
-  examples <- c(
-    "example_1",
-    "example_2", 
-    "example_3",
-    "example_4",
-    "example_5"
-  )
-  return(examples)
+  df <- read_delim(
+    here("data/Discrete WQ - 10006.txt"),
+    delim = "|",
+    on_problems = "warn"   # warns instead of erroring on bad rows
+  )  
+  return(unique(df$ParameterName))
 }

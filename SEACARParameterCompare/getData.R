@@ -1,6 +1,10 @@
 getData <- function(batch_value) {
   # print(paste('getting data for', batch_value,'...'))
-  df1 <- read.csv(here::here("data/Unified_WQ_Database(2023 updated)_remapped.csv"))
+  # Read the unified water quality database
+  df1 <- read_delim(
+    here("data/Discrete WQ - 10006.txt"),
+    delim = "|"
+  )
   df2 <- read.csv(here::here("data/allDataSEACAR.csv"))
   
   df1 <- df1[df1$ParameterName == batch_value, ]

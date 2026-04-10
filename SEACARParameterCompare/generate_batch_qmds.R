@@ -13,7 +13,7 @@ BATCH_NAME <- "SEACARParameterCompare"  # must match folder name
 # =====================================================================
 TEMPLATE_REPLACEMENTS <- list(
   # raw string = replacement string
-  "example_1 (test)" = "{{batch_value}}", # must match value in template.qmd
+  "Total Ammonia (N)" = "{{batch_value}}", # must match value in template.qmd
   "BATCH_NAME" = BATCH_NAME
 )
 REPORT_TEMPLATE <- here::here(glue::glue("{BATCH_NAME}/template.qmd"))

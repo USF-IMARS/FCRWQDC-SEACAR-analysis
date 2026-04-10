@@ -1,8 +1,8 @@
 ---
-title: "Ammonia (N) Rate of Change Analysis"
+title: "Total Ammonia (N) Rate of Change Analysis"
 format: html
 params:
-  batch_value: "Ammonia (N)"  # must match value in generate_batch_qmds.R
+  batch_value: "Total Ammonia (N)"  # must match value in generate_batch_qmds.R
   batch_name: "parameterRateOfChange"
 ---
 
@@ -26,28 +26,16 @@ library(dplyr)  # for %>%
 library(tidyr)  # for unnest_wider
 source(here("R/seasonalMannKendall.R"))
 
-# create table of samples for each station
-samples_df <- df %>%
-  # construct datetime column from Month,Day,Year
-  mutate(datetime = ymd(paste(Year, Month, Day))) %>%
-  # convert Value to numeric
-  mutate(Value = as.numeric(Value)) %>%
-  # drop any with empty required columns
-  filter(!is.na(Site) & !is.na(datetime) & !is.na(Value)) %>%
-  # parse the "YYYY-MM-DD" strings into POSIXct
-  distinct()  # drop duplicate rows
-
-
 # add statistics for each station
-sample_stats_df <- samples_df %>%
-  group_by(Source, Site) %>%
+sample_stats_df <- df %>%
+  group_by(ProgramName, LocationID) %>%
   summarize(
-    mk_results = list(seasonalMannKendall(datetime, Value)),
+    mk_results = list(seasonalMannKendall(SampleDate, ResultValue)),
     n_values = n(),
-    mean = mean(Value, na.rm = TRUE),
-    min = as.numeric(min(Value, na.rm = TRUE)),
-    max = as.numeric(max(Value, na.rm = TRUE)),
-    coefficient.of.variation = sd(Value, na.rm = TRUE) / mean(Value, na.rm = TRUE),
+    mean = mean(ResultValue, na.rm = TRUE),
+    min = as.numeric(min(ResultValue, na.rm = TRUE)),
+    max = as.numeric(max(ResultValue, na.rm = TRUE)),
+    coefficient.of.variation = sd(ResultValue, na.rm = TRUE) / mean(ResultValue, na.rm = TRUE),
     .groups = 'drop'
   )
 
@@ -94,7 +82,7 @@ library(ggplot2)
 
 ggplot(sample_stats_df, aes(x = slope)) +
   geom_density(fill = "steelblue", alpha = 0.7) +
-  labs(title = "Density Plot of Site Slopes (Log Scale)",
+  labs(title = "Density Plot of Site Slopes",
        x = "Slope (rate of change)",
        y = "Density (log scale)") +
   theme_minimal()

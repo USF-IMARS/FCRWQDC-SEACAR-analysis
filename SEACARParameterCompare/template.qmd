@@ -1,16 +1,10 @@
 ---
-title: "Ammonia (N) Report"
+title: "Total Ammonia (N) Report"
 format: html
 params:
-  batch_value: "Ammonia (N)"  # must match value in generate_batch_qmds.R
+  batch_value: "Total Ammonia (N)"  # must match value in generate_batch_qmds.R
   batch_name: "SEACARParameterCompare"
 ---
-
-The `Unified_WQ_Database(2023 updated).csv` output from SEACAR is not using the SEACAR standard columns [[ref spreadsheet](https://github.com/USF-IMARS/FCRWQDC_data_ingest/blob/main/SEACAR_Metadata_UnifiedWQ_ID10006.xlsx)]. 
-There are fewer columns in the SEACAR STD export and the column names are non-standard.
-
-To work around this columns coming from the SEACAR STD dataset have been remapped using the `R/remapSEACAROutput.R` script.
-
 
 ```{R, get data for params$batch_value}
 #| code-summary: get data for params$batch_value
@@ -58,7 +52,7 @@ library(ggplot2)
 # Combine dataframes with a source column
 df_combined <- bind_rows(
   dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
-  dfs$OLD_STD %>% mutate(source = "OLD_STD")
+  dfs$OLD %>% mutate(source = "OLD_STD")
 )
 
 # Create split violin plot
