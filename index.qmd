@@ -11,5 +11,5 @@ This project:
 # Upstream Data
 The following data sources should be downloaded and placed in `./data/`:
 
-1. `Unified_WQ_Database\(2023\ updated\).csv` from [SEACAR standard export page](https://data.florida-seacar.org/programs/details/10006).
+1. `Discrete WQ - 10006.txt` from [SEACAR standard export page](https://data.florida-seacar.org/programs/details/10006).
 2. previous year's `dashboardData.csv` from [this gdrive folder](https://drive.google.com/drive/folders/1QMUpJOwfAMG9dB_fYT0Yva3IBVRg27fr) produced by [USF-IMARS/FCRWQDC_data_ingest](https://github.com/USF-IMARS/FCRWQDC_data_ingest/tree/main)

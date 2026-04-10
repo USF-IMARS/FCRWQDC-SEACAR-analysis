@@ -1,7 +1,10 @@
 getListOfValues <- function() {
   library(here)
-  data <- read.csv(here("data/Unified_WQ_Database(2023 updated).csv"))
-
+  data <- read_delim(
+    here("data/Discrete WQ - 10006.txt"),
+    delim = "|"
+  )
+  
   # get list of unique values from "parameter" column
   values <- unique(data$ParameterName)
   
