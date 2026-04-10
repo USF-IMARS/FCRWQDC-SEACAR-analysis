@@ -1,7 +1,6 @@
 project:
   type: website
   pre-render:
-  - R/remapSEACAROutput.R
   - parameterRateOfChange/generate_batch_qmds.R
   - SEACARParameterCompare/generate_batch_qmds.R
   - SEACARProgramCompare/generate_batch_qmds.R
@@ -9,6 +8,8 @@ project:
   - index.qmd
   - parameterRateOfChange/batched_reports/*.qmd
   - parameterRateOfChange/listing.qmd
+  
+  - SEACAROverallCompare.qmd
   
   - SEACARParameterCompare/batched_reports/*.qmd
   - SEACARParameterCompare/listing.qmd
@@ -27,6 +28,7 @@ website:
     - prepDashboardExport.qmd
     - text: "SEACAR Comparisons"
       menu:
+      - SEACAROverallCompare.qmd
       - SEACARParameterCompare/listing.qmd
       - SEACARProgramCompare/listing.qmd
     - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis

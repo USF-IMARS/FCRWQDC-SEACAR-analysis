@@ -1,8 +1,15 @@
 getListOfValues <- function() {
-  df <- readr::read_delim(
+  df1 <- readr::read_delim(
     here("data/Discrete WQ - 10006.txt"),
-    delim = "|",
-    on_problems = "warn"   # warns instead of erroring on bad rows
-  )  
-  return(unique(df$ParameterName))
+    delim = "|"
+  )
+  unique_df1 <- unique(df1$ParameterName)
+
+  df2 <- read.csv(here::here("data/allDataSEACAR.csv"))
+  unique_df2 <- unique(df2$ParameterName)
+  
+  # merge the two unique lists
+  all_unique <- unique(c(unique_df1, unique_df2))
+  
+  return(all_unique)
 }

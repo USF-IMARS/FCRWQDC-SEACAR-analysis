@@ -4,16 +4,14 @@ getData <- function(batch_value) {
   df1 <- readr::read_delim(
     here("data/Discrete WQ - 10006.txt"),
     delim = "|"
-  )
+  ) %>%
+  # Convert ActivityDepth_m to numeric for plotting
+  mutate(ActivityDepth_m = as.numeric(ActivityDepth_m))
 
   df2 <- read.csv(here::here("data/allDataSEACAR.csv")) %>% 
   # Align column types with df1:
   # Convert logical columns to character (df1 has these as character)
   mutate(across(where(is.logical), as.character)) %>%
-  # Convert numeric columns to character to match df1
-  mutate(AreaID = as.character(AreaID),
-         ActivityDepth_m = as.character(ActivityDepth_m),
-         TotalDepth_m = as.character(TotalDepth_m)) %>%
   # Convert SampleDate to datetime to match df1 format
   mutate(SampleDate = as.POSIXct(SampleDate, format = "%Y-%m-%d", tz = "UTC"))
   
