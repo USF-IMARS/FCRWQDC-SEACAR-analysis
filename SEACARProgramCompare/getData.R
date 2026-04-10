@@ -1,14 +1,25 @@
-getData <- function(batch_value, n_rows = 10) {
-  print(paste('getting data for', batch_value))
-  # seed based on batch_value so the data is reproducible
-  set.seed(sum(as.integer(charToRaw(batch_value))))
-  
-  data <- data.frame(
-    id = 1:n_rows,
-    value = runif(n_rows, min = 0, max = 100),
-    category = sample(c("A", "B", "C"), n_rows, replace = TRUE),
-    timestamp = seq(as.POSIXct("2024-01-01"), by = "day", length.out = n_rows)
+getData <- function(batch_value) {
+  library(here)
+  library(dplyr)
+  df1 <- readr::read_delim(
+    here("data/Discrete WQ - 10006.txt"),
+    delim = "|"
   )
+
+  df2 <- read.csv(here::here("data/allDataSEACAR.csv")) %>% 
+  # Align column types with df1:
+  # Convert logical columns to character (df1 has these as character)
+  mutate(across(where(is.logical), as.character)) %>%
+  # Convert numeric columns to character to match df1
+  mutate(AreaID = as.character(AreaID),
+         ActivityDepth_m = as.character(ActivityDepth_m),
+         TotalDepth_m = as.character(TotalDepth_m)) %>%
+  # Convert SampleDate to datetime to match df1 format
+  mutate(SampleDate = as.POSIXct(SampleDate, format = "%Y-%m-%d", tz = "UTC"))
   
-  return(data)
+
+  df1 <- df1[df1$ParameterName == batch_value, ]
+  df2 <- df2[df2$ParameterName == batch_value, ]
+  
+  return(list(SEACAR_STD = df1, OLD = df2))
 }

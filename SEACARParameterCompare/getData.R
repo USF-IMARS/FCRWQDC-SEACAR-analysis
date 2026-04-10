@@ -10,7 +10,10 @@ getData <- function(batch_value) {
   df1 <- readr::read_delim(
     here("data/Discrete WQ - 10006.txt"),
     delim = "|"
-  )
+  ) %>%
+  # Convert ActivityDepth_m to numeric for plotting
+  mutate(ActivityDepth_m = as.numeric(ActivityDepth_m))
+
 
 
   # chr  (16): Habitat, IndicatorName, ManagedAreaName, RelativeDepth, DetectionUnit, SE...
@@ -24,7 +27,6 @@ getData <- function(batch_value) {
   mutate(across(where(is.logical), as.character)) %>%
   # Convert numeric columns to character to match df1
   mutate(AreaID = as.character(AreaID),
-         ActivityDepth_m = as.character(ActivityDepth_m),
          TotalDepth_m = as.character(TotalDepth_m)) %>%
   # Convert SampleDate to datetime to match df1 format
   mutate(SampleDate = as.POSIXct(SampleDate, format = "%Y-%m-%d", tz = "UTC"))

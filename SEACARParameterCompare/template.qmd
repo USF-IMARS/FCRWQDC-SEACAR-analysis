@@ -114,3 +114,31 @@ ggplot(combined_counts, aes(x = SampleDate)) +
   theme_minimal() +
   theme(legend.position = "bottom")
 ```
+
+```{R, plot ActivityDepth_m}
+#| code-summary: plot ActivityDepth_m
+library(ggplot2)
+
+if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
+    dfs$OLD %>% mutate(source = "OLD_STD")
+  )
+
+  # Create split violin plot
+  ggplot(df_combined, aes(x = source, y = ActivityDepth_m, fill = source)) +
+    geom_violin(alpha = 0.6) +
+    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
+    scale_y_log10() +
+    labs(
+      title = "ActivityDepth_m Distribution Comparison (Log Scale)",
+      x = "Dataset",
+      y = "ActivityDepth_m (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+```
