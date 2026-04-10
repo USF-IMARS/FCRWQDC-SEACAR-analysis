@@ -10,6 +10,11 @@ The following data sources should be downloaded and placed in `./data/`:
 2. previous year's `dashboardData.csv` from [this gdrive folder](https://drive.google.com/drive/folders/1QMUpJOwfAMG9dB_fYT0Yva3IBVRg27fr) produced by [USF-IMARS/FCRWQDC_data_ingest](https://github.com/USF-IMARS/FCRWQDC_data_ingest/tree/main)
 
 # Usage
+## Setup
+```R
+pak::local_install_deps()
+```
+
 ## Deployment
 ```bash
 quarto publish
