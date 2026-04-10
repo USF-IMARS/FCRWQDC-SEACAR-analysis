@@ -1,6 +1,6 @@
 getListOfValues <- function() {
   library(here)
-  data <- read_delim(
+  data <- readr::read_delim(
     here("data/Discrete WQ - 10006.txt"),
     delim = "|"
   )

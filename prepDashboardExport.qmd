@@ -6,19 +6,24 @@ format: html
 This workflow prepares an export of the data modified for display on the [FCRWQDC Data Visualization Tool](https://github.com/USF-IMARS/FCRWQDC_data_dashboard).
 
 ```{R, load and prep file}
-  df <- read_delim(
+  df <- readr::read_delim(
     here("data/Discrete WQ - 10006.txt"),
     delim = "|"
   )
 
-# prepare datetime col from Y M D & drop old cols
-df$datetime <- as.Date(paste(df$Year, df$Month, df$Day, sep = "-"), format = "%Y-%m-%d")
-df$Year <- NULL
-df$Month <- NULL
-df$Day <- NULL
-
-# drop other unnecessary cols
+# drop unnecessary cols
 df$Total.Depth <- NULL
+df$RowID <- NULL
+df$ProgramID <- NULL
+df$Habitat <- NULL
+df$IndicatorID <- NULL
+
+TODO: rewrite this as keep of only the cols we want
+
+
+
+
+
 
 # create data/exports if DNE
 dir.create(here::here("data", "exports"), showWarnings = FALSE)

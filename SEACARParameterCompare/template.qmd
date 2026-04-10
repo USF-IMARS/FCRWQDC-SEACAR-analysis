@@ -1,8 +1,8 @@
 ---
-title: "Total Ammonia (N) Report"
+title: "Salinity Report"
 format: html
 params:
-  batch_value: "Total Ammonia (N)"  # must match value in generate_batch_qmds.R
+  batch_value: "Salinity"  # must match value in generate_batch_qmds.R
   batch_name: "SEACARParameterCompare"
 ---
 
@@ -12,22 +12,22 @@ source(here::here(glue::glue("{params$batch_name}/getData.R")))
 
 # returns two dataframes in a named list
 dfs <- getData(params$batch_value)
-```
 
-```{R, compare column names}
-#| code-summary: compare column names
-c1 <- colnames(dfs$SEACAR_STD)
-c2 <- colnames(dfs$OLD)
-
-comparison <- data.frame(
-  column = union(c1, c2),
-  in_SEACAR = union(c1, c2) %in% c1,
-  in_OLD    = union(c1, c2) %in% c2
+# keep only columns of interest
+cols_of_interest <- c(
+  "ProgramName", "ProgramLocationID", "OriginalLatitude", "OriginalLongitude", 
+  "ActivityDepth_m", "ParameterUnits", "ResultValue", "SampleDate"
 )
+dfs$SEACAR_STD <- dfs$SEACAR_STD %>% select(all_of(cols_of_interest))
+dfs$OLD <- dfs$OLD %>% select(all_of(cols_of_interest))
 
-print(comparison)
 ```
 
+```{R, show number of rows for each dataframe}
+#| code-summary: show number of rows for each dataframe
+cat(" SEACAR_STD rows:", nrow(dfs$SEACAR_STD), "\n")
+cat("OLD dataset rows:", nrow(dfs$OLD), "\n")
+```
 
 ```{R, show comparison of unique units}
 #| code-summary: show comparison of unique units
@@ -49,22 +49,68 @@ print(comparison)
 #| code-summary: split violin plot comparison of values
 library(ggplot2)
 
-# Combine dataframes with a source column
-df_combined <- bind_rows(
-  dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
-  dfs$OLD %>% mutate(source = "OLD_STD")
-)
+if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
+    dfs$OLD %>% mutate(source = "OLD_STD")
+  )
 
-# Create split violin plot
-ggplot(df_combined, aes(x = source, y = Value, fill = source)) +
-  geom_violin(alpha = 0.6) +
-  geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
-  labs(
-    title = "Value Distribution Comparison",
-    x = "Dataset",
-    y = "Value"
-  ) +
-  theme_minimal() +
-  theme(legend.position = "none")
+  # Create split violin plot
+  ggplot(df_combined, aes(x = source, y = ResultValue, fill = source)) +
+    geom_violin(alpha = 0.6) +
+    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
+    scale_y_log10() +
+    labs(
+      title = "Value Distribution Comparison (Log Scale)",
+      x = "Dataset",
+      y = "Result Value (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
 ```
 
+```{R, show time series of row counts for both datasets}
+#| code-summary: show time series of row counts for both datasets
+library(ggplot2)
+library(tidyr)
+library(lubridate)
+
+# Count rows per date for each dataset, bin by year
+seacar_counts <- dfs$SEACAR_STD %>%
+  group_by(SampleDate = floor_date(SampleDate, "year")) %>%
+  count(name = "SEACAR_Count") %>%
+  ungroup()
+
+old_counts <- dfs$OLD %>%
+  group_by(SampleDate = floor_date(SampleDate, "year")) %>%
+  count(name = "OLD_Count") %>%
+  ungroup()
+
+# Combine and plot
+combined_counts <- full_join(seacar_counts, old_counts, by = "SampleDate") %>%
+  arrange(SampleDate) %>%
+  mutate(
+    SEACAR_Count = replace_na(SEACAR_Count, 0),
+    OLD_Count = replace_na(OLD_Count, 0)
+  )
+
+ggplot(combined_counts, aes(x = SampleDate)) +
+  geom_line(aes(y = SEACAR_Count, color = "SEACAR_STD", linetype = "SEACAR_STD"), size = 1, alpha = 0.7) +
+  geom_line(aes(y = OLD_Count, color = "OLD_STD", linetype = "OLD_STD"), size = 1, alpha = 0.7) +
+  scale_y_log10() +
+  scale_linetype_manual(values = c("SEACAR_STD" = "solid", "OLD_STD" = "solid")) +
+  scale_color_manual(values = c("SEACAR_STD" = "blue", "OLD_STD" = "red")) +
+  labs(
+    title = "Row Count Over Time (Log Scale)",
+    x = "Sample Date",
+    y = "Number of Rows (log10)",
+    color = "Dataset",
+    linetype = "Dataset"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
