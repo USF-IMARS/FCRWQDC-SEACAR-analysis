@@ -1,0 +1,39 @@
+Package: FCRWQDC.SEACAR.analysis
+Type: Project
+Title: "Florida Coral Reef Water Quality Data Compilation - SEACAR Analysis"
+Version: 1.0.0
+Authors@R: 
+    c(person(given = "Tylar",
+           family = "Murray",
+           role = c("aut", "cre"),
+           email = "email@tylar.info"),
+    person(given = "Dan",
+           family = "Otis",
+           role = "ctb",
+           email = "dotis@usf.edu"))
+Description: Analysis of water quality data from the Florida Coral Reef Water Quality Data Compilation project. 
+    This project provides an assessment of the SEACAR dataset and  
+    rate of change calculations using seasonal Mann-Kendall tests.
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr (>= 1.1.0),
+    ggplot2 (>= 3.4.0),
+    here (>= 1.0.0),
+    lubridate (>= 1.9.0),
+    pander (>= 0.6.0),
+    tidyr (>= 1.3.0),
+    EnvStats (>= 2.8.0),
+    gt (>= 0.10.0),
+    scales (>= 1.3.0),
+    tidyselect (>= 1.2.0),
+    RColorBrewer (>= 1.1.0),
+    readr (>= 2.1.0),
+    yaml (>= 2.3.0),
+    glue (>= 1.6.0)
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://github.com/7yl4r/quartobatch
+BugReports: https://github.com/7yl4r/quartobatch/issues
