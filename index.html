@@ -94,14 +94,33 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="./example_batch/listing.qmd"> 
-<span class="menu-text"></span></a>
-  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./parameterRateOfChange/listing.html"> 
 <span class="menu-text">Parameter Rates of Change</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./prepDashboardExport.html"> 
+<span class="menu-text">DVT Dataset Prep</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-seacar-comparisons" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">SEACAR Comparisons</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-seacar-comparisons">    
+        <li>
+    <a class="dropdown-item" href="./SEACAROverallCompare.html">
+ <span class="dropdown-text">SEACAR Overall Comparison</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./SEACARParameterCompare/listing.html">
+ <span class="dropdown-text">SEACARParameterCompare</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./SEACARProgramCompare/listing.html">
+ <span class="dropdown-text">SEACARProgramCompare</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis"> 
 <span class="menu-text">Source Code on GitHub</span></a>
@@ -158,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>Upstream Data</h1>
 <p>The following data sources should be downloaded and placed in <code>./data/</code>:</p>
 <ol type="1">
-<li><code>Unified_WQ_Database\(2023\ updated\).csv</code> from <a href="https://data.florida-seacar.org/programs/details/10006">SEACAR standard export page</a>.</li>
+<li><code>Discrete WQ - 10006.txt</code> from <a href="https://data.florida-seacar.org/programs/details/10006">SEACAR standard export page</a>.</li>
 <li>previous year’s <code>dashboardData.csv</code> from <a href="https://drive.google.com/drive/folders/1QMUpJOwfAMG9dB_fYT0Yva3IBVRg27fr">this gdrive folder</a> produced by <a href="https://github.com/USF-IMARS/FCRWQDC_data_ingest/tree/main">USF-IMARS/FCRWQDC_data_ingest</a></li>
 </ol>
 

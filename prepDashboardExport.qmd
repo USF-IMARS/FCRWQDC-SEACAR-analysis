@@ -1,0 +1,33 @@
+---
+title: "DVT Dataset Prep"
+format: html
+---
+
+This workflow prepares an export of the data modified for display on the [FCRWQDC Data Visualization Tool](https://github.com/USF-IMARS/FCRWQDC_data_dashboard).
+
+```{R, load and prep file}
+  df <- readr::read_delim(
+    here("data/Discrete WQ - 10006.txt"),
+    delim = "|"
+  )
+
+# drop unnecessary cols
+df$Total.Depth <- NULL
+df$RowID <- NULL
+df$ProgramID <- NULL
+df$Habitat <- NULL
+df$IndicatorID <- NULL
+
+TODO: rewrite this as keep of only the cols we want
+
+
+
+
+
+
+# create data/exports if DNE
+dir.create(here::here("data", "exports"), showWarnings = FALSE)
+
+# save to csv
+write.csv(df, here::here("data", "exports", "dashboardDataSEACAR.csv"), row.names = FALSE)
+```

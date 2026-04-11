@@ -1,0 +1,12 @@
+---
+title: "Parameter Rates of Change"
+description: "Seasonal Mann Kendall slopes for each parameter."
+code-fold: true
+listing:
+  contents: batched_reports
+  type: grid
+  fields: [image, title]
+
+---
+
+Click on any element for more details.
