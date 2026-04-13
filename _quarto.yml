@@ -5,6 +5,8 @@ project:
   - SEACARParameterCompare/generate_batch_qmds.R
   - SEACARProgramCompare/generate_batch_qmds.R
   render:
+  - prepDashboardExport.qmd
+
   - index.qmd
   - parameterRateOfChange/batched_reports/*.qmd
   - parameterRateOfChange/listing.qmd
@@ -17,7 +19,6 @@ project:
   - SEACARProgramCompare/batched_reports/*.qmd
   - SEACARProgramCompare/listing.qmd
   
-  - prepDashboardExport.qmd
 website:
   title: FCRWQDC SEACAR Analysis
   navbar:

@@ -6,6 +6,10 @@ format: html
 This workflow prepares an export of the data modified for display on the [FCRWQDC Data Visualization Tool](https://github.com/USF-IMARS/FCRWQDC_data_dashboard).
 
 ```{R, load and prep file}
+library(here)
+library(magrittr)
+library(dplyr)
+
 df <- readr::read_delim(
   here("data/Discrete WQ - 10006.txt"),
   delim = "|"

@@ -54,26 +54,65 @@ old_parameter_counts <- df_OLD %>%
 
 # Create combined dataframe for plotting
 combined_parameter_counts <- full_join(
-  seacar_parameter_counts %>% mutate(source = "SEACAR_STD"),
-  old_parameter_counts %>% mutate(source = "OLD_STD"),
-  by = c("ParameterName", "source")
+  seacar_parameter_counts,
+  old_parameter_counts,
+  by = "ParameterName"
 ) %>%
   mutate(
     SEACAR_Count = replace_na(SEACAR_Count, 0),
     OLD_Count = replace_na(OLD_Count, 0)
-  )
+  ) %>%
+  # Reshape to long format for dodged bars
+  pivot_longer(
+    cols = c(SEACAR_Count, OLD_Count),
+    names_to = "source",
+    values_to = "count"
+  ) %>%
+  mutate(source = ifelse(source == "SEACAR_Count", "SEACAR_STD", "OLD"))
 
-# Create bar plot
-ggplot(combined_parameter_counts, aes(x = ParameterName, y = SEACAR_Count, fill = source)) +
+# === Split the plot into two because there are many parameters
+TEXT_ANGLE = 90
+# Split parameters alphabetically
+parameters <- unique(combined_parameter_counts$ParameterName)
+mid_point <- ceiling(length(parameters) / 2)
+first_half <- sort(parameters)[1:mid_point]
+second_half <- sort(parameters)[(mid_point + 1):length(parameters)]
+
+# Create first plot (A-M)
+plot1_data <- combined_parameter_counts %>%
+  filter(ParameterName %in% first_half) %>%
+  mutate(ParameterName = factor(ParameterName, levels = sort(first_half)))
+
+plot1 <- ggplot(plot1_data, aes(x = ParameterName, y = count, fill = source)) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(
-    title = "Row Count by ParameterName",
+    title = "Row Count by ParameterName (A-M)",
     x = "ParameterName",
     y = "Number of Rows",
     fill = "Dataset"
   ) +
   theme_minimal() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_text(angle = TEXT_ANGLE, hjust = 1))
+
+# Create second plot (N-Z)
+plot2_data <- combined_parameter_counts %>%
+  filter(ParameterName %in% second_half) %>%
+  mutate(ParameterName = factor(ParameterName, levels = sort(second_half)))
+
+plot2 <- ggplot(plot2_data, aes(x = ParameterName, y = count, fill = source)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Row Count by ParameterName (N-Z)",
+    x = "ParameterName",
+    y = "Number of Rows",
+    fill = "Dataset"
+  ) +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = TEXT_ANGLE, hjust = 1))
+
+# Display both plots
+print(plot1)
+print(plot2)
 ```
 
 ```{R, compare column names}
