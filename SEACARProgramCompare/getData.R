@@ -1,3 +1,6 @@
+library(here)
+source(here("SEACARProgramCompare/mapSEACARProgramNameToShortName.R"))
+
 # Reads unique programs from both datasetsand returns them as a list
 getData <- function(batch_value) {
   library(here)
@@ -7,7 +10,8 @@ getData <- function(batch_value) {
     delim = "|"
   ) %>%
   # Convert ActivityDepth_m to numeric for plotting
-  mutate(ActivityDepth_m = as.numeric(ActivityDepth_m))
+  mutate(ActivityDepth_m = as.numeric(ActivityDepth_m)) %>%
+  mutate(ProgramName = mapSEACARProgramNameToShortName(ProgramName))
 
   df2 <- read.csv(here::here("data/allDataSEACAR.csv")) %>% 
   # Align column types with df1:
@@ -17,8 +21,8 @@ getData <- function(batch_value) {
   mutate(SampleDate = as.POSIXct(SampleDate, format = "%Y-%m-%d", tz = "UTC"))
   
 
-  df1 <- df1[df1$ParameterName == batch_value, ]
-  df2 <- df2[df2$ParameterName == batch_value, ]
+  df1 <- df1[df1$ProgramName == batch_value, ]
+  df2 <- df2[df2$ProgramName == batch_value, ]
   
   return(list(SEACAR_STD = df1, OLD = df2))
 }

@@ -1,8 +1,8 @@
 ---
-title: "DERM Report"
+title: "MiamiBeach Report"
 format: html
 params:
-  batch_value: "DERM"  # must match value in generate_batch_qmds.R
+  batch_value: "MiamiBeach"  # must match value in generate_batch_qmds.R
   batch_name: "SEACARProgramCompare"
 ---
 

@@ -1,7 +1,11 @@
+library(here)
+source(here("SEACARProgramCompare/mapSEACARProgramNameToShortName.R"))
 getListOfValues <- function() {
   df1 <- readr::read_delim(
     here("data/Discrete WQ - 10006.txt"),
     delim = "|"
+  ) %>% dplyr::mutate(
+    ProgramName = mapSEACARProgramNameToShortName(ProgramName)
   )
   unique_df1 <- unique(df1$ProgramName)
 
