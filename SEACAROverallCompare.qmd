@@ -1,0 +1,117 @@
+---
+title: "SEACAR Overall Comparison"
+description: "Broad Comparisons of the Overall Datasets."
+code-fold: true
+format: html
+---
+
+
+```{R, load dataset}
+library(here)
+library(dplyr)
+df_SEACAR <- readr::read_delim(
+  here("data/Discrete WQ - 10006.txt"),
+  delim = "|"
+) %>%
+# Convert ActivityDepth_m to numeric for plotting
+mutate(ActivityDepth_m = as.numeric(ActivityDepth_m))
+
+
+df_OLD <- readr::read_delim(here::here("data/allDataSEACAR.csv"), delim=",")
+
+```
+
+
+```{R, compare column names}
+#| code-summary: compare column names
+c1 <- colnames(df_SEACAR)
+c2 <- colnames(df_OLD)
+
+comparison <- data.frame(
+  column = union(c1, c2),
+  in_SEACAR = union(c1, c2) %in% c1,
+  in_OLD    = union(c1, c2) %in% c2
+)
+
+print(comparison)
+```
+
+```{R, keep only columns of interest to avoid coltype errors}
+cols_of_interest <- c(
+  "ProgramName", "ProgramLocationID", "OriginalLatitude", "OriginalLongitude", 
+  "ActivityDepth_m", "ParameterUnits", "ResultValue", "SampleDate"
+)
+df_SEACAR <- df_SEACAR %>% select(all_of(cols_of_interest))
+df_OLD <- df_OLD %>% select(all_of(cols_of_interest))
+
+```
+
+```{R, show time series of row counts for both datasets}
+#| code-summary: show time series of row counts for both datasets
+library(ggplot2)
+library(tidyr)
+library(lubridate)
+
+# Count rows per date for each dataset, bin by year
+seacar_counts <- df_SEACAR %>%
+  group_by(SampleDate = floor_date(SampleDate, "year")) %>%
+  count(name = "SEACAR_Count") %>%
+  ungroup()
+
+old_counts <- df_OLD %>%
+  group_by(SampleDate = floor_date(SampleDate, "year")) %>%
+  count(name = "OLD_Count") %>%
+  ungroup()
+
+# Combine and plot
+combined_counts <- full_join(seacar_counts, old_counts, by = "SampleDate") %>%
+  arrange(SampleDate) %>%
+  mutate(
+    SEACAR_Count = replace_na(SEACAR_Count, 0),
+    OLD_Count = replace_na(OLD_Count, 0)
+  )
+
+ggplot(combined_counts, aes(x = SampleDate)) +
+  geom_line(aes(y = SEACAR_Count, color = "SEACAR_STD", linetype = "SEACAR_STD"), size = 1, alpha = 0.7) +
+  geom_line(aes(y = OLD_Count, color = "OLD_STD", linetype = "OLD_STD"), size = 1, alpha = 0.7) +
+  scale_y_log10() +
+  scale_linetype_manual(values = c("SEACAR_STD" = "solid", "OLD_STD" = "solid")) +
+  scale_color_manual(values = c("SEACAR_STD" = "blue", "OLD_STD" = "red")) +
+  labs(
+    title = "Row Count Over Time (Log Scale)",
+    x = "Sample Date",
+    y = "Number of Rows (log10)",
+    color = "Dataset",
+    linetype = "Dataset"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+```{R, plot ActivityDepth_m}
+#| code-summary: plot ActivityDepth_m
+library(ggplot2)
+
+if (nrow(df_SEACAR) == 0 || nrow(df_OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    df_SEACAR %>% mutate(source = "SEACAR_STD"),
+    df_OLD %>% mutate(source = "OLD_STD")
+  )
+
+  # Create split violin plot
+  ggplot(df_combined, aes(x = source, y = ActivityDepth_m, fill = source)) +
+    geom_violin(alpha = 0.6) +
+    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
+    scale_y_log10() +
+    labs(
+      title = "ActivityDepth_m Distribution Comparison (Log Scale)",
+      x = "Dataset",
+      y = "ActivityDepth_m (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+```

@@ -343,26 +343,64 @@ window.Quarto = {
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create combined dataframe for plotting</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>combined_parameter_counts <span class="ot">&lt;-</span> <span class="fu">full_join</span>(</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  seacar_parameter_counts <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">source =</span> <span class="st">"SEACAR_STD"</span>),</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  old_parameter_counts <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">source =</span> <span class="st">"OLD_STD"</span>),</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ParameterName"</span>, <span class="st">"source"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  seacar_parameter_counts,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  old_parameter_counts,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="st">"ParameterName"</span></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEACAR_Count =</span> <span class="fu">replace_na</span>(SEACAR_Count, <span class="dv">0</span>),</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">OLD_Count =</span> <span class="fu">replace_na</span>(OLD_Count, <span class="dv">0</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar plot</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(combined_parameter_counts, <span class="fu">aes</span>(<span class="at">x =</span> ParameterName, <span class="at">y =</span> SEACAR_Count, <span class="at">fill =</span> source)) <span class="sc">+</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Row Count by ParameterName"</span>,</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"ParameterName"</span>,</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Rows"</span>,</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Dataset"</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Reshape to long format for dodged bars</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(SEACAR_Count, OLD_Count),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"source"</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"count"</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">source =</span> <span class="fu">ifelse</span>(source <span class="sc">==</span> <span class="st">"SEACAR_Count"</span>, <span class="st">"SEACAR_STD"</span>, <span class="st">"OLD"</span>))</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># === Split the plot into two because there are many parameters</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>TEXT_ANGLE <span class="ot">=</span> <span class="dv">90</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Split parameters alphabetically</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>parameters <span class="ot">&lt;-</span> <span class="fu">unique</span>(combined_parameter_counts<span class="sc">$</span>ParameterName)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>mid_point <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">length</span>(parameters) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>first_half <span class="ot">&lt;-</span> <span class="fu">sort</span>(parameters)[<span class="dv">1</span><span class="sc">:</span>mid_point]</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>second_half <span class="ot">&lt;-</span> <span class="fu">sort</span>(parameters)[(mid_point <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">length</span>(parameters)]</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Create first plot (A-M)</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>plot1_data <span class="ot">&lt;-</span> combined_parameter_counts <span class="sc">%&gt;%</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ParameterName <span class="sc">%in%</span> first_half) <span class="sc">%&gt;%</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ParameterName =</span> <span class="fu">factor</span>(ParameterName, <span class="at">levels =</span> <span class="fu">sort</span>(first_half)))</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot1_data, <span class="fu">aes</span>(<span class="at">x =</span> ParameterName, <span class="at">y =</span> count, <span class="at">fill =</span> source)) <span class="sc">+</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Row Count by ParameterName (A-M)"</span>,</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"ParameterName"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Rows"</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Dataset"</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> TEXT_ANGLE, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Create second plot (N-Z)</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>plot2_data <span class="ot">&lt;-</span> combined_parameter_counts <span class="sc">%&gt;%</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ParameterName <span class="sc">%in%</span> second_half) <span class="sc">%&gt;%</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ParameterName =</span> <span class="fu">factor</span>(ParameterName, <span class="at">levels =</span> <span class="fu">sort</span>(second_half)))</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(plot2_data, <span class="fu">aes</span>(<span class="at">x =</span> ParameterName, <span class="at">y =</span> count, <span class="at">fill =</span> source)) <span class="sc">+</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Row Count by ParameterName (N-Z)"</span>,</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"ParameterName"</span>,</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Rows"</span>,</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Dataset"</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> TEXT_ANGLE, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Display both plots</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -371,20 +409,31 @@ window.Quarto = {
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>show bar plot of row count grouped by ParameterName</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="listing_files/figure-html/show bar plot of row count grouped by ParameterName-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>compare column names</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df_SEACAR)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df_OLD)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>comparison <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">column =</span> <span class="fu">union</span>(c1, c2),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">in_SEACAR =</span> <span class="fu">union</span>(c1, c2) <span class="sc">%in%</span> c1,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">in_OLD    =</span> <span class="fu">union</span>(c1, c2) <span class="sc">%in%</span> c2</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparison)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df_SEACAR)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">colnames</span>(df_OLD)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>comparison <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">column =</span> <span class="fu">union</span>(c1, c2),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">in_SEACAR =</span> <span class="fu">union</span>(c1, c2) <span class="sc">%in%</span> c1,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">in_OLD    =</span> <span class="fu">union</span>(c1, c2) <span class="sc">%in%</span> c2</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparison)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                    column in_SEACAR in_OLD
@@ -438,44 +487,44 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>show time series of row counts for both datasets</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Count rows per date for each dataset, bin by year</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>seacar_counts <span class="ot">&lt;-</span> df_SEACAR <span class="sc">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">SampleDate =</span> <span class="fu">floor_date</span>(SampleDate, <span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">name =</span> <span class="st">"SEACAR_Count"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>old_counts <span class="ot">&lt;-</span> df_OLD <span class="sc">%&gt;%</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">SampleDate =</span> <span class="fu">floor_date</span>(SampleDate, <span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">name =</span> <span class="st">"OLD_Count"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine and plot</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>combined_counts <span class="ot">&lt;-</span> <span class="fu">full_join</span>(seacar_counts, old_counts, <span class="at">by =</span> <span class="st">"SampleDate"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(SampleDate) <span class="sc">%&gt;%</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEACAR_Count =</span> <span class="fu">replace_na</span>(SEACAR_Count, <span class="dv">0</span>),</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">OLD_Count =</span> <span class="fu">replace_na</span>(OLD_Count, <span class="dv">0</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(combined_counts, <span class="fu">aes</span>(<span class="at">x =</span> SampleDate)) <span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> SEACAR_Count, <span class="at">color =</span> <span class="st">"SEACAR_STD"</span>, <span class="at">linetype =</span> <span class="st">"SEACAR_STD"</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> OLD_Count, <span class="at">color =</span> <span class="st">"OLD_STD"</span>, <span class="at">linetype =</span> <span class="st">"OLD_STD"</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"SEACAR_STD"</span> <span class="ot">=</span> <span class="st">"solid"</span>, <span class="st">"OLD_STD"</span> <span class="ot">=</span> <span class="st">"solid"</span>)) <span class="sc">+</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"SEACAR_STD"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"OLD_STD"</span> <span class="ot">=</span> <span class="st">"red"</span>)) <span class="sc">+</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Row Count Over Time (Log Scale)"</span>,</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Sample Date"</span>,</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Rows (log10)"</span>,</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Dataset"</span>,</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"Dataset"</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Count rows per date for each dataset, bin by year</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>seacar_counts <span class="ot">&lt;-</span> df_SEACAR <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">SampleDate =</span> <span class="fu">floor_date</span>(SampleDate, <span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">name =</span> <span class="st">"SEACAR_Count"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>old_counts <span class="ot">&lt;-</span> df_OLD <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">SampleDate =</span> <span class="fu">floor_date</span>(SampleDate, <span class="st">"year"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(<span class="at">name =</span> <span class="st">"OLD_Count"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine and plot</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>combined_counts <span class="ot">&lt;-</span> <span class="fu">full_join</span>(seacar_counts, old_counts, <span class="at">by =</span> <span class="st">"SampleDate"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(SampleDate) <span class="sc">%&gt;%</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">SEACAR_Count =</span> <span class="fu">replace_na</span>(SEACAR_Count, <span class="dv">0</span>),</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">OLD_Count =</span> <span class="fu">replace_na</span>(OLD_Count, <span class="dv">0</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(combined_counts, <span class="fu">aes</span>(<span class="at">x =</span> SampleDate)) <span class="sc">+</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> SEACAR_Count, <span class="at">color =</span> <span class="st">"SEACAR_STD"</span>, <span class="at">linetype =</span> <span class="st">"SEACAR_STD"</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> OLD_Count, <span class="at">color =</span> <span class="st">"OLD_STD"</span>, <span class="at">linetype =</span> <span class="st">"OLD_STD"</span>), <span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"SEACAR_STD"</span> <span class="ot">=</span> <span class="st">"solid"</span>, <span class="st">"OLD_STD"</span> <span class="ot">=</span> <span class="st">"solid"</span>)) <span class="sc">+</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"SEACAR_STD"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"OLD_STD"</span> <span class="ot">=</span> <span class="st">"red"</span>)) <span class="sc">+</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Row Count Over Time (Log Scale)"</span>,</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Sample Date"</span>,</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Rows (log10)"</span>,</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Dataset"</span>,</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"Dataset"</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -491,7 +540,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1775914305220" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1776108193379" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Ammonia, Un-ionized (NH3).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Ammonia,-Un-ionized--NH3-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -517,7 +566,7 @@ Ammonia, Un-ionized (NH3) Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1775914305178" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1776108193315" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Ammonium (NH4).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Ammonium--NH4-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -543,7 +592,7 @@ Ammonium (NH4) Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1775914305218" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1776108193375" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Ammonium, Filtered (NH4).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Ammonium,-Filtered--NH4-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -569,7 +618,7 @@ Ammonium, Filtered (NH4) Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1775914305169" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1776108193305" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Chlorophyll a, Corrected for Pheophytin.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Chlorophyll-a,-Corrected-for-Pheophytin_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -595,7 +644,7 @@ Chlorophyll a, Corrected for Pheophytin Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1775914305190" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1776108193335" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Chlorophyll-a,-Uncorrected-for-Pheophytin_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -621,7 +670,7 @@ Chlorophyll a, Uncorrected for Pheophytin Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1775914305173" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1776108193310" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Colored Dissolved Organic Matter.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Colored-Dissolved-Organic-Matter_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -647,7 +696,7 @@ Colored Dissolved Organic Matter Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1775914305182" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1776108193323" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Dissolved Oxygen.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Dissolved-Oxygen_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -673,7 +722,7 @@ Dissolved Oxygen Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1775914305185" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1776108193327" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Dissolved Oxygen Saturation.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Dissolved-Oxygen-Saturation_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -699,7 +748,7 @@ Dissolved Oxygen Saturation Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1775914305171" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1776108193308" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Light Extinction Coefficient.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Light-Extinction-Coefficient_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -725,7 +774,7 @@ Light Extinction Coefficient Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1775914305176" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1776108193313" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/NO2+3, Filtered.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/NO2+3,-Filtered_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -751,7 +800,7 @@ NO2+3, Filtered Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1775914305197" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1776108193344" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Nitrate (NO3).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Nitrate--NO3-_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -777,7 +826,7 @@ Nitrate (NO3) Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1775914305200" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1776108193347" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Nitrite (NO2).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Nitrite--NO2-_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -803,7 +852,7 @@ Nitrite (NO2) Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1775914305208" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1776108193356" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Nitrogen, inorganic.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Nitrogen,-inorganic_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -829,7 +878,7 @@ Nitrogen, inorganic Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1775914305203" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1776108193349" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Nitrogen, organic.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Nitrogen,-organic_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -855,7 +904,7 @@ Nitrogen, organic Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="14" data-listing-file-modified-sort="1775914305180" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="14" data-listing-file-modified-sort="1776108193319" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Phosphate, Filtered (PO4).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Phosphate,-Filtered--PO4-_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -881,7 +930,7 @@ Phosphate, Filtered (PO4) Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="15" data-listing-file-modified-sort="1775914305157" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="15" data-listing-file-modified-sort="1776108193287" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Salinity.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Salinity_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -907,7 +956,7 @@ Salinity Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="16" data-listing-file-modified-sort="1775914305215" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="16" data-listing-file-modified-sort="1776108193371" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Secchi Depth.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Secchi-Depth_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -933,7 +982,7 @@ Secchi Depth Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="17" data-listing-file-modified-sort="1775914305210" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="17" data-listing-file-modified-sort="1776108193361" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Specific Conductivity.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Specific-Conductivity_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -959,7 +1008,7 @@ Specific Conductivity Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="18" data-listing-file-modified-sort="1775914305206" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="18" data-listing-file-modified-sort="1776108193352" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Total Ammonia (N).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Total-Ammonia--N-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -985,7 +1034,7 @@ Total Ammonia (N) Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="19" data-listing-file-modified-sort="1775914305213" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="19" data-listing-file-modified-sort="1776108193366" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Total Kjeldahl Nitrogen.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Total-Kjeldahl-Nitrogen_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -1011,7 +1060,7 @@ Total Kjeldahl Nitrogen Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="20" data-listing-file-modified-sort="1775914305192" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="20" data-listing-file-modified-sort="1776108193338" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Total Nitrogen.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Total-Nitrogen_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -1037,7 +1086,7 @@ Total Nitrogen Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="21" data-listing-file-modified-sort="1775914305195" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="21" data-listing-file-modified-sort="1776108193341" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Total Phosphorus.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Total-Phosphorus_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -1063,7 +1112,7 @@ Total Phosphorus Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="22" data-listing-file-modified-sort="1775914305166" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="22" data-listing-file-modified-sort="1776108193302" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Total Suspended Solids.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Total-Suspended-Solids_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -1089,7 +1138,7 @@ Total Suspended Solids Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="23" data-listing-file-modified-sort="1775914305187" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="23" data-listing-file-modified-sort="1776108193331" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Turbidity.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Turbidity_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -1115,7 +1164,7 @@ Turbidity Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="24" data-listing-file-modified-sort="1775914305162" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="24" data-listing-file-modified-sort="1776108193293" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/Water Temperature.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Water-Temperature_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -1141,7 +1190,7 @@ Water Temperature Report
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="25" data-listing-file-modified-sort="1775914305164" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="25" data-listing-file-modified-sort="1776108193297" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
 <a href="../SEACARParameterCompare/batched_reports/pH.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/pH_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>

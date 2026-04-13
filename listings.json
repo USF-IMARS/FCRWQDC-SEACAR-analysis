@@ -2,61 +2,7 @@
   {
     "listing": "/SEACARProgramCompare/listing.html",
     "items": [
-      "/SEACARProgramCompare/batched_reports/AOML_FBBB.html",
-      "/SEACARProgramCompare/batched_reports/Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys.html",
-      "/SEACARProgramCompare/batched_reports/BBAP.html",
-      "/SEACARProgramCompare/batched_reports/BBWW.html",
-      "/SEACARProgramCompare/batched_reports/BROWARD.html",
-      "/SEACARProgramCompare/batched_reports/BROWARD_STORET.html",
-      "/SEACARProgramCompare/batched_reports/Biscayne Bay Water Watch .html",
-      "/SEACARProgramCompare/batched_reports/Broward County Water Quality Monitoring .html",
-      "/SEACARProgramCompare/batched_reports/City of Miami Beach Water Monitoring.html",
-      "/SEACARProgramCompare/batched_reports/DEP.html",
-      "/SEACARProgramCompare/batched_reports/DERM_BBWQ.html",
-      "/SEACARProgramCompare/batched_reports/DERM_BBWQ_STORET.html",
-      "/SEACARProgramCompare/batched_reports/FIU_Estuaries.html",
-      "/SEACARProgramCompare/batched_reports/FIU_WQMP.html",
-      "/SEACARProgramCompare/batched_reports/FIU_WQMP_HISTORICAL.html",
-      "/SEACARProgramCompare/batched_reports/FIU_WQMP_RECENT.html",
-      "/SEACARProgramCompare/batched_reports/Florida Keys National Marine Sanctuary Water Quality Monitoring Project.html",
-      "/SEACARProgramCompare/batched_reports/Miami-Dade County DERM Benthic Habitat Monitoring Program.html",
-      "/SEACARProgramCompare/batched_reports/MiamiBeach.html",
-      "/SEACARProgramCompare/batched_reports/North Biscayne Bay Discrete Water Quality Program .html",
-      "/SEACARProgramCompare/batched_reports/PALMBEACH.html",
-      "/SEACARProgramCompare/batched_reports/PALMBEACH_STORET.html",
-      "/SEACARProgramCompare/batched_reports/Palm Beach County Water Quality Program.html",
-      "/SEACARProgramCompare/batched_reports/SERC Water Quality Monitoring Network.html",
-      "/SEACARProgramCompare/batched_reports/SFER.html",
-      "/SEACARProgramCompare/batched_reports/Southeast Florida Water Quality Assessment Survey .html"
-    ]
-  },
-  {
-    "listing": "/parameterRateOfChange/listing.html",
-    "items": [
-      "/parameterRateOfChange/batched_reports/Ammonium (NH4).html",
-      "/parameterRateOfChange/batched_reports/Chlorophyll a, Corrected for Pheophytin.html",
-      "/parameterRateOfChange/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html",
-      "/parameterRateOfChange/batched_reports/Colored Dissolved Organic Matter.html",
-      "/parameterRateOfChange/batched_reports/Dissolved Oxygen.html",
-      "/parameterRateOfChange/batched_reports/Dissolved Oxygen Saturation.html",
-      "/parameterRateOfChange/batched_reports/Light Extinction Coefficient.html",
-      "/parameterRateOfChange/batched_reports/NO2+3, Filtered.html",
-      "/parameterRateOfChange/batched_reports/Nitrate (NO3).html",
-      "/parameterRateOfChange/batched_reports/Nitrite (NO2).html",
-      "/parameterRateOfChange/batched_reports/Nitrogen, inorganic.html",
-      "/parameterRateOfChange/batched_reports/Nitrogen, organic.html",
-      "/parameterRateOfChange/batched_reports/Phosphate, Filtered (PO4).html",
-      "/parameterRateOfChange/batched_reports/Salinity.html",
-      "/parameterRateOfChange/batched_reports/Secchi Depth.html",
-      "/parameterRateOfChange/batched_reports/Specific Conductivity.html",
-      "/parameterRateOfChange/batched_reports/Total Ammonia (N).html",
-      "/parameterRateOfChange/batched_reports/Total Kjeldahl Nitrogen.html",
-      "/parameterRateOfChange/batched_reports/Total Nitrogen.html",
-      "/parameterRateOfChange/batched_reports/Total Phosphorus.html",
-      "/parameterRateOfChange/batched_reports/Total Suspended Solids.html",
-      "/parameterRateOfChange/batched_reports/Turbidity.html",
-      "/parameterRateOfChange/batched_reports/Water Temperature.html",
-      "/parameterRateOfChange/batched_reports/pH.html"
+      "/SEACARProgramCompare/batched_reports/AOML_SFPSSS.html"
     ]
   },
   {
@@ -88,6 +34,35 @@
       "/SEACARParameterCompare/batched_reports/Turbidity.html",
       "/SEACARParameterCompare/batched_reports/Water Temperature.html",
       "/SEACARParameterCompare/batched_reports/pH.html"
+    ]
+  },
+  {
+    "listing": "/parameterRateOfChange/listing.html",
+    "items": [
+      "/parameterRateOfChange/batched_reports/Ammonium (NH4).html",
+      "/parameterRateOfChange/batched_reports/Chlorophyll a, Corrected for Pheophytin.html",
+      "/parameterRateOfChange/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html",
+      "/parameterRateOfChange/batched_reports/Colored Dissolved Organic Matter.html",
+      "/parameterRateOfChange/batched_reports/Dissolved Oxygen.html",
+      "/parameterRateOfChange/batched_reports/Dissolved Oxygen Saturation.html",
+      "/parameterRateOfChange/batched_reports/Light Extinction Coefficient.html",
+      "/parameterRateOfChange/batched_reports/NO2+3, Filtered.html",
+      "/parameterRateOfChange/batched_reports/Nitrate (NO3).html",
+      "/parameterRateOfChange/batched_reports/Nitrite (NO2).html",
+      "/parameterRateOfChange/batched_reports/Nitrogen, inorganic.html",
+      "/parameterRateOfChange/batched_reports/Nitrogen, organic.html",
+      "/parameterRateOfChange/batched_reports/Phosphate, Filtered (PO4).html",
+      "/parameterRateOfChange/batched_reports/Salinity.html",
+      "/parameterRateOfChange/batched_reports/Secchi Depth.html",
+      "/parameterRateOfChange/batched_reports/Specific Conductivity.html",
+      "/parameterRateOfChange/batched_reports/Total Ammonia (N).html",
+      "/parameterRateOfChange/batched_reports/Total Kjeldahl Nitrogen.html",
+      "/parameterRateOfChange/batched_reports/Total Nitrogen.html",
+      "/parameterRateOfChange/batched_reports/Total Phosphorus.html",
+      "/parameterRateOfChange/batched_reports/Total Suspended Solids.html",
+      "/parameterRateOfChange/batched_reports/Turbidity.html",
+      "/parameterRateOfChange/batched_reports/Water Temperature.html",
+      "/parameterRateOfChange/batched_reports/pH.html"
     ]
   }
 ]

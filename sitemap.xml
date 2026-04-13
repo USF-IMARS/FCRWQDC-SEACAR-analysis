@@ -2,330 +2,230 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/listing.html</loc>
-    <lastmod>2026-04-10T18:39:53.526Z</lastmod>
+    <lastmod>2026-04-13T14:17:28.214Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/SFER.html</loc>
-    <lastmod>2026-04-11T13:32:03.466Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/listing.html</loc>
+    <lastmod>2026-04-13T13:43:03.506Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/Palm Beach County Water Quality Program.html</loc>
-    <lastmod>2026-04-11T13:32:03.462Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Water Temperature.html</loc>
+    <lastmod>2026-04-13T19:23:13.293Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/PALMBEACH.html</loc>
-    <lastmod>2026-04-11T13:32:03.503Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Suspended Solids.html</loc>
+    <lastmod>2026-04-13T19:23:13.302Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/MiamiBeach.html</loc>
-    <lastmod>2026-04-11T13:32:03.468Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Nitrogen.html</loc>
+    <lastmod>2026-04-13T19:23:13.338Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/Florida Keys National Marine Sanctuary Water Quality Monitoring Project.html</loc>
-    <lastmod>2026-04-11T13:32:03.446Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Ammonia (N).html</loc>
+    <lastmod>2026-04-13T19:23:13.352Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/FIU_WQMP_HISTORICAL.html</loc>
-    <lastmod>2026-04-11T13:32:03.477Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Secchi Depth.html</loc>
+    <lastmod>2026-04-13T19:23:13.371Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/FIU_Estuaries.html</loc>
-    <lastmod>2026-04-11T13:32:03.473Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Phosphate, Filtered (PO4).html</loc>
+    <lastmod>2026-04-13T19:23:13.319Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/DERM_BBWQ.html</loc>
-    <lastmod>2026-04-11T13:32:03.497Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrogen, inorganic.html</loc>
+    <lastmod>2026-04-13T19:23:13.356Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/City of Miami Beach Water Monitoring.html</loc>
-    <lastmod>2026-04-11T13:32:03.455Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrate (NO3).html</loc>
+    <lastmod>2026-04-13T19:23:13.344Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/Biscayne Bay Water Watch .html</loc>
-    <lastmod>2026-04-11T13:32:03.453Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Light Extinction Coefficient.html</loc>
+    <lastmod>2026-04-13T19:23:13.308Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/BROWARD.html</loc>
-    <lastmod>2026-04-11T13:32:03.493Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Dissolved Oxygen Saturation.html</loc>
+    <lastmod>2026-04-13T19:23:13.327Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/BBAP.html</loc>
-    <lastmod>2026-04-11T13:32:03.490Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html</loc>
+    <lastmod>2026-04-13T19:23:13.335Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/AOML_FBBB.html</loc>
-    <lastmod>2026-04-11T13:32:03.480Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Ammonium, Filtered (NH4).html</loc>
+    <lastmod>2026-04-13T19:23:13.375Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/pH.html</loc>
-    <lastmod>2026-04-11T13:31:45.164Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Turbidity.html</loc>
-    <lastmod>2026-04-11T13:31:45.187Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Phosphorus.html</loc>
-    <lastmod>2026-04-11T13:31:45.195Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Kjeldahl Nitrogen.html</loc>
-    <lastmod>2026-04-11T13:31:45.213Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Specific Conductivity.html</loc>
-    <lastmod>2026-04-11T13:31:45.210Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Salinity.html</loc>
-    <lastmod>2026-04-11T13:31:45.157Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrogen, organic.html</loc>
-    <lastmod>2026-04-11T13:31:45.203Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrite (NO2).html</loc>
-    <lastmod>2026-04-11T13:31:45.200Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/NO2+3, Filtered.html</loc>
-    <lastmod>2026-04-11T13:31:45.176Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Dissolved Oxygen.html</loc>
-    <lastmod>2026-04-11T13:31:45.182Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Colored Dissolved Organic Matter.html</loc>
-    <lastmod>2026-04-11T13:31:45.173Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Chlorophyll a, Corrected for Pheophytin.html</loc>
-    <lastmod>2026-04-11T13:31:45.169Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Ammonium (NH4).html</loc>
-    <lastmod>2026-04-11T13:31:45.178Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACAROverallCompare.html</loc>
-    <lastmod>2026-04-10T18:43:05.513Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/pH.html</loc>
-    <lastmod>2026-04-11T13:31:27.117Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Turbidity.html</loc>
-    <lastmod>2026-04-11T13:31:27.173Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Phosphorus.html</loc>
-    <lastmod>2026-04-11T13:31:27.189Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Kjeldahl Nitrogen.html</loc>
-    <lastmod>2026-04-11T13:31:27.216Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Specific Conductivity.html</loc>
-    <lastmod>2026-04-11T13:31:27.212Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Salinity.html</loc>
-    <lastmod>2026-04-11T13:31:27.107Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrogen, organic.html</loc>
-    <lastmod>2026-04-11T13:31:27.202Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrite (NO2).html</loc>
-    <lastmod>2026-04-11T13:31:27.199Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/NO2+3, Filtered.html</loc>
-    <lastmod>2026-04-11T13:31:27.155Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Dissolved Oxygen.html</loc>
-    <lastmod>2026-04-11T13:31:27.165Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Colored Dissolved Organic Matter.html</loc>
-    <lastmod>2026-04-11T13:31:27.152Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Chlorophyll a, Corrected for Pheophytin.html</loc>
-    <lastmod>2026-04-11T13:31:27.146Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/index.html</loc>
-    <lastmod>2026-04-10T15:16:47.951Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/prepDashboardExport.html</loc>
-    <lastmod>2026-04-11T13:30:58.468Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Ammonium (NH4).html</loc>
-    <lastmod>2026-04-11T13:31:27.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html</loc>
-    <lastmod>2026-04-11T13:31:27.179Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Dissolved Oxygen Saturation.html</loc>
-    <lastmod>2026-04-11T13:31:27.168Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Light Extinction Coefficient.html</loc>
-    <lastmod>2026-04-11T13:31:27.149Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrate (NO3).html</loc>
-    <lastmod>2026-04-11T13:31:27.195Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrogen, inorganic.html</loc>
-    <lastmod>2026-04-11T13:31:27.209Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Phosphate, Filtered (PO4).html</loc>
-    <lastmod>2026-04-11T13:31:27.161Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Secchi Depth.html</loc>
-    <lastmod>2026-04-11T13:31:27.219Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Ammonia (N).html</loc>
-    <lastmod>2026-04-11T13:31:27.206Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Nitrogen.html</loc>
-    <lastmod>2026-04-11T13:31:27.184Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Suspended Solids.html</loc>
-    <lastmod>2026-04-11T13:31:27.142Z</lastmod>
-  </url>
-  <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Water Temperature.html</loc>
-    <lastmod>2026-04-11T13:31:27.113Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Ammonia, Un-ionized (NH3).html</loc>
+    <lastmod>2026-04-13T19:23:13.379Z</lastmod>
   </url>
   <url>
     <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/listing.html</loc>
     <lastmod>2026-04-03T20:38:22.688Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Ammonia, Un-ionized (NH3).html</loc>
-    <lastmod>2026-04-11T13:31:45.220Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Water Temperature.html</loc>
+    <lastmod>2026-04-13T19:22:50.403Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Ammonium, Filtered (NH4).html</loc>
-    <lastmod>2026-04-11T13:31:45.218Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Suspended Solids.html</loc>
+    <lastmod>2026-04-13T19:22:50.444Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html</loc>
-    <lastmod>2026-04-11T13:31:45.190Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Nitrogen.html</loc>
+    <lastmod>2026-04-13T19:22:50.486Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Dissolved Oxygen Saturation.html</loc>
-    <lastmod>2026-04-11T13:31:45.185Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Ammonia (N).html</loc>
+    <lastmod>2026-04-13T19:22:50.503Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Light Extinction Coefficient.html</loc>
-    <lastmod>2026-04-11T13:31:45.171Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Secchi Depth.html</loc>
+    <lastmod>2026-04-13T19:22:50.518Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrate (NO3).html</loc>
-    <lastmod>2026-04-11T13:31:45.197Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Phosphate, Filtered (PO4).html</loc>
+    <lastmod>2026-04-13T19:22:50.467Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrogen, inorganic.html</loc>
-    <lastmod>2026-04-11T13:31:45.208Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrogen, inorganic.html</loc>
+    <lastmod>2026-04-13T19:22:50.507Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Phosphate, Filtered (PO4).html</loc>
-    <lastmod>2026-04-11T13:31:45.180Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrate (NO3).html</loc>
+    <lastmod>2026-04-13T19:22:50.493Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Secchi Depth.html</loc>
-    <lastmod>2026-04-11T13:31:45.215Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Light Extinction Coefficient.html</loc>
+    <lastmod>2026-04-13T19:22:50.451Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Ammonia (N).html</loc>
-    <lastmod>2026-04-11T13:31:45.206Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Dissolved Oxygen Saturation.html</loc>
+    <lastmod>2026-04-13T19:22:50.474Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Nitrogen.html</loc>
-    <lastmod>2026-04-11T13:31:45.192Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html</loc>
+    <lastmod>2026-04-13T19:22:50.482Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Suspended Solids.html</loc>
-    <lastmod>2026-04-11T13:31:45.166Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Ammonium (NH4).html</loc>
+    <lastmod>2026-04-13T19:22:50.463Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Water Temperature.html</loc>
-    <lastmod>2026-04-11T13:31:45.162Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/prepDashboardExport.html</loc>
+    <lastmod>2026-04-11T13:30:58.468Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/listing.html</loc>
-    <lastmod>2026-04-10T18:40:36.097Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/index.html</loc>
+    <lastmod>2026-04-10T15:16:47.951Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys.html</loc>
-    <lastmod>2026-04-11T13:32:03.441Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Chlorophyll a, Corrected for Pheophytin.html</loc>
+    <lastmod>2026-04-13T19:22:50.448Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/BBWW.html</loc>
-    <lastmod>2026-04-11T13:32:03.471Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Colored Dissolved Organic Matter.html</loc>
+    <lastmod>2026-04-13T19:22:50.454Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/BROWARD_STORET.html</loc>
-    <lastmod>2026-04-11T13:32:03.482Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Dissolved Oxygen.html</loc>
+    <lastmod>2026-04-13T19:22:50.470Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/Broward County Water Quality Monitoring .html</loc>
-    <lastmod>2026-04-11T13:32:03.464Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/NO2+3, Filtered.html</loc>
+    <lastmod>2026-04-13T19:22:50.459Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/DEP.html</loc>
-    <lastmod>2026-04-11T13:32:03.495Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrite (NO2).html</loc>
+    <lastmod>2026-04-13T19:22:50.496Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/DERM_BBWQ_STORET.html</loc>
-    <lastmod>2026-04-11T13:32:03.485Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Nitrogen, organic.html</loc>
+    <lastmod>2026-04-13T19:22:50.500Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/FIU_WQMP.html</loc>
-    <lastmod>2026-04-11T13:32:03.500Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Salinity.html</loc>
+    <lastmod>2026-04-13T19:22:50.394Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/FIU_WQMP_RECENT.html</loc>
-    <lastmod>2026-04-11T13:32:03.476Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Specific Conductivity.html</loc>
+    <lastmod>2026-04-13T19:22:50.511Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/Miami-Dade County DERM Benthic Habitat Monitoring Program.html</loc>
-    <lastmod>2026-04-11T13:32:03.450Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Kjeldahl Nitrogen.html</loc>
+    <lastmod>2026-04-13T19:22:50.515Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/North Biscayne Bay Discrete Water Quality Program .html</loc>
-    <lastmod>2026-04-11T13:32:03.457Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Total Phosphorus.html</loc>
+    <lastmod>2026-04-13T19:22:50.489Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/PALMBEACH_STORET.html</loc>
-    <lastmod>2026-04-11T13:32:03.488Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/Turbidity.html</loc>
+    <lastmod>2026-04-13T19:22:50.478Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/SERC Water Quality Monitoring Network.html</loc>
-    <lastmod>2026-04-11T13:32:03.448Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/parameterRateOfChange/batched_reports/pH.html</loc>
+    <lastmod>2026-04-13T19:22:50.407Z</lastmod>
   </url>
   <url>
-    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/Southeast Florida Water Quality Assessment Survey .html</loc>
-    <lastmod>2026-04-11T13:32:03.460Z</lastmod>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACAROverallCompare.html</loc>
+    <lastmod>2026-04-10T18:43:05.513Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Ammonium (NH4).html</loc>
+    <lastmod>2026-04-13T19:23:13.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Chlorophyll a, Corrected for Pheophytin.html</loc>
+    <lastmod>2026-04-13T19:23:13.305Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Colored Dissolved Organic Matter.html</loc>
+    <lastmod>2026-04-13T19:23:13.310Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Dissolved Oxygen.html</loc>
+    <lastmod>2026-04-13T19:23:13.323Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/NO2+3, Filtered.html</loc>
+    <lastmod>2026-04-13T19:23:13.313Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrite (NO2).html</loc>
+    <lastmod>2026-04-13T19:23:13.347Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Nitrogen, organic.html</loc>
+    <lastmod>2026-04-13T19:23:13.349Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Salinity.html</loc>
+    <lastmod>2026-04-13T19:23:13.287Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Specific Conductivity.html</loc>
+    <lastmod>2026-04-13T19:23:13.361Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Kjeldahl Nitrogen.html</loc>
+    <lastmod>2026-04-13T19:23:13.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Total Phosphorus.html</loc>
+    <lastmod>2026-04-13T19:23:13.341Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/Turbidity.html</loc>
+    <lastmod>2026-04-13T19:23:13.331Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARParameterCompare/batched_reports/pH.html</loc>
+    <lastmod>2026-04-13T19:23:13.297Z</lastmod>
+  </url>
+  <url>
+    <loc>https://USF-IMARS.github.io/FCRWQDC-SEACAR-analysis/SEACARProgramCompare/batched_reports/AOML_SFPSSS.html</loc>
+    <lastmod>2026-04-13T19:23:37.404Z</lastmod>
   </url>
 </urlset>
