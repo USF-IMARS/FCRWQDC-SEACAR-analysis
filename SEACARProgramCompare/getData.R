@@ -1,3 +1,4 @@
+# Reads unique programs from both datasetsand returns them as a list
 getData <- function(batch_value) {
   library(here)
   library(dplyr)

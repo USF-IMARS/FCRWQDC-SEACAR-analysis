@@ -40,6 +40,7 @@ print(comparison, n=100)
 #| code-summary: show bar plot of row count grouped by ProgramName
 library(ggplot2)
 library(tidyr)
+library(plotly)
 
 # Count rows by ProgramName for SEACAR dataset
 seacar_program_counts <- df_SEACAR %>%
@@ -55,24 +56,42 @@ old_program_counts <- df_OLD %>%
 
 # Create combined dataframe for plotting
 combined_program_counts <- full_join(
-  seacar_program_counts %>% mutate(source = "SEACAR_STD"),
-  old_program_counts %>% mutate(source = "OLD_STD"),
-  by = c("ProgramName", "source")
+  seacar_program_counts,
+  old_program_counts,
+  by = "ProgramName"
 ) %>%
   mutate(
     SEACAR_Count = replace_na(SEACAR_Count, 0),
     OLD_Count = replace_na(OLD_Count, 0)
-  )
+  ) %>%
+  # Reshape to long format for dodged bars
+  pivot_longer(
+    cols = c(SEACAR_Count, OLD_Count),
+    names_to = "source",
+    values_to = "count"
+  ) %>%
+  mutate(source = ifelse(source == "SEACAR_Count", "SEACAR_STD", "OLD"))
 
-# Create bar plot
-ggplot(combined_program_counts, aes(x = ProgramName, y = SEACAR_Count, fill = source)) +
+# Create interactive bar plot
+p <- ggplot(combined_program_counts, aes(x = ProgramName, y = count, fill = source, 
+                                         text = paste("Program:", ProgramName, "<br>",
+                                                      "Dataset:", source, "<br>",
+                                                      "Count:", count))) +
   geom_bar(stat = "identity", position = "dodge") +
   labs(
-    title = "Row Count by ProgramName",
-    x = "ProgramName",
+    title = "Row Count by ProgramName (Hover for details)",
+    x = "",  # Remove x-axis label
     y = "Number of Rows",
     fill = "Dataset"
   ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(
+    axis.text.x = element_blank(),  # Hide x-axis text
+    axis.ticks.x = element_blank(),  # Hide x-axis ticks
+    plot.margin = margin(20, 20, 20, 20)
+  )
+
+# Convert to interactive plotly
+ggplotly(p, tooltip = "text") %>%
+  layout(hoverlabel = list(bgcolor = "white", font = list(size = 12)))
 ```
