@@ -219,14 +219,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">" SEACAR_STD rows:"</span>, <span class="fu">nrow</span>(dfs<span class="sc">$</span>SEACAR_STD), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> SEACAR_STD rows: 2053701 </code></pre>
+<pre><code> SEACAR_STD rows: 132403 </code></pre>
 </div>
 <details class="code-fold">
 <summary>show number of rows for each dataframe</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"OLD dataset rows:"</span>, <span class="fu">nrow</span>(dfs<span class="sc">$</span>OLD), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>OLD dataset rows: 1884334 </code></pre>
+<pre><code>OLD dataset rows: 134303 </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -246,20 +246,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparison)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26 × 3
-   value     in_SEACAR in_OLD
-   &lt;chr&gt;     &lt;lgl&gt;     &lt;lgl&gt; 
- 1 ppt       TRUE      TRUE  
- 2 Degrees C TRUE      TRUE  
- 3 None      TRUE      TRUE  
- 4 mg/L      TRUE      TRUE  
- 5 ug/L      TRUE      TRUE  
- 6 m^-1      TRUE      FALSE 
- 7 PCU       TRUE      FALSE 
- 8 %         TRUE      FALSE 
- 9 NTU       TRUE      TRUE  
-10 mS/cm     TRUE      TRUE  
-# ℹ 16 more rows</code></pre>
+<pre><code># A tibble: 12 × 3
+   value       in_SEACAR in_OLD
+   &lt;chr&gt;       &lt;lgl&gt;     &lt;lgl&gt; 
+ 1 "ppt"       TRUE      FALSE 
+ 2 "Degrees C" TRUE      FALSE 
+ 3 "None"      TRUE      FALSE 
+ 4 "mg/L"      TRUE      TRUE  
+ 5 "ug/L"      TRUE      FALSE 
+ 6 "m^-1"      TRUE      FALSE 
+ 7 "PCU"       TRUE      FALSE 
+ 8  &lt;NA&gt;       FALSE     TRUE  
+ 9 "degrees C" FALSE     TRUE  
+10 ""          FALSE     TRUE  
+11 "µmol/L"    FALSE     TRUE  
+12 "µg/L"      FALSE     TRUE  </code></pre>
 </div>
 </div>
 <div class="cell">
