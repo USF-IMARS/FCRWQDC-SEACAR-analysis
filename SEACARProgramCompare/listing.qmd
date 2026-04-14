@@ -14,7 +14,9 @@ Click on any element for more details.
 ```{R, load dataset}
 # load each dataset and map ProgramNames to common "shortName" vocabulary
 library(here)
+library(dplyr)
 source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
+
 df_SEACAR <- readr::read_delim(
   here("data/Discrete WQ - 10006.txt"),
   delim = "|"
