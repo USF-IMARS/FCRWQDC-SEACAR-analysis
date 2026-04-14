@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       page: 18,
     pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
@@ -540,7 +540,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1776181802473" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1776196962698" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Ammonia, Un-ionized (NH3).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Ammonia,-Un-ionized--NH3-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -548,25 +548,10 @@ window.Quarto = {
 <h5 class="no-anchor card-title listing-title">
 Ammonia, Un-ionized (NH3) Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1776181802397" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1776196962558" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Ammonium (NH4).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Ammonium--NH4-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -574,25 +559,10 @@ Ammonia, Un-ionized (NH3) Report
 <h5 class="no-anchor card-title listing-title">
 Ammonium (NH4) Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1776181802469" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1776196962692" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Ammonium, Filtered (NH4).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Ammonium,-Filtered--NH4-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -600,77 +570,32 @@ Ammonium (NH4) Report
 <h5 class="no-anchor card-title listing-title">
 Ammonium, Filtered (NH4) Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1776181802381" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1776196962526" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Chlorophyll a, Corrected for Pheophytin.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Chlorophyll-a,-Corrected-for-Pheophytin_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Chlorophyll-a,-Corrected-for-Pheophytin_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Chlorophyll a, Corrected for Pheophytin Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1776181802417" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1776196962598" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Chlorophyll-a,-Uncorrected-for-Pheophytin_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Chlorophyll-a,-Uncorrected-for-Pheophytin_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Chlorophyll a, Uncorrected for Pheophytin Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1776181802389" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1776196962542" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Colored Dissolved Organic Matter.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Colored-Dissolved-Organic-Matter_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -678,77 +603,32 @@ Chlorophyll a, Uncorrected for Pheophytin Report
 <h5 class="no-anchor card-title listing-title">
 Colored Dissolved Organic Matter Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1776181802405" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1776196962574" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Dissolved Oxygen.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Dissolved-Oxygen_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Dissolved-Oxygen_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Dissolved Oxygen Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1776181802409" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1776196962582" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Dissolved Oxygen Saturation.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Dissolved-Oxygen-Saturation_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Dissolved-Oxygen-Saturation_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Dissolved Oxygen Saturation Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1776181802385" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1776196962534" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Light Extinction Coefficient.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Light-Extinction-Coefficient_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -756,103 +636,43 @@ Dissolved Oxygen Saturation Report
 <h5 class="no-anchor card-title listing-title">
 Light Extinction Coefficient Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1776181802393" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1776196962550" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/NO2+3, Filtered.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/NO2+3,-Filtered_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/NO2+3,-Filtered_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 NO2+3, Filtered Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1776181802432" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1776196962624" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Nitrate (NO3).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Nitrate--NO3-_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Nitrate--NO3-_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Nitrate (NO3) Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1776181802437" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1776196962632" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Nitrite (NO2).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Nitrite--NO2-_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Nitrite--NO2-_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Nitrite (NO2) Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1776181802451" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1776196962658" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Nitrogen, inorganic.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Nitrogen,-inorganic_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -860,103 +680,43 @@ Nitrite (NO2) Report
 <h5 class="no-anchor card-title listing-title">
 Nitrogen, inorganic Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1776181802442" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1776196962641" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Nitrogen, organic.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Nitrogen,-organic_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Nitrogen,-organic_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Nitrogen, organic Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="14" data-listing-file-modified-sort="1776181802401" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="14" data-listing-file-modified-sort="1776196962566" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Phosphate, Filtered (PO4).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Phosphate,-Filtered--PO4-_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Phosphate,-Filtered--PO4-_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Phosphate, Filtered (PO4) Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="15" data-listing-file-modified-sort="1776181802361" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="15" data-listing-file-modified-sort="1776196962487" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Salinity.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Salinity_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Salinity_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Salinity Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="16" data-listing-file-modified-sort="1776181802465" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="16" data-listing-file-modified-sort="1776196962683" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Secchi Depth.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="batched_reports/Secchi-Depth_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -964,51 +724,21 @@ Salinity Report
 <h5 class="no-anchor card-title listing-title">
 Secchi Depth Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="17" data-listing-file-modified-sort="1776181802456" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="17" data-listing-file-modified-sort="1776196962665" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Specific Conductivity.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="batched_reports/Specific-Conductivity_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img src="batched_reports/Specific-Conductivity_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Specific Conductivity Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="18" data-listing-file-modified-sort="1776181802446" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="18" data-listing-file-modified-sort="1776196962650" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Total Ammonia (N).html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img data-src="batched_reports/Total-Ammonia--N-_files/figure-html/show time series of row counts for both datasets-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
@@ -1016,203 +746,83 @@ Specific Conductivity Report
 <h5 class="no-anchor card-title listing-title">
 Total Ammonia (N) Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="19" data-listing-file-modified-sort="1776181802460" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="19" data-listing-file-modified-sort="1776196962674" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Total Kjeldahl Nitrogen.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img data-src="batched_reports/Total-Kjeldahl-Nitrogen_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="batched_reports/Total-Kjeldahl-Nitrogen_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Total Kjeldahl Nitrogen Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="20" data-listing-file-modified-sort="1776181802421" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="20" data-listing-file-modified-sort="1776196962607" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Total Nitrogen.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img data-src="batched_reports/Total-Nitrogen_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="batched_reports/Total-Nitrogen_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Total Nitrogen Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="21" data-listing-file-modified-sort="1776181802425" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="21" data-listing-file-modified-sort="1776196962615" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Total Phosphorus.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img data-src="batched_reports/Total-Phosphorus_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="batched_reports/Total-Phosphorus_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Total Phosphorus Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="22" data-listing-file-modified-sort="1776181802377" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="22" data-listing-file-modified-sort="1776196962518" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Total Suspended Solids.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img data-src="batched_reports/Total-Suspended-Solids_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="batched_reports/Total-Suspended-Solids_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Total Suspended Solids Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="23" data-listing-file-modified-sort="1776181802413" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="23" data-listing-file-modified-sort="1776196962591" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Turbidity.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img data-src="batched_reports/Turbidity_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="batched_reports/Turbidity_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Turbidity Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="24" data-listing-file-modified-sort="1776181802369" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="24" data-listing-file-modified-sort="1776196962502" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/Water Temperature.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img data-src="batched_reports/Water-Temperature_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="batched_reports/Water-Temperature_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Water Temperature Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="25" data-listing-file-modified-sort="1776181802373" data-listing-reading-time-sort="4" data-listing-word-count-sort="606">
+<div class="g-col-1" data-index="25" data-listing-file-modified-sort="1776196962510" data-listing-reading-time-sort="4" data-listing-word-count-sort="618">
 <a href="../SEACARParameterCompare/batched_reports/pH.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img data-src="batched_reports/pH_files/figure-html/split violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img data-src="batched_reports/pH_files/figure-html/violin plot comparison of values-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 pH Report
 </h5>
-<div class="card-text listing-description delink">
-
-<details class="code-fold">
-<summary>get data for params$batch_value</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">"{params$batch_name}/getData.R"</span>)))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co"># returns two dataframes in a named list</span></span>
-<span id="cb1-4">dfs <span class="ot">&lt;-</span> <span class="fu">getData</span>(params<span class="sc">$</span>batch_value)</span>
-<span id="cb1-5"></span>…<span id="cb1-6"><span class="co"></span></span><span id="cb1-7"><span class="ot"></span><span class="fu"></span></span><span id="cb1-8"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-9"><span class="st"></span><span class="st"></span><span class="st"></span><span class="st"></span></span><span id="cb1-10"></span><span id="cb1-11"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span><span id="cb1-12"><span class="sc"></span><span class="ot"></span><span class="sc"></span><span class="sc"></span><span class="fu"></span><span class="fu"></span></span></code></pre></div></div></details>
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
 </div>
 </div></a>
 </div>
