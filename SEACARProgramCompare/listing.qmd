@@ -28,6 +28,8 @@ library(dplyr)
 ```
 
 ```{R, compare programs in dataset}
+#| code-summary: compare programs in dataset
+# Compares the unique program names between SEACAR and OLD datasets to show overlaps and differences)
 u1 <- unique(df_SEACAR$ProgramName)
 u2 <- unique(df_OLD$ProgramName)
 

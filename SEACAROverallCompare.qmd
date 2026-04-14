@@ -37,6 +37,7 @@ print(comparison)
 ```
 
 ```{R, keep only columns of interest to avoid coltype errors}
+#| code-summary: keep only columns of interest to avoid coltype errors
 cols_of_interest <- c(
   "ProgramName", "ProgramLocationID", "OriginalLatitude", "OriginalLongitude", 
   "ActivityDepth_m", "ParameterUnits", "ResultValue", "SampleDate"

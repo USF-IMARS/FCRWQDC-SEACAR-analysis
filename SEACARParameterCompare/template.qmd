@@ -45,8 +45,9 @@ comparison <- tibble(value = union(u1, u2)) %>%
 print(comparison)
 ```
 
-```{R, split violin plot comparison of values}
-#| code-summary: split violin plot comparison of values
+```{R, violin plot comparison of values}
+#| code-summary: violin plot comparison of values
+# Creates a split violin plot to compare value distributions between SEACAR_STD and OLD datasets
 library(ggplot2)
 
 if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
