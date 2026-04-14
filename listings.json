@@ -1,11 +1,5 @@
 [
   {
-    "listing": "/SEACARProgramCompare/listing.html",
-    "items": [
-      "/SEACARProgramCompare/batched_reports/AOML_SFPSSS.html"
-    ]
-  },
-  {
     "listing": "/SEACARParameterCompare/listing.html",
     "items": [
       "/SEACARParameterCompare/batched_reports/Ammonia, Un-ionized (NH3).html",
@@ -63,6 +57,21 @@
       "/parameterRateOfChange/batched_reports/Turbidity.html",
       "/parameterRateOfChange/batched_reports/Water Temperature.html",
       "/parameterRateOfChange/batched_reports/pH.html"
+    ]
+  },
+  {
+    "listing": "/SEACARProgramCompare/listing.html",
+    "items": [
+      "/SEACARProgramCompare/batched_reports/AOML_SFPSSS.html",
+      "/SEACARProgramCompare/batched_reports/BBWW.html",
+      "/SEACARProgramCompare/batched_reports/BROWARD.html",
+      "/SEACARProgramCompare/batched_reports/DERM.html",
+      "/SEACARProgramCompare/batched_reports/FKNMS.html",
+      "/SEACARProgramCompare/batched_reports/MiamiBeach.html",
+      "/SEACARProgramCompare/batched_reports/NBB_DWQP.html",
+      "/SEACARProgramCompare/batched_reports/PalmBeach.html",
+      "/SEACARProgramCompare/batched_reports/SERC.html",
+      "/SEACARProgramCompare/batched_reports/SE_FL_WQAS.html"
     ]
   }
 ]
