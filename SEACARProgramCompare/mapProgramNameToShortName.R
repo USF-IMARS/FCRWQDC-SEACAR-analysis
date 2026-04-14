@@ -46,7 +46,8 @@ nameMapping <- list(
     # SEACAR
     "Broward County Water Quality Monitoring",
     # Old dataset
-    "BROWARD_STORET"
+    "BROWARD_STORET",
+    "BROWARD"
   ),
   "SE_FL_WQAS" = c(
     # SEACAR
@@ -85,17 +86,18 @@ nameMapping <- list(
     # SEACAR
     "Palm Beach County Water Quality Program",
     # Old dataset
-    "PALMBEACH"
+    "PALMBEACH",
+    "PALMBEACH_STORET"
   )
 )
 
-mapProgramNameToShortName <- function(programName){
-  # Iterate through nameMapping to find matching short name
-  for (shortName in names(nameMapping)) {
-    if (programName %in% nameMapping[[shortName]]) {
-      return(shortName)
+mapProgramNameToShortName <- function(programName) {
+  vapply(trimws(programName), function(name) {
+    for (shortName in names(nameMapping)) {
+      if (name %in% nameMapping[[shortName]]) {
+        return(shortName)
+      }
     }
-  }
-  # Raise error if name not found
-  stop(paste("No matching short name found for:", programName))
+    stop(paste("No matching short name found for:", name))
+  }, character(1))
 }

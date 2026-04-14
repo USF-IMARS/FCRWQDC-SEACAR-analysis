@@ -5,18 +5,24 @@ code-fold: true
 listing:
   contents: batched_reports
   type: grid
+  fields: [image, title]
 ---
 
 Click on any element for more details.
 
 
 ```{R, load dataset}
+# load each dataset and map ProgramNames to common "shortName" vocabulary
 library(here)
+source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
 df_SEACAR <- readr::read_delim(
   here("data/Discrete WQ - 10006.txt"),
   delim = "|"
-)
-df_OLD <- readr::read_delim(here::here("data/allDataSEACAR.csv"), delim=",")
+) %>%
+  mutate(ProgramName = mapProgramNameToShortName(ProgramName))
+
+df_OLD <- readr::read_delim(here::here("data/allDataSEACAR.csv"), delim=",") %>%
+  mutate(ProgramName = mapProgramNameToShortName(ProgramName))
 
 library(dplyr)
 ```
