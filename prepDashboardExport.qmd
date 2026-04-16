@@ -51,16 +51,13 @@ station_parameter_counts <- df %>%
   count(name = "point_count") %>%
   ungroup()
 
-# Calculate if station has data from last 5 years
+# Calculate date range for each station
 station_date_check <- df %>%
   group_by(ProgramName, ProgramLocationID) %>%
   summarise(
-    max_date = max(SampleDate, na.rm = TRUE),
+    startDate = min(SampleDate, na.rm = TRUE),
+    endDate = max(SampleDate, na.rm = TRUE),
     .groups = "drop"
-  ) %>%
-  mutate(
-    has_recent_data = max_date >= (Sys.Date() - years(5)),
-    recent_data_status = ifelse(has_recent_data, "Yes", "No")
   )
 
 # Create station summary with separate columns for each parameter
