@@ -43,12 +43,25 @@ dir.create(here::here("data", "exports"), showWarnings = FALSE)
 #| code-summary: create dashboard stations file
 # Creates dashboardStations.csv with station metadata and parameter counts
 library(tidyr)
+library(lubridate)
 
 # Count points for each parameter at each station
 station_parameter_counts <- df %>%
   group_by(ProgramName, ProgramLocationID, OriginalLatitude, OriginalLongitude, ParameterName) %>%
   count(name = "point_count") %>%
   ungroup()
+
+# Calculate if station has data from last 5 years
+station_date_check <- df %>%
+  group_by(ProgramName, ProgramLocationID) %>%
+  summarise(
+    max_date = max(SampleDate, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    has_recent_data = max_date >= (Sys.Date() - years(5)),
+    recent_data_status = ifelse(has_recent_data, "Yes", "No")
+  )
 
 # Create station summary with separate columns for each parameter
 dashboard_stations <- station_parameter_counts %>%
@@ -57,6 +70,7 @@ dashboard_stations <- station_parameter_counts %>%
     values_from = point_count,
     values_fill = 0
   ) %>%
+  left_join(station_date_check, by = c("ProgramName", "ProgramLocationID")) %>%
   arrange(ProgramName, ProgramLocationID)
 
 # Save dashboard stations file
