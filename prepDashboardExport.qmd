@@ -10,10 +10,14 @@ library(here)
 library(magrittr)
 library(dplyr)
 
+source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
+
 df <- readr::read_delim(
   here("data/Discrete WQ - 10006.txt"),
   delim = "|"
-)
+) %>%
+  mutate(ProgramName = mapProgramNameToShortName(ProgramName))
+
 
 # keep only columns of interest
 cols_of_interest <- c(
@@ -21,15 +25,77 @@ cols_of_interest <- c(
   "ProgramLocationID", 
   "OriginalLatitude", "OriginalLongitude", 
   "ActivityDepth_m", 
-  "ParameterUnits", 
+  "ParameterName", 
+  "ParameterUnits",
   "ResultValue", 
   "SampleDate"
 )
-df <- df %>% select(all_of(cols_of_interest))
+df <- df %>% dplyr::select(all_of(cols_of_interest))
 
 # create data/exports if DNE
 dir.create(here::here("data", "exports"), showWarnings = FALSE)
 
-# save to csv
-write.csv(df, here::here("data", "exports", "dashboardDataSEACAR.csv"), row.names = FALSE)
+# # save to csv
+# write.csv(df, here::here("data", "exports", "dashboardDataSEACAR.csv"), row.names = FALSE)
+```
+
+```{R, create dashboard stations file}
+#| code-summary: create dashboard stations file
+# Creates dashboardStations.csv with station metadata and parameter counts
+library(tidyr)
+
+# Count points for each parameter at each station
+station_parameter_counts <- df %>%
+  group_by(ProgramName, ProgramLocationID, OriginalLatitude, OriginalLongitude, ParameterName) %>%
+  count(name = "point_count") %>%
+  ungroup()
+
+# Create station summary with separate columns for each parameter
+dashboard_stations <- station_parameter_counts %>%
+  pivot_wider(
+    names_from = ParameterName,
+    values_from = point_count,
+    values_fill = 0
+  ) %>%
+  arrange(ProgramName, ProgramLocationID)
+
+# Save dashboard stations file
+write.csv(dashboard_stations, here::here("data", "exports", "dashboardStations.csv"), row.names = FALSE)
+
+cat("Created dashboardStations.csv with", nrow(dashboard_stations), "stations\n")
+```
+
+```{R, create individual station files}
+#| code-summary: create individual station files
+# Creates individual CSV files for each station named ProgramName.ProgramLocationID.csv
+
+# Get unique stations
+stations <- df %>%
+  distinct(ProgramName, ProgramLocationID) %>%
+  arrange(ProgramName, ProgramLocationID)
+
+stationDataPath <- here::here("data", "exports", "stationData")
+# create stationDataPath if DNE
+dir.create(stationDataPath, showWarnings = FALSE)
+
+# Create individual station files
+for (i in 1:nrow(stations)) {
+  station_name <- stations$ProgramName[i]
+  station_id <- stations$ProgramLocationID[i]
+  
+  # Filter data for this station, drop coumns lat,lon,programName,station id 
+  station_data <- df %>%
+    filter(ProgramName == station_name, ProgramLocationID == station_id) %>%
+    dplyr::select(-OriginalLatitude, -OriginalLongitude, -ProgramName, -ProgramLocationID)
+  
+  # Create filename (replace / in station_id with _ to avoid path issues)
+  safe_station_id <- gsub("/", "_", station_id)
+  filename <- paste0(station_name, ".", safe_station_id, ".csv")
+  filepath <- here::here(stationDataPath, filename)
+  
+  # Save station data
+  write.csv(station_data, filepath, row.names = FALSE)
+}
+
+cat("Created", nrow(stations), "individual station CSV files\n")
 ```
