@@ -77,6 +77,7 @@ dashboard_stations <- station_parameter_counts %>%
     values_fill = 0
   ) %>%
   left_join(station_date_check, by = c("ProgramName", "ProgramLocationID")) %>%
+  left_join(station_depth_check, by = c("ProgramName", "ProgramLocationID")) %>%
   arrange(ProgramName, ProgramLocationID)
 
 # Save dashboard stations file
