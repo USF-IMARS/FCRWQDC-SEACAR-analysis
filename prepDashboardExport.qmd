@@ -60,6 +60,15 @@ station_date_check <- df %>%
     .groups = "drop"
   )
 
+# calculate min & max depths for station
+station_depth_check <- df %>%
+  group_by(ProgramName, ProgramLocationID) %>%
+  summarise(
+    minDepth = min(ActivityDepth_m, na.rm = TRUE),
+    maxDepth = max(ActivityDepth_m, na.rm = TRUE),
+    .groups = "drop"
+  )
+
 # Create station summary with separate columns for each parameter
 dashboard_stations <- station_parameter_counts %>%
   pivot_wider(
