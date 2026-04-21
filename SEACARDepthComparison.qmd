@@ -1,0 +1,80 @@
+---
+title: "SEACAR Depth Comparisons"
+description: "Comparison of depth values across SEACAR and older dataset."
+code-fold: true
+listing:
+  contents: batched_reports
+  type: grid
+  fields: [image, title]
+---
+
+Click on any element for more details.
+
+```{R, load dataset}
+library(here)
+library(dplyr)
+source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
+
+
+# === new dataset
+df_SEACAR <- readr::read_delim(
+  here("data/Discrete WQ - 10006.txt"),
+  delim = "|"
+) %>%
+  # Convert ActivityDepth_m to numeric for plotting
+  mutate(ActivityDepth_m = as.numeric(ActivityDepth_m)) %>%
+  # align programName between datasets
+  mutate(ProgramName = mapProgramNameToShortName(ProgramName))
+
+
+
+# === previous year's dataset
+df_OLD <- readr::read_delim(here::here("data/allDataSEACAR.csv"), delim=",") %>%
+  # align programName between datasets
+  mutate(ProgramName = mapProgramNameToShortName(ProgramName))
+
+
+
+# === keep only columns of interest to avoid coltype errors
+cols_of_interest <- c(
+  "ProgramName", "ProgramLocationID", "OriginalLatitude", "OriginalLongitude", 
+  "ActivityDepth_m", "ParameterUnits", "ResultValue", "SampleDate"
+)
+df_SEACAR <- df_SEACAR %>% select(all_of(cols_of_interest))
+df_OLD <- df_OLD %>% select(all_of(cols_of_interest))
+
+
+# === Combine dataframes with a source column
+df_combined <- bind_rows(
+  df_SEACAR %>% mutate(source = "SEACAR_STD"),
+  df_OLD %>% mutate(source = "OLD_STD")
+)
+```
+
+```{R, plot ActivityDepth_m}
+#| code-summary: plot ActivityDepth_m
+library(ggplot2)
+
+if (nrow(df_SEACAR) == 0 || nrow(df_OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    df_SEACAR %>% mutate(source = "SEACAR_STD"),
+    df_OLD %>% mutate(source = "OLD_STD")
+  )
+
+  # Create split violin plot
+  ggplot(df_combined, aes(x = source, y = ActivityDepth_m, fill = source)) +
+    geom_violin(alpha = 0.6) +
+    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
+    scale_y_log10() +
+    labs(
+      title = "ActivityDepth_m Distribution Comparison (Log Scale)",
+      x = "Dataset",
+      y = "ActivityDepth_m (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+```

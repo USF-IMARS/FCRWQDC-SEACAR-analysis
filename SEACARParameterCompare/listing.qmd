@@ -1,6 +1,6 @@
 ---
-title: "SEACARParameterCompare"
-description: "Reports for each value in the batch."
+title: "SEACAR Parameter Comparisons"
+description: "Comparisons between SEACAR and older dataset for each parameter."
 code-fold: true
 listing:
   contents: batched_reports
