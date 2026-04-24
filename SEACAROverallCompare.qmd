@@ -18,7 +18,6 @@ mutate(ActivityDepth_m = as.numeric(ActivityDepth_m))
 
 
 df_OLD <- readr::read_delim(here::here("data/allDataSEACAR.csv"), delim=",")
-
 ```
 
 
@@ -36,6 +35,15 @@ comparison <- data.frame(
 print(comparison)
 ```
 
+
+---------------------------------------------------------------------
+
+```{R, show number of duplicate rows for each}
+#| code-summary: show number of duplicate rows for each dataset
+cat("SEACAR duplicates:", nrow(df_SEACAR) - nrow(unique(df_SEACAR)), "\n")
+cat("OLD duplicates:", nrow(df_OLD) - nrow(unique(df_OLD)), "\n")
+```
+
 ```{R, keep only columns of interest to avoid coltype errors}
 #| code-summary: keep only columns of interest to avoid coltype errors
 cols_of_interest <- c(
@@ -44,8 +52,15 @@ cols_of_interest <- c(
 )
 df_SEACAR <- df_SEACAR %>% select(all_of(cols_of_interest))
 df_OLD <- df_OLD %>% select(all_of(cols_of_interest))
-
 ```
+
+```{R, show number of duplicate rows for each after column selection}
+#| code-summary: show number of duplicate rows for each dataset after column selection
+cat("SEACAR duplicates:", nrow(df_SEACAR) - nrow(unique(df_SEACAR)), "\n")
+cat("OLD duplicates:", nrow(df_OLD) - nrow(unique(df_OLD)), "\n")
+```
+
+---------------------------------------------------------------------
 
 ```{R, show time series of row counts for both datasets}
 #| code-summary: show time series of row counts for both datasets
