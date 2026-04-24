@@ -98,9 +98,6 @@ The following is visualization of a random sample of program+parameter combinati
 
 ```{R, plot a few random programs and parameters}
 #| code-summary: plot a few random programs and parameters
-
-
-
 # === 3 parameters from one program
 random_program <- sample(unique(df_combined$ProgramName), 1)
 program_parameters <- unique(df_combined$ParameterName[df_combined$ProgramName == random_program])
