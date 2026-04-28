@@ -23,55 +23,14 @@ dfs$OLD <- dfs$OLD %>% select(all_of(cols_of_interest))
 
 ```
 
+
+## Row Counts
 ```{R, show number of rows for each dataframe}
 #| code-summary: show number of rows for each dataframe
 cat(" SEACAR_STD rows:", nrow(dfs$SEACAR_STD), "\n")
 cat("OLD dataset rows:", nrow(dfs$OLD), "\n")
 ```
 
-```{R, show comparison of unique units}
-#| code-summary: show comparison of unique units
-library(dplyr)
-
-u1 <- unique(dfs$SEACAR_STD$ParameterUnits)
-u2 <- unique(dfs$OLD$ParameterUnits)
-
-comparison <- tibble(value = union(u1, u2)) %>%
-  mutate(
-    in_SEACAR = value %in% u1,
-    in_OLD    = value %in% u2
-  )
-
-print(comparison)
-```
-
-```{R, split violin plot comparison of values}
-#| code-summary: split violin plot comparison of values
-library(ggplot2)
-
-if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
-  cat("One or both dataframes are empty.\n")
-} else {
-  # Combine dataframes with a source column
-  df_combined <- bind_rows(
-    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
-    dfs$OLD %>% mutate(source = "OLD_STD")
-  )
-
-  # Create split violin plot
-  ggplot(df_combined, aes(x = source, y = ResultValue, fill = source)) +
-    geom_violin(alpha = 0.6) +
-    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
-    scale_y_log10() +
-    labs(
-      title = "Value Distribution Comparison (Log Scale)",
-      x = "Dataset",
-      y = "Result Value (log10)"
-    ) +
-    theme_minimal() +
-    theme(legend.position = "none")
-}
-```
 
 ```{R, show time series of row counts for both datasets}
 #| code-summary: show time series of row counts for both datasets
@@ -115,6 +74,55 @@ ggplot(combined_counts, aes(x = SampleDate)) +
   theme(legend.position = "bottom")
 ```
 
+
+## Units Comparison
+```{R, show comparison of unique units}
+#| code-summary: show comparison of unique units
+library(dplyr)
+
+u1 <- unique(dfs$SEACAR_STD$ParameterUnits)
+u2 <- unique(dfs$OLD$ParameterUnits)
+
+comparison <- tibble(value = union(u1, u2)) %>%
+  mutate(
+    in_SEACAR = value %in% u1,
+    in_OLD    = value %in% u2
+  )
+
+print(comparison)
+```
+
+
+## Result Value Comparison
+```{R, split violin plot comparison of values}
+#| code-summary: split violin plot comparison of values
+library(ggplot2)
+
+if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
+    dfs$OLD %>% mutate(source = "OLD_STD")
+  )
+
+  # Create split violin plot
+  ggplot(df_combined, aes(x = source, y = ResultValue, fill = source)) +
+    geom_violin(alpha = 0.6) +
+    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
+    scale_y_log10() +
+    labs(
+      title = "Value Distribution Comparison (Log Scale)",
+      x = "Dataset",
+      y = "Result Value (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+```
+
+## Depth Distributions
 ```{R, plot ActivityDepth_m}
 #| code-summary: plot ActivityDepth_m
 library(ggplot2)
@@ -141,4 +149,21 @@ if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
     theme_minimal() +
     theme(legend.position = "none")
 }
+```
+
+
+## ProgramLocationID Alignment
+```{R, show differences in ProgramLocationID}
+#| code-summary: show differences in ProgramLocationID
+library(dplyr)
+
+# Find ProgramLocationIDs that exist in SEACAR_STD but not in OLD_STD
+seacar_only <- setdiff(dfs$SEACAR_STD$ProgramLocationID, dfs$OLD$ProgramLocationID)
+old_only <- setdiff(dfs$OLD$ProgramLocationID, dfs$SEACAR_STD$ProgramLocationID)
+
+cat("ProgramLocationIDs in SEACAR_STD but not in OLD_STD:\n")
+print(seacar_only)
+
+cat("\nProgramLocationIDs in OLD_STD but not in SEACAR_STD:\n")
+print(old_only)
 ```
