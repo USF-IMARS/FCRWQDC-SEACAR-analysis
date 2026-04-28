@@ -161,9 +161,10 @@ library(dplyr)
 seacar_only <- setdiff(dfs$SEACAR_STD$ProgramLocationID, dfs$OLD$ProgramLocationID)
 old_only <- setdiff(dfs$OLD$ProgramLocationID, dfs$SEACAR_STD$ProgramLocationID)
 
-cat("ProgramLocationIDs in SEACAR_STD but not in OLD_STD:\n")
-print(seacar_only)
+cat("Number of ProgramLocationIDs in SEACAR_STD but not in OLD_STD:", length(seacar_only), "\n")
+cat("First few ProgramLocationIDs in SEACAR_STD but not in OLD_STD:", head(seacar_only), "\n")
 
-cat("\nProgramLocationIDs in OLD_STD but not in SEACAR_STD:\n")
-print(old_only)
+
+cat("Number of ProgramLocationIDs in OLD_STD but not in SEACAR_STD:", length(old_only), "\n")
+cat("First few ProgramLocationIDs in OLD_STD but not in SEACAR_STD:", head(old_only), "\n")
 ```
