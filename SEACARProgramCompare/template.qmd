@@ -75,24 +75,6 @@ ggplot(combined_counts, aes(x = SampleDate)) +
 ```
 
 
-## Units Comparison
-```{R, show comparison of unique units}
-#| code-summary: show comparison of unique units
-library(dplyr)
-
-u1 <- unique(dfs$SEACAR_STD$ParameterUnits)
-u2 <- unique(dfs$OLD$ParameterUnits)
-
-comparison <- tibble(value = union(u1, u2)) %>%
-  mutate(
-    in_SEACAR = value %in% u1,
-    in_OLD    = value %in% u2
-  )
-
-print(comparison)
-```
-
-
 ## Result Value Comparison
 ```{R, split violin plot comparison of values}
 #| code-summary: split violin plot comparison of values
