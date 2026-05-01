@@ -68,7 +68,7 @@ for (parameter in getRateOfChangeParameters()){
 
   # Skip if either file is missing
   if (is.null(seacar_rate_of_change) || is.null(old_rate_of_change)) {
-    cat('!')
+    # cat('!')
     next
   }
 
@@ -90,7 +90,7 @@ for (parameter in getRateOfChangeParameters()){
 
   # append to results
   rate_of_change_comparison <- rbind(rate_of_change_comparison, current_comparison)
-  cat('.')
+  # cat('.')
 }
 
 cat('\n\nMissing SEACAR parameters:', paste(missing_seacar_parameters, collapse = ', '))
