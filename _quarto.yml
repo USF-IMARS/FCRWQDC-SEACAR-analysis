@@ -14,6 +14,7 @@ project:
   - SEACAROverallCompare.qmd
   - SEACARDepthComparison.qmd
   - randomSampleDrilldown.qmd
+  - rateOfChangeChange.qmd
   
   - SEACARParameterCompare/batched_reports/*.qmd
   - SEACARParameterCompare/listing.qmd
@@ -36,6 +37,7 @@ website:
       - SEACARProgramCompare/listing.qmd
       - SEACARDepthComparison.qmd
       - randomSampleDrilldown.qmd
+      - rateOfChangeChange.qmd
     - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis
       text: Source Code on GitHub
 format:

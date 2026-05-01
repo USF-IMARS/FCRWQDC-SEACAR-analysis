@@ -1,0 +1,163 @@
+---
+title: "Rate of Change Comparisons Between SEACAR & Older Dataset"
+format: html
+---
+
+```{R, define getRateOfChangeParameters helper function}
+#| code-summary: define getRateOfChangeParameters
+library(here)
+getRateOfChangeParameters <- function(){
+  # read filenames from data/exports/parameterRateOfChange*.csv
+  seacar_files <- list.files(here("data/exports/parameterRateOfChange"), pattern = ".*\\.csv", full.names = TRUE)
+  # extract parameter names from filename basename
+  seacar_parameters <- basename(seacar_files)
+  seacar_parameters <- sub(".csv", "", seacar_parameters)
+
+  # read filenames from data/seasonal-mann-kendall-stats/*.csv
+  old_files <- list.files(here("data/seasonal-mann-kendall-stats"), pattern = ".*\\.csv", full.names = TRUE)
+  # extract parameter names from filenames
+  old_parameters <- basename(old_files)
+  old_parameters <- sub(".csv", "", old_parameters)
+
+  # return list of parameters that exist in either dataset
+  return(union(seacar_parameters, old_parameters))
+}
+```
+
+
+```{R, compare rate of change at each station}
+#| code-summary: compare rate of change at each station
+#| warning: false
+library(dplyr)
+library(glue)
+source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
+
+# create empty data frame to store results
+rate_of_change_comparison <- data.frame()
+missing_seacar_parameters <- c()
+missing_old_parameters <- c()
+
+for (parameter in getRateOfChangeParameters()){
+
+  # Read in the rate of change files
+  seacar_rate_of_change <- tryCatch({
+    read.csv(here("data/exports/parameterRateOfChange", glue("{parameter}.csv"))) %>%
+      mutate(
+        ProgramLocationID = as.character(ProgramLocationID),
+        ProgramName = mapProgramNameToShortName(ProgramName)
+      ) %>%  
+      filter(!is.na(slope))
+  }, error = function(e){
+    missing_seacar_parameters <<- c(missing_seacar_parameters, parameter)
+    # print(e)
+    NULL
+  })
+  
+  old_rate_of_change <- tryCatch({
+    read.csv(here("data/seasonal-mann-kendall-stats", glue("{parameter}.csv"))) %>%
+      mutate(
+        ProgramLocationID = as.character(site),
+        ProgramName = mapProgramNameToShortName(source)
+      ) %>%  
+      filter(!is.na(slope))
+  }, error = function(e){
+    missing_old_parameters <<- c(missing_old_parameters, parameter)
+    # print(e)
+    NULL
+  })
+
+  # Skip if either file is missing
+  if (is.null(seacar_rate_of_change) || is.null(old_rate_of_change)) {
+    cat('!')
+    next
+  }
+
+  # Compare the rate of change at each station
+  seacar_rate_of_change %>%
+    inner_join(old_rate_of_change, by = c("ProgramLocationID", "ProgramName")) %>%
+    mutate(
+      slope.new = slope.x,  # from seacar_rate_of_change
+      pvalue.new = pvalue.x,
+      slope.old = slope.y,  # from old_rate_of_change
+      pvalue.old = pvalue.y,
+      rate_of_change_diff = slope.x - slope.y,
+      # keep only columns we need
+      ProgramName = ProgramName,
+      ParameterName = parameter,
+      ProgramLocationID = ProgramLocationID,
+      .keep = "none"
+    ) -> current_comparison
+
+  # append to results
+  rate_of_change_comparison <- rbind(rate_of_change_comparison, current_comparison)
+  cat('.')
+}
+
+cat('\n\nMissing SEACAR parameters:', paste(missing_seacar_parameters, collapse = ', '))
+cat('\n\nMissing old parameters:', paste(missing_old_parameters, collapse = ', '))
+```
+
+```{R, plot distribution of rate of change differences}
+#| code-summary: plot distribution of rate of change differences
+library(ggplot2)
+
+ggplot(rate_of_change_comparison, aes(x = rate_of_change_diff)) +
+  geom_histogram(bins = 50) +
+  labs(title = "Distribution of Rate of Change Differences",
+       x = "Rate of Change Difference",
+       y = "Count")
+```
+
+```{R, plot scatter plot of old vs new rate of change}
+#| code-summary: plot scatter plot of old vs new rate of change
+library(ggplot2)
+
+# Calculate the range for both axes
+max_slope <- max(c(rate_of_change_comparison$slope.old, rate_of_change_comparison$slope.new), na.rm = TRUE)
+min_slope <- min(c(rate_of_change_comparison$slope.old, rate_of_change_comparison$slope.new), na.rm = TRUE)
+
+ggplot(rate_of_change_comparison, aes(x = slope.old, y = slope.new)) +
+  geom_point(shape=4, alpha=.2) +
+  coord_equal(xlim = c(min_slope, max_slope), ylim = c(min_slope, max_slope)) +
+  labs(title = "Old vs New Rate of Change",
+       x = "Old Rate of Change",
+       y = "New Rate of Change")
+```
+
+
+```{R, plot scatter plot of old vs new significances}
+#| code-summary: plot scatter plot of old vs new significances
+library(ggplot2)
+
+# Calculate the range for both axes
+max_slope <- max(c(rate_of_change_comparison$pvalue.old, rate_of_change_comparison$pvalue.new), na.rm = TRUE)
+min_slope <- min(c(rate_of_change_comparison$pvalue.old, rate_of_change_comparison$pvalue.new), na.rm = TRUE)
+
+ggplot(rate_of_change_comparison, aes(x = pvalue.old, y = pvalue.new)) +
+  geom_point(shape = 4, alpha=.2) +
+  coord_equal(xlim = c(min_slope, max_slope), ylim = c(min_slope, max_slope)) +
+  labs(title = "Old vs New p Values",
+       x = "Old p values",
+       y = "New p values")
+```
+
+```{R, violin plot of new vs old rate of change}
+#| code-summary: violin plot of new vs old rate of change
+library(ggplot2)
+
+ggplot(rate_of_change_comparison, aes(x = ProgramName, y = rate_of_change_diff)) +
+  geom_violin() +
+  labs(title = "Rate of Change Differences",
+       x = "Parameter",
+       y = "Rate of Change Difference")
+```
+
+```{R, print station+parameter pairs with highest differences}
+#| code-summary: print station+parameter pairs with highest differences
+library(dplyr)
+
+rate_of_change_comparison %>%
+  arrange(desc(abs(rate_of_change_diff))) %>%
+  head(100) %>%
+  print()
+```
