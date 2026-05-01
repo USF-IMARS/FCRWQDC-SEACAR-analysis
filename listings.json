@@ -1,5 +1,24 @@
 [
   {
+    "listing": "/SEACARProgramCompare/listing.html",
+    "items": [
+      "/SEACARProgramCompare/batched_reports/AOML_SFPSSS.html",
+      "/SEACARProgramCompare/batched_reports/BBWW.html",
+      "/SEACARProgramCompare/batched_reports/BROWARD.html",
+      "/SEACARProgramCompare/batched_reports/DERM.html",
+      "/SEACARProgramCompare/batched_reports/FKNMS.html",
+      "/SEACARProgramCompare/batched_reports/MiamiBeach.html",
+      "/SEACARProgramCompare/batched_reports/NBB_DWQP.html",
+      "/SEACARProgramCompare/batched_reports/PalmBeach.html",
+      "/SEACARProgramCompare/batched_reports/SERC.html",
+      "/SEACARProgramCompare/batched_reports/SE_FL_WQAS.html"
+    ]
+  },
+  {
+    "listing": "/SEACARDepthComparison.html",
+    "items": []
+  },
+  {
     "listing": "/parameterRateOfChange/listing.html",
     "items": [
       "/parameterRateOfChange/batched_reports/Ammonium (NH4).html",
@@ -26,6 +45,41 @@
       "/parameterRateOfChange/batched_reports/Turbidity.html",
       "/parameterRateOfChange/batched_reports/Water Temperature.html",
       "/parameterRateOfChange/batched_reports/pH.html"
+    ]
+  },
+  {
+    "listing": "/randomSampleDrilldown.html",
+    "items": []
+  },
+  {
+    "listing": "/SEACARParameterCompare/listing.html",
+    "items": [
+      "/SEACARParameterCompare/batched_reports/Ammonia, Un-ionized (NH3).html",
+      "/SEACARParameterCompare/batched_reports/Ammonium (NH4).html",
+      "/SEACARParameterCompare/batched_reports/Ammonium, Filtered (NH4).html",
+      "/SEACARParameterCompare/batched_reports/Chlorophyll a, Corrected for Pheophytin.html",
+      "/SEACARParameterCompare/batched_reports/Chlorophyll a, Uncorrected for Pheophytin.html",
+      "/SEACARParameterCompare/batched_reports/Colored Dissolved Organic Matter.html",
+      "/SEACARParameterCompare/batched_reports/Dissolved Oxygen.html",
+      "/SEACARParameterCompare/batched_reports/Dissolved Oxygen Saturation.html",
+      "/SEACARParameterCompare/batched_reports/Light Extinction Coefficient.html",
+      "/SEACARParameterCompare/batched_reports/NO2+3, Filtered.html",
+      "/SEACARParameterCompare/batched_reports/Nitrate (NO3).html",
+      "/SEACARParameterCompare/batched_reports/Nitrite (NO2).html",
+      "/SEACARParameterCompare/batched_reports/Nitrogen, inorganic.html",
+      "/SEACARParameterCompare/batched_reports/Nitrogen, organic.html",
+      "/SEACARParameterCompare/batched_reports/Phosphate, Filtered (PO4).html",
+      "/SEACARParameterCompare/batched_reports/Salinity.html",
+      "/SEACARParameterCompare/batched_reports/Secchi Depth.html",
+      "/SEACARParameterCompare/batched_reports/Specific Conductivity.html",
+      "/SEACARParameterCompare/batched_reports/Total Ammonia (N).html",
+      "/SEACARParameterCompare/batched_reports/Total Kjeldahl Nitrogen.html",
+      "/SEACARParameterCompare/batched_reports/Total Nitrogen.html",
+      "/SEACARParameterCompare/batched_reports/Total Phosphorus.html",
+      "/SEACARParameterCompare/batched_reports/Total Suspended Solids.html",
+      "/SEACARParameterCompare/batched_reports/Turbidity.html",
+      "/SEACARParameterCompare/batched_reports/Water Temperature.html",
+      "/SEACARParameterCompare/batched_reports/pH.html"
     ]
   }
 ]
