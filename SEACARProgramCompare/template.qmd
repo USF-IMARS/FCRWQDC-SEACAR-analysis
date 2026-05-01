@@ -76,6 +76,7 @@ ggplot(combined_counts, aes(x = SampleDate)) +
 
 
 ## Result Value Comparison
+### Distribution of `ResultValue`s
 ```{R, split violin plot comparison of values}
 #| code-summary: split violin plot comparison of values
 library(ggplot2)
@@ -103,6 +104,39 @@ if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
     theme(legend.position = "none")
 }
 ```
+
+### `ResultValue`s over time
+This plots the value recorded across all parameters for both datasets.
+Differences throughout time could be from changes in protocols.
+For example: if a parameter is recorded for only part of the time series.
+
+```{R, plot average ResultValue over time}
+#| code-summary: plot average ResultValue over time
+library(ggplot2)
+
+if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
+    dfs$OLD %>% mutate(source = "OLD_STD")
+  )
+
+  # Create split violin plot
+  ggplot(df_combined, aes(x = SampleDate, y = ResultValue, color = source)) +
+    geom_point(alpha = 0.2, shape=4) +
+    scale_y_log10() +
+    labs(
+      title = "ResultValue Over Time (Log Scale)",
+      x = "Sample Date",
+      y = "Result Value (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+}
+```
+
 
 ## Depth Distributions
 ```{R, plot ActivityDepth_m}
