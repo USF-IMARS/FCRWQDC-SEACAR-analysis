@@ -16,7 +16,7 @@ dfs <- getData(params$batch_value)
 # keep only columns of interest
 cols_of_interest <- c(
   "ProgramName", "ProgramLocationID", "OriginalLatitude", "OriginalLongitude", 
-  "ActivityDepth_m", "ParameterUnits", "ResultValue", "SampleDate"
+  "ActivityDepth_m", "ParameterUnits", "ParameterName", "ResultValue", "SampleDate"
 )
 dfs$SEACAR_STD <- dfs$SEACAR_STD %>% select(all_of(cols_of_interest))
 dfs$OLD <- dfs$OLD %>% select(all_of(cols_of_interest))
@@ -110,8 +110,8 @@ This plots the value recorded across all parameters for both datasets.
 Differences throughout time could be from changes in protocols.
 For example: if a parameter is recorded for only part of the time series.
 
-```{R, plot average ResultValue over time}
-#| code-summary: plot average ResultValue over time
+```{R, plot salinity ResultValue over time}
+#| code-summary: plot salinity ResultValue over time
 library(ggplot2)
 
 if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
@@ -121,16 +121,15 @@ if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
   df_combined <- bind_rows(
     dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
     dfs$OLD %>% mutate(source = "OLD_STD")
-  )
+  ) %>% 
+    filter(ParameterName == "Salinity")
 
-  # Create split violin plot
   ggplot(df_combined, aes(x = SampleDate, y = ResultValue, color = source)) +
     geom_point(alpha = 0.2, shape=4) +
-    scale_y_log10() +
     labs(
-      title = "ResultValue Over Time (Log Scale)",
+      title = "salinity Over Time",
       x = "Sample Date",
-      y = "Result Value (log10)"
+      y = "salinity"
     ) +
     theme_minimal() +
     theme(legend.position = "bottom")
