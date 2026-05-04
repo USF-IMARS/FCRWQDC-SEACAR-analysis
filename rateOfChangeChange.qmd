@@ -169,13 +169,42 @@ library(ggplot2)
 
 ggplot(rate_of_change_comparison, aes(x = ParameterName, y = rate_of_change_diff)) +
   geom_violin() +
+  theme(axis.text.x = element_text(angle = 45 , hjust = 1)) +
   labs(title = "Rate of Change Differences",
        x = "Parameter",
        y = "Rate of Change Difference")
 ```
 
 
-# Top 100 Differences
+# Top Differences
+```{R, plot time series of top differences}
+#| code-summary: plot time series of top differences
+library(here)
+source(here("R", "getStationData.R"))
+source(here("R", "plotStationParameterTimeSeriesComparison.R"))
+
+# get top differences
+subset_to_plot <- rate_of_change_comparison %>%
+  ungroup() %>%
+  arrange(desc(abs(rate_of_change_diff))) %>%
+  head(3) 
+
+# for each top diff, load the data and plot
+for (i in 1:nrow(subset_to_plot)) {
+  station <- subset_to_plot$ProgramLocationID[i]
+  parameter_name <- subset_to_plot$ParameterName[i]
+
+  # Get data for the station+parameter
+  df_station <- getStationData(station) %>%
+    filter(ParameterName == parameter_name)
+
+  # TODO: this function is slow; could do it more efficiently here.
+  plotStationParameterTimeSeriesComparison(df_station, station)
+}
+```
+
+
+
 ```{R, print station+parameter pairs with highest differences}
 #| code-summary: print station+parameter pairs with highest differences
 library(dplyr)

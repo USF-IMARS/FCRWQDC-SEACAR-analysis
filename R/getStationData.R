@@ -1,8 +1,9 @@
-# Efficiently loads data for a given station from both SEACAR_STD and OLD sources.
-getStationData <- function(station_id) {
-  library(here)
-  library(dplyr)
+# Loads data for a given station from both SEACAR_STD and OLD sources.
+library(here)
+library(dplyr)
+source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
 
+getStationData <- function(station_id) {
   # Delimiter: "|"
   # chr  (29): ProgramName, Habitat, IndicatorName, ParameterName, ParameterUnits, SEACA...
   # dbl  (11): RowID, ProgramID, IndicatorID, ParameterID, ResultValue, Year, Month, Inc...
@@ -15,7 +16,8 @@ getStationData <- function(station_id) {
     # Convert ActivityDepth_m to numeric for plotting
     mutate(
       ActivityDepth_m = as.numeric(ActivityDepth_m),
-      source = "SEACAR_STD"
+      source = "SEACAR_STD",
+      ProgramName = mapProgramNameToShortName(ProgramName)
     )
 
   # chr  (16): Habitat, IndicatorName, ManagedAreaName, RelativeDepth, DetectionUnit, SE...
@@ -34,7 +36,8 @@ getStationData <- function(station_id) {
         TotalDepth_m = as.character(TotalDepth_m),
         # Convert SampleDate to datetime to match df1 format
         SampleDate = as.POSIXct(SampleDate, format = "%Y-%m-%d", tz = "UTC"),
-        source = "OLD"
+        source = "OLD",
+        ProgramName = mapProgramNameToShortName(ProgramName)
     )
   
   # join dfs on common columns

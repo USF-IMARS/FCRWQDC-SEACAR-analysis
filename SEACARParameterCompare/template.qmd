@@ -156,54 +156,16 @@ if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
 # Plot of Random Station
 ```{R, plot random station}
 #| code-summary: plot random station
-library(ggplot2)
+library(here)
+source(here("R", "getStationData.R"))
+source(here("R", "plotStationParameterTimeSeriesComparison.R"))
 
-if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
-  cat("One or both dataframes are empty.\n")
-} else {
-  # Combine dataframes with a source column
-  df_combined <- bind_rows(
-    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
-    dfs$OLD %>% mutate(source = "OLD_STD")
-  )
-  
-  # Get a random station
-  random_station <- sample(unique(df_combined$ProgramLocationID), 1)
+# Get a random station
+random_station <- sample(unique(c(dfs$SEACAR_STD$ProgramLocationID, dfs$OLD$ProgramLocationID)), 1)
 
-  # get ProgramName for the random station
-  random_station_program<- df_combined %>% 
-    filter(ProgramLocationID == random_station) %>% 
-    pull(ProgramName) %>% 
-    unique() %>% 
-    first()
-  
-  # Filter for the random station
-  df_random <- df_combined %>% filter(ProgramLocationID == random_station)
+# Get data for the random station
+df_station <- getStationData(random_station)
 
-  # get ParameterUnits for source = "SEACAR_STD"
-  seacar_units <- df_random %>% 
-    filter(source == "SEACAR_STD") %>% 
-    pull(ParameterUnits) %>% 
-    unique() %>% 
-    first()
-  
-  # get ParameterUnits for source = "OLD_STD"
-  old_units <- df_random %>% 
-    filter(source == "OLD_STD") %>% 
-    pull(ParameterUnits) %>% 
-    unique() %>% 
-    first()
+plotStationParameterTimeSeriesComparison(df_station, random_station)
 
-
-  # Create plot
-  ggplot(df_random, aes(x = SampleDate, y = ResultValue, color = source)) +
-    geom_point(alpha = 0.4, shape=4) +
-    labs(
-      title = paste(random_station_program, "-", random_station),
-      x = "Sample Date",
-      y = paste("Result Value", "[", seacar_units, "||", old_units, "]")
-    ) +
-    theme_minimal() +
-    theme(legend.position = "none")
-}
 ```
