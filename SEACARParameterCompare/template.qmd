@@ -23,55 +23,12 @@ dfs$OLD <- dfs$OLD %>% select(all_of(cols_of_interest))
 
 ```
 
+
+# Row Counts
 ```{R, show number of rows for each dataframe}
 #| code-summary: show number of rows for each dataframe
 cat(" SEACAR_STD rows:", nrow(dfs$SEACAR_STD), "\n")
 cat("OLD dataset rows:", nrow(dfs$OLD), "\n")
-```
-
-```{R, show comparison of unique units}
-#| code-summary: show comparison of unique units
-library(dplyr)
-
-u1 <- unique(dfs$SEACAR_STD$ParameterUnits)
-u2 <- unique(dfs$OLD$ParameterUnits)
-
-comparison <- tibble(value = union(u1, u2)) %>%
-  mutate(
-    in_SEACAR = value %in% u1,
-    in_OLD    = value %in% u2
-  )
-
-print(comparison)
-```
-
-```{R, violin plot comparison of values}
-#| code-summary: violin plot comparison of values
-# Creates a split violin plot to compare value distributions between SEACAR_STD and OLD datasets
-library(ggplot2)
-
-if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
-  cat("One or both dataframes are empty.\n")
-} else {
-  # Combine dataframes with a source column
-  df_combined <- bind_rows(
-    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
-    dfs$OLD %>% mutate(source = "OLD_STD")
-  )
-
-  # Create split violin plot
-  ggplot(df_combined, aes(x = source, y = ResultValue, fill = source)) +
-    geom_violin(alpha = 0.6) +
-    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
-    scale_y_log10() +
-    labs(
-      title = "Value Distribution Comparison (Log Scale)",
-      x = "Dataset",
-      y = "Result Value (log10)"
-    ) +
-    theme_minimal() +
-    theme(legend.position = "none")
-}
 ```
 
 ```{R, show time series of row counts for both datasets}
@@ -116,6 +73,57 @@ ggplot(combined_counts, aes(x = SampleDate)) +
   theme(legend.position = "bottom")
 ```
 
+
+# Units Used
+```{R, show comparison of unique units}
+#| code-summary: show comparison of unique units
+library(dplyr)
+
+u1 <- unique(dfs$SEACAR_STD$ParameterUnits)
+u2 <- unique(dfs$OLD$ParameterUnits)
+
+comparison <- tibble(value = union(u1, u2)) %>%
+  mutate(
+    in_SEACAR = value %in% u1,
+    in_OLD    = value %in% u2
+  )
+
+print(comparison)
+```
+
+
+# Parameter `ResultValue`s
+```{R, violin plot comparison of values}
+#| code-summary: violin plot comparison of values
+# Creates a split violin plot to compare value distributions between SEACAR_STD and OLD datasets
+library(ggplot2)
+
+if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
+    dfs$OLD %>% mutate(source = "OLD_STD")
+  )
+
+  # Create split violin plot
+  ggplot(df_combined, aes(x = source, y = ResultValue, fill = source)) +
+    geom_violin(alpha = 0.6) +
+    geom_boxplot(width = 0.2, alpha = 0.8, outlier.shape = NA) +
+    scale_y_log10() +
+    labs(
+      title = "Value Distribution Comparison (Log Scale)",
+      x = "Dataset",
+      y = "Result Value (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+```
+
+
+# Depth
 ```{R, plot ActivityDepth_m}
 #| code-summary: plot ActivityDepth_m
 library(ggplot2)
@@ -138,6 +146,49 @@ if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
       title = "ActivityDepth_m Distribution Comparison (Log Scale)",
       x = "Dataset",
       y = "ActivityDepth_m (log10)"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+```
+
+
+# Plot of Random Station
+```{R, plot random station}
+#| code-summary: plot random station
+library(ggplot2)
+
+if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
+  cat("One or both dataframes are empty.\n")
+} else {
+  # Combine dataframes with a source column
+  df_combined <- bind_rows(
+    dfs$SEACAR_STD %>% mutate(source = "SEACAR_STD"),
+    dfs$OLD %>% mutate(source = "OLD_STD")
+  )
+  
+  # Get a random station
+  random_station <- sample(unique(df_combined$ProgramLocationID), 1)
+
+  # get ProgramName for the random station
+  random_station_program<- df_combined %>% 
+    filter(ProgramLocationID == random_station) %>% 
+    pull(ProgramName) %>% 
+    unique() %>% 
+    first()
+  
+  # Filter for the random station
+  df_random <- df_combined %>% filter(ProgramLocationID == random_station)
+  
+  # Create plot
+  ggplot(df_random, aes(x = SampleDate, y = ResultValue, color = source)) +
+    geom_point(alpha = 0.6) +
+    facet_wrap(~ source, scales = "free_y") +
+    scale_y_log10() +
+    labs(
+      title = paste(random_station_program, "-", random_station),
+      x = "Sample Date",
+      y = "Result Value (log10)"
     ) +
     theme_minimal() +
     theme(legend.position = "none")
