@@ -179,16 +179,29 @@ if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
   
   # Filter for the random station
   df_random <- df_combined %>% filter(ProgramLocationID == random_station)
+
+  # get ParameterUnits for source = "SEACAR_STD"
+  seacar_units <- df_random %>% 
+    filter(source == "SEACAR_STD") %>% 
+    pull(ParameterUnits) %>% 
+    unique() %>% 
+    first()
   
+  # get ParameterUnits for source = "OLD_STD"
+  old_units <- df_random %>% 
+    filter(source == "OLD_STD") %>% 
+    pull(ParameterUnits) %>% 
+    unique() %>% 
+    first()
+
+
   # Create plot
   ggplot(df_random, aes(x = SampleDate, y = ResultValue, color = source)) +
-    geom_point(alpha = 0.6) +
-    facet_wrap(~ source, scales = "free_y") +
-    scale_y_log10() +
+    geom_point(alpha = 0.4, shape=4) +
     labs(
       title = paste(random_station_program, "-", random_station),
       x = "Sample Date",
-      y = "Result Value (log10)"
+      y = paste("Result Value", "[", seacar_units, "||", old_units, "]")
     ) +
     theme_minimal() +
     theme(legend.position = "none")
