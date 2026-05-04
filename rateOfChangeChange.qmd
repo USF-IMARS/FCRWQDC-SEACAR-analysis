@@ -97,6 +97,8 @@ cat('\n\nMissing SEACAR parameters:', paste(missing_seacar_parameters, collapse 
 cat('\n\nMissing old parameters:', paste(missing_old_parameters, collapse = ', '))
 ```
 
+
+# Distribution of Rate of Change Differences
 ```{R, plot distribution of rate of change differences}
 #| code-summary: plot distribution of rate of change differences
 library(ggplot2)
@@ -108,6 +110,9 @@ ggplot(rate_of_change_comparison, aes(x = rate_of_change_diff)) +
        y = "Count")
 ```
 
+
+# New vs Old Correlations
+## New vs Old Slopes
 ```{R, plot scatter plot of old vs new rate of change}
 #| code-summary: plot scatter plot of old vs new rate of change
 library(ggplot2)
@@ -125,6 +130,7 @@ ggplot(rate_of_change_comparison, aes(x = slope.old, y = slope.new)) +
 ```
 
 
+## New vs Old p-values
 ```{R, plot scatter plot of old vs new significances}
 #| code-summary: plot scatter plot of old vs new significances
 library(ggplot2)
@@ -141,6 +147,9 @@ ggplot(rate_of_change_comparison, aes(x = pvalue.old, y = pvalue.new)) +
        y = "New p values")
 ```
 
+
+# Rate of Change Change Across Facets
+## Rate of Change Change Across ProgramName Facet
 ```{R, violin plot of new vs old rate of change}
 #| code-summary: violin plot of new vs old rate of change
 library(ggplot2)
@@ -152,6 +161,21 @@ ggplot(rate_of_change_comparison, aes(x = ProgramName, y = rate_of_change_diff))
        y = "Rate of Change Difference")
 ```
 
+
+## Rate of Change Change Across ParameterName Facet
+```{R, violin plot of new vs old rate of change}
+#| code-summary: violin plot of new vs old rate of change
+library(ggplot2)
+
+ggplot(rate_of_change_comparison, aes(x = ParameterName, y = rate_of_change_diff)) +
+  geom_violin() +
+  labs(title = "Rate of Change Differences",
+       x = "Parameter",
+       y = "Rate of Change Difference")
+```
+
+
+# Top 100 Differences
 ```{R, print station+parameter pairs with highest differences}
 #| code-summary: print station+parameter pairs with highest differences
 library(dplyr)
