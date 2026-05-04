@@ -125,7 +125,8 @@ if (nrow(dfs$SEACAR_STD) == 0 || nrow(dfs$OLD) == 0) {
     filter(ParameterName == "Salinity")
 
   ggplot(df_combined, aes(x = SampleDate, y = ResultValue, color = source)) +
-    geom_point(alpha = 0.2, shape=4) +
+    geom_point(alpha = 0.3, shape=4) +
+    scale_y_log10() +
     labs(
       title = "salinity Over Time",
       x = "Sample Date",
