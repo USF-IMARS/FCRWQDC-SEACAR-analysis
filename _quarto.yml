@@ -38,6 +38,11 @@ website:
       - SEACARDepthComparison.qmd
       - randomSampleDrilldown.qmd
       - rateOfChangeChange.qmd
+      - text: "Data Usage Examples"
+        menu:
+          - href: usage_examples/map_program_parameter_subset.qmd
+            text: Map Program Parameter Subset
+
     - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis
       text: Source Code on GitHub
 format:

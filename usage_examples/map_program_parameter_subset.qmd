@@ -1,0 +1,44 @@
+---
+title: "Dashboard Data Example"
+format: html
+---
+
+```{r setup}
+# Load required libraries
+library(tidyverse)
+library(leaflet)
+library(DT)
+library(here)
+
+# Read the data
+df <- readr::read_delim(
+  here("data/Discrete WQ - 10006.txt"),
+  delim = "|"
+) 
+```
+
+```{r filter-data}
+filtered_data <- df %>%
+  filter(ProgramName == "Florida Keys National Marine Sanctuary Water Quality Monitoring Project") %>%
+  filter(ParameterName == "Total Nitrogen")
+
+```
+
+
+# Map with Colored Points
+```{R map with colored points}
+#| code-summary: create map with points colored by ResultValue
+ggplot(filtered_data, aes(x = OriginalLongitude, y = OriginalLatitude, color = ResultValue)) +
+  geom_point(alpha=0.1, shape=4) +
+  scale_color_gradient(low = "blue", high = "red", limits = c(0, 1)) +
+  theme_minimal()
+```
+
+
+# Distribution of Values
+```{R distribution of values}
+#| code-summary: create histogram of ResultValue
+ggplot(filtered_data, aes(x = ResultValue)) +
+  geom_histogram(bins = 30) +
+  theme_minimal()
+```
