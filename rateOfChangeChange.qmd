@@ -3,6 +3,9 @@ title: "Rate of Change Comparisons Between SEACAR & Older Dataset"
 format: html
 ---
 
+This analysis compares rate of change for each station+parameter as calculated from the old and new datasets.
+Only slopes with significant p-values for in both datasets are considered in this analysis.
+
 ```{R, define getRateOfChangeParameters helper function}
 #| code-summary: define getRateOfChangeParameters
 library(here)
@@ -46,7 +49,7 @@ for (parameter in getRateOfChangeParameters()){
         ProgramLocationID = as.character(ProgramLocationID),
         ProgramName = mapProgramNameToShortName(ProgramName)
       ) %>%  
-      filter(!is.na(slope))
+      filter(!is.na(significant_slope))
   }, error = function(e){
     missing_seacar_parameters <<- c(missing_seacar_parameters, parameter)
     # print(e)
@@ -59,7 +62,7 @@ for (parameter in getRateOfChangeParameters()){
         ProgramLocationID = as.character(site),
         ProgramName = mapProgramNameToShortName(source)
       ) %>%  
-      filter(!is.na(slope))
+      filter(!is.na(significant_slope))
   }, error = function(e){
     missing_old_parameters <<- c(missing_old_parameters, parameter)
     # print(e)
@@ -76,15 +79,15 @@ for (parameter in getRateOfChangeParameters()){
   seacar_rate_of_change %>%
     inner_join(old_rate_of_change, by = c("ProgramLocationID", "ProgramName")) %>%
     mutate(
-      slope.new = slope.x,  # from seacar_rate_of_change
+      slope.new = significant_slope.x,  # from seacar_rate_of_change
       pvalue.new = pvalue.x,
       n_values.new = n_values.x,
 
-      slope.old = slope.y,  # from old_rate_of_change
+      slope.old = significant_slope.y,  # from old_rate_of_change
       pvalue.old = pvalue.y,
       n_values.old = n_values.y,
       
-      rate_of_change_diff = slope.x - slope.y,
+      rate_of_change_diff = significant_slope.x - significant_slope.y,
       # keep only columns we need
       ProgramName = ProgramName,
       ParameterName = parameter,
@@ -108,8 +111,8 @@ The new data source is expected to have a higher n_value at each station.
 
 ## n_values old vs new correlation
 A line with slope 1 would indicate no change in the number of values used to calculate slopes.
-Data points below this line indicate a decrease in the number of values used to calculate slopes.
 Data points above this line indicate an increase in the number of values used to calculate slopes.
+Points are expected to be above the diagonal because the new dataset has more points than the old dataset.
 
 ```{R, plot scatter plot of old vs new n_values}
 #| code-summary: plot scatter plot of old vs new n_values
@@ -127,7 +130,7 @@ ggplot(rate_of_change_comparison, aes(x = n_values.old, y = n_values.new)) +
        y = "New Number of Values")
 ```
 
-Some station points can lines parallel to and above the 1:1 line.
+Some station points can form lines parallel to the 1:1 line.
 These lines represent a set of stations that have added a similar number of points to the time series.
 It is likely these points from the same data provider.
 
@@ -156,6 +159,7 @@ ggplot(df_long, aes(x = version, y = slope, fill = version)) +
 # New vs Old Slopes
 ## New vs Old Slopes Correlation
 Slopes calculated from the new and old data should be highly correlated.
+Slopes with lower `n_values` are more likely to be spurious.
 
 ```{R, plot scatter plot of old vs new rate of change}
 #| code-summary: plot scatter plot of old vs new rate of change
@@ -217,7 +221,7 @@ ggplot(rate_of_change_comparison, aes(x = rate_of_change_diff)) +
 ```
 
 ## Rate of Change Change Across Facets
-Patterns in the rate of change differences may be apparent across parameters or data providers.
+Rate of change differences may be related to differences from a subset of the data.
 
 ### Rate of Change Change Across ProgramName Facet
 ```{R, violin plot of new vs old rate of change facet programName}
@@ -248,9 +252,13 @@ ggplot(rate_of_change_comparison, aes(x = ParameterName, y = rate_of_change_diff
 
 # Top Differences
 The most different rate of change differences are plotted below.
+New data is plotted in red and old data in blue.
 
 ```{R, plot time series of top differences}
 #| code-summary: plot time series of top differences
+#| message: false
+#| warning: false
+
 library(here)
 source(here("R", "getStationData.R"))
 source(here("R", "plotStationParameterTimeSeriesComparison.R"))
@@ -302,6 +310,7 @@ for (i in 1:nrow(subset_to_plot)) {
   )
 }
 ```
+
 
 
 
