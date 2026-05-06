@@ -4,10 +4,11 @@
 library(ggplot2)
 library(dplyr)
 
-plotStationParameterTimeSeriesComparison <- function(df, station_id) {
+plotStationParameterTimeSeriesComparison <- function(df, station_id, parameter) {
     # Filter for the station
     df_subset <- df %>% filter(
-        ProgramLocationID == station_id
+        ProgramLocationID == station_id,
+        ParameterName == parameter
     )
 
     # get ProgramName for the station

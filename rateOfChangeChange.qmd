@@ -98,6 +98,26 @@ cat('\n\nMissing old parameters:', paste(missing_old_parameters, collapse = ', '
 ```
 
 
+# Distribution of Rate of Changes from slope.old and slope.new
+```{R, violin plot of slope.old and slope.new}
+#| code-summary: violin plot of slope.old and slope.new
+library(ggplot2)
+library(tidyr)
+
+# Reshape to long format
+df_long <- pivot_longer(rate_of_change_comparison, cols = c(slope.old, slope.new), 
+                        names_to = "version", values_to = "slope")
+
+ggplot(df_long, aes(x = version, y = slope, fill = version)) +
+  geom_violin(trim = FALSE, alpha = 0.7) +
+  geom_boxplot(width = 0.1, outlier.shape = NA, alpha = 0.5) +
+  scale_x_discrete(labels = c("slope.new" = "New", "slope.old" = "Old")) +
+  labs(title = "Slope Comparison", x = NULL, y = "Slope") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+
 # Distribution of Rate of Change Differences
 ```{R, plot distribution of rate of change differences}
 #| code-summary: plot distribution of rate of change differences
@@ -150,8 +170,8 @@ ggplot(rate_of_change_comparison, aes(x = pvalue.old, y = pvalue.new)) +
 
 # Rate of Change Change Across Facets
 ## Rate of Change Change Across ProgramName Facet
-```{R, violin plot of new vs old rate of change}
-#| code-summary: violin plot of new vs old rate of change
+```{R, violin plot of new vs old rate of change facet programName}
+#| code-summary: violin plot of new vs old rate of change facet programName
 library(ggplot2)
 
 ggplot(rate_of_change_comparison, aes(x = ProgramName, y = rate_of_change_diff)) +
@@ -163,8 +183,8 @@ ggplot(rate_of_change_comparison, aes(x = ProgramName, y = rate_of_change_diff))
 
 
 ## Rate of Change Change Across ParameterName Facet
-```{R, violin plot of new vs old rate of change}
-#| code-summary: violin plot of new vs old rate of change
+```{R, violin plot of new vs old rate of change facet parameterName}
+#| code-summary: violin plot of new vs old rate of change facet parameterName
 library(ggplot2)
 
 ggplot(rate_of_change_comparison, aes(x = ParameterName, y = rate_of_change_diff)) +
@@ -187,7 +207,7 @@ source(here("R", "plotStationParameterTimeSeriesComparison.R"))
 subset_to_plot <- rate_of_change_comparison %>%
   ungroup() %>%
   arrange(desc(abs(rate_of_change_diff))) %>%
-  head(3) 
+  head(10) 
 
 # for each top diff, load the data and plot
 for (i in 1:nrow(subset_to_plot)) {
@@ -199,7 +219,7 @@ for (i in 1:nrow(subset_to_plot)) {
     filter(ParameterName == parameter_name)
 
   # TODO: this function is slow; could do it more efficiently here.
-  plotStationParameterTimeSeriesComparison(df_station, station)
+  plotStationParameterTimeSeriesComparison(df_station, station, parameter_name)
 }
 ```
 

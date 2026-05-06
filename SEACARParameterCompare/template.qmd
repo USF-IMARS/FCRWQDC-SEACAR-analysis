@@ -166,6 +166,6 @@ random_station <- sample(unique(c(dfs$SEACAR_STD$ProgramLocationID, dfs$OLD$Prog
 # Get data for the random station
 df_station <- getStationData(random_station)
 
-plotStationParameterTimeSeriesComparison(df_station, random_station)
+plotStationParameterTimeSeriesComparison(df_station, random_station, params$batch_value)
 
 ```
