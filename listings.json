@@ -15,10 +15,6 @@
     ]
   },
   {
-    "listing": "/SEACARDepthComparison.html",
-    "items": []
-  },
-  {
     "listing": "/parameterRateOfChange/listing.html",
     "items": [
       "/parameterRateOfChange/batched_reports/Ammonium (NH4).html",
@@ -49,6 +45,10 @@
   },
   {
     "listing": "/randomSampleDrilldown.html",
+    "items": []
+  },
+  {
+    "listing": "/SEACARDepthComparison.html",
     "items": []
   },
   {

@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-data-usage-examples">    
         <li>
-    <a class="dropdown-item" href="./usage_examples/map_program_parameter_subset.qmd">
+    <a class="dropdown-item" href="./usage_examples/map_program_parameter_subset.html">
  <span class="dropdown-text">Map Program Parameter Subset</span></a>
   </li>  
     </ul>
@@ -199,17 +199,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#distribution-of-rate-of-changes-from-slope.old-and-slope.new" id="toc-distribution-of-rate-of-changes-from-slope.old-and-slope.new" class="nav-link active" data-scroll-target="#distribution-of-rate-of-changes-from-slope.old-and-slope.new">Distribution of Rate of Changes from slope.old and slope.new</a></li>
-  <li><a href="#distribution-of-rate-of-change-differences" id="toc-distribution-of-rate-of-change-differences" class="nav-link" data-scroll-target="#distribution-of-rate-of-change-differences">Distribution of Rate of Change Differences</a></li>
-  <li><a href="#new-vs-old-correlations" id="toc-new-vs-old-correlations" class="nav-link" data-scroll-target="#new-vs-old-correlations">New vs Old Correlations</a>
+  <li><a href="#change-in-the-number-of-values-used-to-calculate-slopes" id="toc-change-in-the-number-of-values-used-to-calculate-slopes" class="nav-link active" data-scroll-target="#change-in-the-number-of-values-used-to-calculate-slopes">Change in the number of values used to calculate slopes</a>
   <ul class="collapse">
-  <li><a href="#new-vs-old-slopes" id="toc-new-vs-old-slopes" class="nav-link" data-scroll-target="#new-vs-old-slopes">New vs Old Slopes</a></li>
+  <li><a href="#n_values-old-vs-new-correlation" id="toc-n_values-old-vs-new-correlation" class="nav-link" data-scroll-target="#n_values-old-vs-new-correlation">n_values old vs new correlation</a></li>
+  </ul></li>
+  <li><a href="#rate-of-changes-from-slope.old-and-slope.new" id="toc-rate-of-changes-from-slope.old-and-slope.new" class="nav-link" data-scroll-target="#rate-of-changes-from-slope.old-and-slope.new">Rate of Changes from slope.old and slope.new</a></li>
+  <li><a href="#new-vs-old-slopes" id="toc-new-vs-old-slopes" class="nav-link" data-scroll-target="#new-vs-old-slopes">New vs Old Slopes</a>
+  <ul class="collapse">
+  <li><a href="#new-vs-old-slopes-correlation" id="toc-new-vs-old-slopes-correlation" class="nav-link" data-scroll-target="#new-vs-old-slopes-correlation">New vs Old Slopes Correlation</a></li>
   <li><a href="#new-vs-old-p-values" id="toc-new-vs-old-p-values" class="nav-link" data-scroll-target="#new-vs-old-p-values">New vs Old p-values</a></li>
   </ul></li>
+  <li><a href="#rate-of-change-differences" id="toc-rate-of-change-differences" class="nav-link" data-scroll-target="#rate-of-change-differences">Rate of Change Differences</a>
+  <ul class="collapse">
   <li><a href="#rate-of-change-change-across-facets" id="toc-rate-of-change-change-across-facets" class="nav-link" data-scroll-target="#rate-of-change-change-across-facets">Rate of Change Change Across Facets</a>
   <ul class="collapse">
   <li><a href="#rate-of-change-change-across-programname-facet" id="toc-rate-of-change-change-across-programname-facet" class="nav-link" data-scroll-target="#rate-of-change-change-across-programname-facet">Rate of Change Change Across ProgramName Facet</a></li>
   <li><a href="#rate-of-change-change-across-parametername-facet" id="toc-rate-of-change-change-across-parametername-facet" class="nav-link" data-scroll-target="#rate-of-change-change-across-parametername-facet">Rate of Change Change Across ParameterName Facet</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#top-differences" id="toc-top-differences" class="nav-link" data-scroll-target="#top-differences">Top Differences</a></li>
   </ul>
@@ -237,6 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>This analysis compares rate of change for each station+parameter as calculated from the old and new datasets. Only slopes with significant p-values for in both datasets are considered in this analysis.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>define getRateOfChangeParameters</summary>
@@ -261,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell">
 <details class="code-fold">
-<summary>compare rate of change at each station</summary>
+<summary>calculate differences in rate of change at each station</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"SEACARProgramCompare/mapProgramNameToShortName.R"</span>))</span>
@@ -280,7 +287,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">ProgramLocationID =</span> <span class="fu">as.character</span>(ProgramLocationID),</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">ProgramName =</span> <span class="fu">mapProgramNameToShortName</span>(ProgramName)</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span>  </span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(slope))</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(significant_slope))</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e){</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    missing_seacar_parameters <span class="ot">&lt;&lt;-</span> <span class="fu">c</span>(missing_seacar_parameters, parameter)</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(e)</span></span>
@@ -293,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">ProgramLocationID =</span> <span class="fu">as.character</span>(site),</span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">ProgramName =</span> <span class="fu">mapProgramNameToShortName</span>(source)</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span>  </span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(slope))</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(significant_slope))</span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e){</span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    missing_old_parameters <span class="ot">&lt;&lt;-</span> <span class="fu">c</span>(missing_old_parameters, parameter)</span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(e)</span></span>
@@ -310,24 +317,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  seacar_rate_of_change <span class="sc">%&gt;%</span></span>
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">inner_join</span>(old_rate_of_change, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"ProgramLocationID"</span>, <span class="st">"ProgramName"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">slope.new =</span> slope.x,  <span class="co"># from seacar_rate_of_change</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">slope.new =</span> significant_slope.x,  <span class="co"># from seacar_rate_of_change</span></span>
 <span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">pvalue.new =</span> pvalue.x,</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">slope.old =</span> slope.y,  <span class="co"># from old_rate_of_change</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">pvalue.old =</span> pvalue.y,</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">rate_of_change_diff =</span> slope.x <span class="sc">-</span> slope.y,</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>      <span class="co"># keep only columns we need</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">ProgramName =</span> ProgramName,</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>      <span class="at">ParameterName =</span> parameter,</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">ProgramLocationID =</span> ProgramLocationID,</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">.keep =</span> <span class="st">"none"</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>    ) <span class="ot">-&gt;</span> current_comparison</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  <span class="co"># append to results</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>  rate_of_change_comparison <span class="ot">&lt;-</span> <span class="fu">rbind</span>(rate_of_change_comparison, current_comparison)</span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cat('.')</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'</span><span class="sc">\n\n</span><span class="st">Missing SEACAR parameters:'</span>, <span class="fu">paste</span>(missing_seacar_parameters, <span class="at">collapse =</span> <span class="st">', '</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">n_values.new =</span> n_values.x,</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>      <span class="at">slope.old =</span> significant_slope.y,  <span class="co"># from old_rate_of_change</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>      <span class="at">pvalue.old =</span> pvalue.y,</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">n_values.old =</span> n_values.y,</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>      <span class="at">rate_of_change_diff =</span> significant_slope.x <span class="sc">-</span> significant_slope.y,</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>      <span class="co"># keep only columns we need</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">ProgramName =</span> ProgramName,</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">ParameterName =</span> parameter,</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">ProgramLocationID =</span> ProgramLocationID,</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>      <span class="at">.keep =</span> <span class="st">"none"</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    ) <span class="ot">-&gt;</span> current_comparison</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  <span class="co"># append to results</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  rate_of_change_comparison <span class="ot">&lt;-</span> <span class="fu">rbind</span>(rate_of_change_comparison, current_comparison)</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>  <span class="co"># cat('.')</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'</span><span class="sc">\n\n</span><span class="st">Missing SEACAR parameters:'</span>, <span class="fu">paste</span>(missing_seacar_parameters, <span class="at">collapse =</span> <span class="st">', '</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -335,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Missing SEACAR parameters: Ammonia, Un-ionized (NH3), Ammonium, Filtered (NH4)</code></pre>
 </div>
 <details class="code-fold">
-<summary>compare rate of change at each station</summary>
+<summary>calculate differences in rate of change at each station</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">'</span><span class="sc">\n\n</span><span class="st">Missing old parameters:'</span>, <span class="fu">paste</span>(missing_old_parameters, <span class="at">collapse =</span> <span class="st">', '</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -344,25 +355,59 @@ Missing SEACAR parameters: Ammonia, Un-ionized (NH3), Ammonium, Filtered (NH4)</
 Missing old parameters: Ammonium (NH4), Colored Dissolved Organic Matter, Light Extinction Coefficient, Nitrogen, inorganic, Secchi Depth, Total Ammonia (N)</code></pre>
 </div>
 </div>
-<section id="distribution-of-rate-of-changes-from-slope.old-and-slope.new" class="level1">
-<h1>Distribution of Rate of Changes from slope.old and slope.new</h1>
+<section id="change-in-the-number-of-values-used-to-calculate-slopes" class="level1">
+<h1>Change in the number of values used to calculate slopes</h1>
+<p>Slopes calculated with fewer values are less reliable. The new data source is expected to have a higher n_value at each station.</p>
+<section id="n_values-old-vs-new-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="n_values-old-vs-new-correlation">n_values old vs new correlation</h2>
+<p>A line with slope 1 would indicate no change in the number of values used to calculate slopes. Data points above this line indicate an increase in the number of values used to calculate slopes. Points are expected to be above the diagonal because the new dataset has more points than the old dataset.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>plot scatter plot of old vs new n_values</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the range for both axes</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>max_slope <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">c</span>(rate_of_change_comparison<span class="sc">$</span>n_values.old, rate_of_change_comparison<span class="sc">$</span>n_values.new), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>min_slope <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">c</span>(rate_of_change_comparison<span class="sc">$</span>n_values.old, rate_of_change_comparison<span class="sc">$</span>n_values.new), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> n_values.old, <span class="at">y =</span> n_values.new)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">4</span>, <span class="at">alpha=</span>.<span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(min_slope, max_slope), <span class="at">ylim =</span> <span class="fu">c</span>(min_slope, max_slope)) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Old vs New Number of Values"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Old Number of Values"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"New Number of Values"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot scatter plot of old vs new n_values-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Some station points can form lines parallel to the 1:1 line. These lines represent a set of stations that have added a similar number of points to the time series. It is likely these points from the same data provider.</p>
+</section>
+</section>
+<section id="rate-of-changes-from-slope.old-and-slope.new" class="level1">
+<h1>Rate of Changes from slope.old and slope.new</h1>
+<p>The slopes calculated are expected to form a normal distribution around 0, with little change between the old and new data.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>violin plot of slope.old and slope.new</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape to long format</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(rate_of_change_comparison, <span class="at">cols =</span> <span class="fu">c</span>(slope.old, slope.new), </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">"version"</span>, <span class="at">values_to =</span> <span class="st">"slope"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long, <span class="fu">aes</span>(<span class="at">x =</span> version, <span class="at">y =</span> slope, <span class="at">fill =</span> version)) <span class="sc">+</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"slope.new"</span> <span class="ot">=</span> <span class="st">"New"</span>, <span class="st">"slope.old"</span> <span class="ot">=</span> <span class="st">"Old"</span>)) <span class="sc">+</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Slope Comparison"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Slope"</span>) <span class="sc">+</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape to long format</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(rate_of_change_comparison, <span class="at">cols =</span> <span class="fu">c</span>(slope.old, slope.new), </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">names_to =</span> <span class="st">"version"</span>, <span class="at">values_to =</span> <span class="st">"slope"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long, <span class="fu">aes</span>(<span class="at">x =</span> version, <span class="at">y =</span> slope, <span class="at">fill =</span> version)) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"slope.new"</span> <span class="ot">=</span> <span class="st">"New"</span>, <span class="st">"slope.old"</span> <span class="ot">=</span> <span class="st">"Old"</span>)) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Slope Comparison"</span>, <span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Slope"</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -373,32 +418,11 @@ Missing old parameters: Ammonium (NH4), Colored Dissolved Organic Matter, Light 
 </div>
 </div>
 </section>
-<section id="distribution-of-rate-of-change-differences" class="level1">
-<h1>Distribution of Rate of Change Differences</h1>
-<div class="cell">
-<details class="code-fold">
-<summary>plot distribution of rate of change differences</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> rate_of_change_diff)) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Rate of Change Differences"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Rate of Change Difference"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Count"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="rateOfChangeChange_files/figure-html/plot distribution of rate of change differences-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="new-vs-old-correlations" class="level1">
-<h1>New vs Old Correlations</h1>
-<section id="new-vs-old-slopes" class="level2">
-<h2 class="anchored" data-anchor-id="new-vs-old-slopes">New vs Old Slopes</h2>
+<section id="new-vs-old-slopes" class="level1">
+<h1>New vs Old Slopes</h1>
+<section id="new-vs-old-slopes-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="new-vs-old-slopes-correlation">New vs Old Slopes Correlation</h2>
+<p>Slopes calculated from the new and old data should be highly correlated. Slopes with lower <code>n_values</code> are more likely to be spurious.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>plot scatter plot of old vs new rate of change</summary>
@@ -408,12 +432,19 @@ Missing old parameters: Ammonium (NH4), Colored Dissolved Organic Matter, Light 
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>max_slope <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">c</span>(rate_of_change_comparison<span class="sc">$</span>slope.old, rate_of_change_comparison<span class="sc">$</span>slope.new), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>min_slope <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">c</span>(rate_of_change_comparison<span class="sc">$</span>slope.old, rate_of_change_comparison<span class="sc">$</span>slope.new), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> slope.old, <span class="at">y =</span> slope.new)) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">4</span>, <span class="at">alpha=</span>.<span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(min_slope, max_slope), <span class="at">ylim =</span> <span class="fu">c</span>(min_slope, max_slope)) <span class="sc">+</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Old vs New Rate of Change"</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Old Rate of Change"</span>,</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"New Rate of Change"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate quartiles for color scale</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>color_min <span class="ot">&lt;-</span> <span class="fu">quantile</span>(rate_of_change_comparison<span class="sc">$</span>n_values.new, <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>color_max <span class="ot">&lt;-</span> <span class="fu">quantile</span>(rate_of_change_comparison<span class="sc">$</span>n_values.new, <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> slope.old, <span class="at">y =</span> slope.new)) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># color by n_values</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> n_values.new), <span class="at">shape=</span><span class="dv">4</span>, <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">"red"</span>, <span class="at">high =</span> <span class="st">"blue"</span>, <span class="at">limits =</span> <span class="fu">c</span>(color_min, color_max)) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>(<span class="at">xlim =</span> <span class="fu">c</span>(min_slope, max_slope), <span class="at">ylim =</span> <span class="fu">c</span>(min_slope, max_slope)) <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Old vs New Rate of Change"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Old Rate of Change"</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"New Rate of Change"</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"N Values </span><span class="sc">\n</span><span class="st">(quartile bounded)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -426,6 +457,7 @@ Missing old parameters: Ammonium (NH4), Colored Dissolved Organic Matter, Light 
 </section>
 <section id="new-vs-old-p-values" class="level2">
 <h2 class="anchored" data-anchor-id="new-vs-old-p-values">New vs Old p-values</h2>
+<p>The p-values calculated from the new and old data should be highly correlated. The p-values should become more significant (lower) as more data is added, so the majority of points should be below the diagonal.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>plot scatter plot of old vs new significances</summary>
@@ -452,20 +484,43 @@ Missing old parameters: Ammonium (NH4), Colored Dissolved Organic Matter, Light 
 </div>
 </section>
 </section>
-<section id="rate-of-change-change-across-facets" class="level1">
-<h1>Rate of Change Change Across Facets</h1>
-<section id="rate-of-change-change-across-programname-facet" class="level2">
-<h2 class="anchored" data-anchor-id="rate-of-change-change-across-programname-facet">Rate of Change Change Across ProgramName Facet</h2>
+<section id="rate-of-change-differences" class="level1">
+<h1>Rate of Change Differences</h1>
+<p>The rate of change differences should be normally distributed around 0.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>plot distribution of rate of change differences</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> rate_of_change_diff)) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Rate of Change Differences"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Rate of Change Difference"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Count"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot distribution of rate of change differences-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="rate-of-change-change-across-facets" class="level2">
+<h2 class="anchored" data-anchor-id="rate-of-change-change-across-facets">Rate of Change Change Across Facets</h2>
+<p>Rate of change differences may be related to differences from a subset of the data.</p>
+<section id="rate-of-change-change-across-programname-facet" class="level3">
+<h3 class="anchored" data-anchor-id="rate-of-change-change-across-programname-facet">Rate of Change Change Across ProgramName Facet</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>violin plot of new vs old rate of change facet programName</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> ProgramName, <span class="at">y =</span> rate_of_change_diff)) <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rate of Change Differences"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Parameter"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rate of Change Difference"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> ProgramName, <span class="at">y =</span> rate_of_change_diff)) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rate of Change Differences"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Parameter"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rate of Change Difference"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -476,19 +531,19 @@ Missing old parameters: Ammonium (NH4), Colored Dissolved Organic Matter, Light 
 </div>
 </div>
 </section>
-<section id="rate-of-change-change-across-parametername-facet" class="level2">
-<h2 class="anchored" data-anchor-id="rate-of-change-change-across-parametername-facet">Rate of Change Change Across ParameterName Facet</h2>
+<section id="rate-of-change-change-across-parametername-facet" class="level3">
+<h3 class="anchored" data-anchor-id="rate-of-change-change-across-parametername-facet">Rate of Change Change Across ParameterName Facet</h3>
 <div class="cell">
 <details class="code-fold">
 <summary>violin plot of new vs old rate of change facet parameterName</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> ParameterName, <span class="at">y =</span> rate_of_change_diff)) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span> , <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rate of Change Differences"</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Parameter"</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rate of Change Difference"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(rate_of_change_comparison, <span class="fu">aes</span>(<span class="at">x =</span> ParameterName, <span class="at">y =</span> rate_of_change_diff)) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span> , <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rate of Change Differences"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Parameter"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rate of Change Difference"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -500,248 +555,449 @@ Missing old parameters: Ammonium (NH4), Colored Dissolved Organic Matter, Light 
 </div>
 </section>
 </section>
+</section>
 <section id="top-differences" class="level1">
 <h1>Top Differences</h1>
+<p>The most different rate of change differences are plotted below. New data is plotted in red and old data in blue.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>plot time series of top differences</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R"</span>, <span class="st">"getStationData.R"</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R"</span>, <span class="st">"plotStationParameterTimeSeriesComparison.R"</span>))</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get top differences</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>subset_to_plot <span class="ot">&lt;-</span> rate_of_change_comparison <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(rate_of_change_diff))) <span class="sc">%&gt;%</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) </span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># for each top diff, load the data and plot</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(subset_to_plot)) {</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  station <span class="ot">&lt;-</span> subset_to_plot<span class="sc">$</span>ProgramLocationID[i]</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  parameter_name <span class="ot">&lt;-</span> subset_to_plot<span class="sc">$</span>ParameterName[i]</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get data for the station+parameter</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  df_station <span class="ot">&lt;-</span> <span class="fu">getStationData</span>(station) <span class="sc">%&gt;%</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(ParameterName <span class="sc">==</span> parameter_name)</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span><span class="al">TODO</span><span class="co">: this function is slow; could do it more efficiently here.</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotStationParameterTimeSeriesComparison</span>(df_station, station, parameter_name)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R"</span>, <span class="st">"getStationData.R"</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">"R"</span>, <span class="st">"plotStationParameterTimeSeriesComparison.R"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># get top differences</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>subset_to_plot <span class="ot">&lt;-</span> rate_of_change_comparison <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(rate_of_change_diff))) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># for each top diff, load the data and plot</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(subset_to_plot)) {</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  station <span class="ot">&lt;-</span> subset_to_plot<span class="sc">$</span>ProgramLocationID[i]</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  parameter_name <span class="ot">&lt;-</span> subset_to_plot<span class="sc">$</span>ParameterName[i]</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  program_name <span class="ot">&lt;-</span> subset_to_plot<span class="sc">$</span>ProgramName[i]</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get data for the station+parameter</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  df_station <span class="ot">&lt;-</span> <span class="fu">getStationData</span>(station) <span class="sc">%&gt;%</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>      ParameterName <span class="sc">==</span> parameter_name</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get ParameterUnits for source = "SEACAR_STD"</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  seacar_units <span class="ot">&lt;-</span> df_station <span class="sc">%&gt;%</span> </span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(source <span class="sc">==</span> <span class="st">"SEACAR_STD"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pull</span>(ParameterUnits) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>      <span class="fu">first</span>()</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># get ParameterUnits for source = "OLD_STD"</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  old_units <span class="ot">&lt;-</span> df_station <span class="sc">%&gt;%</span> </span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>      <span class="fu">filter</span>(source <span class="sc">==</span> <span class="st">"OLD_STD"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">pull</span>(ParameterUnits) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">first</span>()</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create plot</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">ggplot</span>(df_station, <span class="fu">aes</span>(<span class="at">x =</span> SampleDate, <span class="at">y =</span> ResultValue, <span class="at">color =</span> source)) <span class="sc">+</span></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>      <span class="co"># point data</span></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">shape=</span><span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>      <span class="fu">labs</span>(</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">title =</span> <span class="fu">paste</span>(program_name, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, station),</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="st">"Sample Date"</span>,</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> <span class="fu">paste</span>(parameter_name, <span class="st">"["</span>, seacar_units, <span class="st">"||"</span>, old_units, <span class="st">"]"</span>)</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">+</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>      <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="rateOfChangeChange_files/figure-html/plot time series of top differences-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>print station+parameter pairs with highest differences</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>rate_of_change_comparison <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(rate_of_change_diff))) <span class="sc">%&gt;%</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>rate_of_change_comparison <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(rate_of_change_diff))) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>    ProgramName ProgramLocationID  slope.new   pvalue.new     slope.old
-1          DERM              JBA7 -34.850000 2.206714e-01  1.500000e-01
-2          DERM              LSJ1 -31.100000 6.360257e-02  0.000000e+00
-3          DERM              HCC8  20.350000 2.206714e-01 -5.000000e-02
-4          DERM              TCB2 -19.650000 2.206714e-01  5.000000e-02
-5          DERM              LMC3  19.475000 2.206714e-01  2.500000e-02
-6          DERM              ABD7  19.400000 2.013675e-02  5.000000e-02
-7          DERM              LSL4  17.800000 2.206714e-01  4.163336e-17
-8          DERM              JBG7 -16.300000 1.939309e-01 -5.000000e-02
-9          DERM              LBA2  14.650000 2.206714e-01 -5.000000e-02
-10         DERM              HCA1 -14.600000 2.452781e-01  1.000000e-01
-11         DERM              TCC9  14.325000 8.239019e-03  0.000000e+00
-12         DERM              LSJ9  13.950000 4.920279e-02  0.000000e+00
-13         DERM              FBC2  13.550000 1.386406e-01  0.000000e+00
-14         DERM              MBD9  12.925000 1.489147e-01  5.000000e-02
-15         DERM              JBJ8  12.750000 3.422567e-02  8.750000e-02
-16         DERM              ABD3  12.700000 2.252436e-02  4.000000e-02
-17         DERM              LMJ5 -12.625000 1.553178e-01  1.250000e-02
-18         DERM              LMK2  12.400000 1.939309e-01 -2.000000e-01
-19         DERM              LMJ9 -12.550000 8.136637e-01 -1.000000e-01
-20         DERM              ABC9  11.900000 7.219820e-02  0.000000e+00
-21         DERM              CD01 -11.400000 8.085560e-02  0.000000e+00
-22         DERM              BSE1 -11.300000 7.219820e-02 -1.000000e-01
-23         DERM              LBJ4 -10.900000 7.652250e-02  0.000000e+00
-24         DERM              JBE8 -10.750000 1.815225e-02  0.000000e+00
-25         DERM              LBE7 -10.800000 6.360257e-02 -1.000000e-01
-26         DERM              MBJ5 -10.625000 1.637731e-02  5.000000e-02
-27         DERM              BWD3  10.200000 5.934644e-02 -1.000000e-01
-28         DERM              FBA9 -10.000000 3.326131e-01  1.250000e-02
-29         DERM              TCC5   9.800000 2.452781e-01 -1.500000e-01
-30         DERM              ABB1   9.800000 7.709987e-02 -5.000000e-02
-31         DERM              LBH6   9.800000 8.812934e-05 -1.666667e-02
-32         DERM              JBJ9   9.400000 9.521891e-03 -8.333333e-03
-33         DERM              LBH3   9.400000 1.951748e-02  0.000000e+00
-34         DERM              LBG5   9.400000 7.780415e-03  2.000000e-01
-35         DERM              LBF9   9.050000 7.780415e-03  0.000000e+00
-36         DERM              LSD6   8.900000 3.848476e-03 -3.333333e-02
-37         DERM              TCC7   8.800000 5.402914e-01  0.000000e+00
-38         DERM              LSG3   8.750000 8.085560e-02  0.000000e+00
-39         DERM              LMD4   8.750000 2.206714e-01  1.000000e-01
-40         DERM              DCD7   8.625000 3.758888e-02  0.000000e+00
-41         DERM              LBG2   8.620000 1.000000e+00  0.000000e+00
-42         DERM              JBL6   8.450000 2.206714e-01 -5.000000e-02
-43         DERM              JBL9  -8.550000 2.206714e-01 -5.000000e-02
-44         DERM              JBJ2   8.450000 2.206714e-01 -3.469447e-18
-45         DERM              LBH3   8.360000 4.362749e-01  0.000000e+00
-46         DERM              JBA4   8.375000 2.206714e-01  2.500000e-02
-47         DERM              JBD3  -8.750000 2.206714e-01 -5.500000e-01
-48         DERM              JBH7  -8.200000 2.206714e-01  0.000000e+00
-49         DERM              HCD2   8.040000 4.330814e-02  3.000000e-02
-50         DERM              LML3   7.887500 2.636279e-02  0.000000e+00
-51         DERM              DCA6   7.775000 2.206714e-01  0.000000e+00
-52         DERM              LSK1   7.616667 5.511488e-01  0.000000e+00
-53         DERM              MBI9   7.600000 7.652250e-02  0.000000e+00
-54         DERM              JBD6   7.516667 4.330814e-02  3.333333e-02
-55         DERM              JBE1   7.058333 4.920279e-02  0.000000e+00
-56         DERM              ABB7   6.800000 5.402914e-01 -1.000000e-01
-57         DERM              LMA3   6.850000 2.452781e-01  1.500000e-01
-58         DERM              LBA5   6.650000 3.359433e-03 -3.333333e-02
-59         DERM              BSL4   6.650000 5.934644e-02  0.000000e+00
-60         DERM              BWB9   6.600000 8.085560e-02 -5.000000e-02
-61         DERM              HCA9   6.800000 5.523425e-02  1.500000e-01
-62         DERM              TCA8   6.616667 1.000000e+00  0.000000e+00
-63         DERM              JBC8  -6.450000 2.206714e-01  0.000000e+00
-64         DERM              LBG5   6.630000 6.485308e-03  2.000000e-01
-65         DERM              LMF3   6.400000 1.939309e-01  0.000000e+00
-66         DERM              BWD6  -6.300000 6.081338e-03  1.000000e-01
-67         DERM              TCB9  -6.387500 5.380245e-01  0.000000e+00
-68         DERM              JBK9  -6.166667 3.758888e-02 -6.666667e-02
-69         DERM              MBH4   6.000000 8.085560e-02 -1.000000e-01
-70         DERM              LMK4  -5.900000 7.340952e-01  1.750000e-01
-71         DERM              DCD8  -6.000000 2.452781e-01  0.000000e+00
-72         DERM              JBK1   6.100000 1.000000e+00  1.000000e-01
-73         DERM              DCC2   5.983333 2.452781e-01  1.666667e-02
-74         DERM              HCD6   5.871429 5.380245e-01  2.602085e-18
-75         DERM              LML4   5.650000 2.206714e-01 -2.000000e-01
-76         DERM              LSG9  -5.800000 1.000000e+00  1.250000e-02
-77         DERM              LSA6  -5.800000 2.452781e-01  1.387779e-17
-78         DERM              LBA1   5.770000 2.206714e-01  2.000000e-02
-79         DERM              HCC6   5.733333 1.939309e-01 -1.666667e-02
-80         DERM              JBH2  -5.725000 2.042331e-01 -2.500000e-02
-81         DERM              BSF8   5.650000 6.485308e-03  0.000000e+00
-82         DERM              LSG5  -5.600000 4.414183e-01  2.500000e-02
-83         DERM              MBC2   5.600000 8.889066e-04  0.000000e+00
-84         DERM              FBC3   5.580000 1.000000e+00  0.000000e+00
-85         DERM              BWC3   5.550000 4.685418e-02  0.000000e+00
-86         DERM              MBA4  -5.450000 1.000000e+00  1.000000e-01
-87         DERM              JBD3   5.000000 2.452781e-01 -5.500000e-01
-88         DERM              LBB4  -5.500000 4.606532e-03  0.000000e+00
-89      BROWARD                17   5.420833 5.458167e-01 -3.500000e-02
-90         DERM              LBH9   5.400000 2.123969e-02  0.000000e+00
-91         DERM              LBJ3   5.400000 6.485308e-03  0.000000e+00
-92         DERM              LSD1  -5.400000 2.452781e-01 -1.387779e-17
-93         DERM              ABC5   5.410000 2.206714e-01  2.000000e-02
-94         DERM              DCA1   5.266667 4.330814e-02 -6.666667e-02
-95         DERM              TCA2  -5.280000 1.000000e+00  5.000000e-02
-96         DERM              LMC6   5.250000 1.113834e-01  0.000000e+00
-97         DERM              LBH7   5.200000 8.085560e-02  0.000000e+00
-98         DERM              MBE8   5.100000 7.652250e-02 -1.000000e-01
-99         DERM              LBA9   5.166667 7.219820e-02  0.000000e+00
-100        DERM              LBJ1  -5.140000 6.903218e-03  0.000000e+00
-    pvalue.old rate_of_change_diff                           ParameterName
-1    0.6985354          -35.000000                                Salinity
-2    1.0000000          -31.100000                                Salinity
-3    1.0000000           20.400000                                Salinity
-4    1.0000000          -19.700000                                Salinity
-5    1.0000000           19.450000                                Salinity
-6    0.8105383           19.350000                                Salinity
-7    1.0000000           17.800000                                Salinity
-8    1.0000000          -16.250000                                Salinity
-9    1.0000000           14.700000                                Salinity
-10   1.0000000          -14.700000                                Salinity
-11   1.0000000           14.325000                                Salinity
-12   1.0000000           13.950000                                Salinity
-13   1.0000000           13.550000                                Salinity
-14   0.7670969           12.875000                                Salinity
-15   0.8105383           12.662500                                Salinity
-16   0.6974545           12.660000                                Salinity
-17   1.0000000          -12.637500                                Salinity
-18   0.6985354           12.600000                                Salinity
-19   0.6379736          -12.450000                                Salinity
-20   1.0000000           11.900000                                Salinity
-21   1.0000000          -11.400000                                Salinity
-22   0.8247781          -11.200000                                Salinity
-23   1.0000000          -10.900000                                Salinity
-24   0.8439255          -10.750000                                Salinity
-25   0.6625206          -10.700000                                Salinity
-26   0.8382565          -10.675000                                Salinity
-27   0.8247781           10.300000                                Salinity
-28   0.7054570          -10.012500                                Salinity
-29   1.0000000            9.950000                                Salinity
-30   1.0000000            9.850000                                Salinity
-31   0.7258559            9.816667                                Salinity
-32   0.8169613            9.408333                                Salinity
-33   1.0000000            9.400000                                Salinity
-34   0.5341590            9.200000                                Salinity
-35   0.8737394            9.050000                                Salinity
-36   0.7153030            8.933333                                Salinity
-37          NA            8.800000                                Salinity
-38   1.0000000            8.750000                                Salinity
-39   0.6985354            8.650000                                Salinity
-40   1.0000000            8.625000                                Salinity
-41   1.0000000            8.620000                                Salinity
-42   1.0000000            8.500000                                Salinity
-43   1.0000000           -8.500000                                Salinity
-44   1.0000000            8.450000                                Salinity
-45   1.0000000            8.360000                       Water Temperature
-46   1.0000000            8.350000                                Salinity
-47   1.0000000           -8.200000                                Salinity
-48   1.0000000           -8.200000                                Salinity
-49   1.0000000            8.010000                                Salinity
-50   1.0000000            7.887500                                Salinity
-51   1.0000000            7.775000                                Salinity
-52   1.0000000            7.616667                                Salinity
-53   1.0000000            7.600000                                Salinity
-54   1.0000000            7.483333                                Salinity
-55   1.0000000            7.058333                                Salinity
-56   1.0000000            6.900000                                Salinity
-57   0.6985354            6.700000                                Salinity
-58   0.7367605            6.683333                                Salinity
-59   1.0000000            6.650000                                Salinity
-60   0.8247781            6.650000                                Salinity
-61   0.7728300            6.650000                                Salinity
-62   1.0000000            6.616667                                Salinity
-63   1.0000000           -6.450000                                Salinity
-64   0.5341590            6.430000                       Water Temperature
-65   1.0000000            6.400000                                Salinity
-66   0.8773706           -6.400000                                Salinity
-67   0.8291180           -6.387500                                Salinity
-68   0.7841912           -6.100000                                Salinity
-69   0.8247781            6.100000                                Salinity
-70   0.7787290           -6.075000                                Salinity
-71   1.0000000           -6.000000                                Salinity
-72   0.5741491            6.000000                                Salinity
-73   1.0000000            5.966667                                Salinity
-74   1.0000000            5.871429                                Salinity
-75   0.6985354            5.850000                                Salinity
-76   0.7524275           -5.812500                                Salinity
-77   1.0000000           -5.800000                                Salinity
-78   1.0000000            5.750000                                Salinity
-79   1.0000000            5.750000                                Salinity
-80   0.8563891           -5.700000                                Salinity
-81   1.0000000            5.650000                                Salinity
-82   1.0000000           -5.625000                                Salinity
-83   1.0000000            5.600000                                Salinity
-84   1.0000000            5.580000                                Salinity
-85   1.0000000            5.550000                                Salinity
-86   0.6385921           -5.550000                                Salinity
-87   1.0000000            5.550000                       Water Temperature
-88   0.8737394           -5.500000                                Salinity
-89   0.7276427            5.455833 Chlorophyll a, Corrected for Pheophytin
-90   1.0000000            5.400000                                Salinity
-91   1.0000000            5.400000                                Salinity
-92   1.0000000           -5.400000                                Salinity
-93   1.0000000            5.390000                                Salinity
-94   0.5741491            5.333333                                Salinity
-95   0.5741491           -5.330000                                Salinity
-96   1.0000000            5.250000                                Salinity
-97   1.0000000            5.200000                                Salinity
-98   0.8247781            5.200000                                Salinity
-99   1.0000000            5.166667                                Salinity
-100  1.0000000           -5.140000                       Water Temperature</code></pre>
+<pre><code>    ProgramName ProgramLocationID    slope.new   pvalue.new n_values.new
+1         FKNMS               296  0.034782143 1.758528e-02          195
+2          DERM              AC03  0.789230769 1.262027e-91          981
+3       BROWARD               121  0.166666667 1.393746e-02           50
+4          DERM              BB55 -0.800000000 2.314381e-07           43
+5          DERM              BB42  0.450000000 2.492670e-05          171
+6   AOML_SFPSSS                22  0.040057309 2.573111e-05          263
+7   AOML_SFPSSS                 3  0.105666660 4.869302e-09          268
+8   AOML_SFPSSS                 1  0.144902084 1.128928e-10          271
+9     PalmBeach                13  0.470833333 1.017093e-02           51
+10  AOML_SFPSSS                21  0.070625000 7.494628e-03          191
+11  AOML_SFPSSS                 2  0.071560870 2.835646e-08          276
+12  AOML_SFPSSS                20  0.031789474 6.522667e-03          258
+13  AOML_SFPSSS                23  0.022523538 1.251856e-02          261
+14  AOML_SFPSSS                 7  0.029687500 4.507703e-02          284
+15  AOML_SFPSSS                 8  0.017000000 3.022601e-02          261
+16    PalmBeach                22  0.083846154 2.299139e-03          100
+17  AOML_SFPSSS                 4  0.044513542 2.324120e-02          242
+18  AOML_SFPSSS                 1 -0.043384615 3.388746e-07          201
+19  AOML_SFPSSS                28  0.075500000 3.160677e-02          171
+20  AOML_SFPSSS                22 -0.019491639 3.123551e-07          196
+21         DERM              GL02  0.161739130 5.145607e-11          985
+22  AOML_SFPSSS                 9  0.012904762 1.491174e-02          333
+23  AOML_SFPSSS                13  0.056115789 1.563411e-04          171
+24         DERM              BB29  0.148461538 1.440238e-13          560
+25  AOML_SFPSSS                29  0.055750000 4.947948e-02          166
+26  AOML_SFPSSS                11  0.050441392 1.709283e-03          171
+27  AOML_SFPSSS                34  0.075312078 1.662166e-12          331
+28    PalmBeach               12A  0.059722222 3.001323e-04          119
+29         DERM              BB03  0.133333333 5.576888e-06          552
+30  AOML_SFPSSS                14  0.053181818 2.062367e-03          180
+31  AOML_SFPSSS                26  0.133111111 3.007368e-03          162
+32  AOML_SFPSSS                37  0.319751429 5.140652e-05          122
+33  AOML_SFPSSS                 2 -0.011090909 2.135373e-03          219
+34  AOML_SFPSSS                 4  0.067699561 2.219730e-03          160
+35  AOML_SFPSSS                14  0.053181818 2.062367e-03          180
+36  AOML_SFPSSS                27  0.125080357 1.300924e-03          156
+37         DERM              MR04  0.108416667 2.698826e-07          654
+38  AOML_SFPSSS                67  0.138333333 3.186589e-02           57
+39  AOML_SFPSSS                66  0.134166667 1.793400e-02           56
+40  AOML_SFPSSS                51 -0.023000000 6.299113e-03          243
+41  AOML_SFPSSS                 2  0.071560870 2.835646e-08          276
+42  AOML_SFPSSS                62  0.148888889 2.933131e-02           60
+43         DERM              BB23  0.100000000 1.278343e-06          561
+44    PalmBeach               38B  0.066985294 4.134811e-03          120
+45  AOML_SFPSSS                20 -0.033153846 3.140008e-10          192
+46  AOML_SFPSSS                68  0.114166667 4.993830e-02           61
+47  AOML_SFPSSS                36  0.316500000 3.403107e-05          140
+48    PalmBeach                16  0.077207792 3.193977e-03          118
+49         DERM              FC15  0.082222222 1.069915e-28          996
+50         DERM              AC03  0.081805000 1.302439e-50          984
+51  AOML_SFPSSS                58  0.013472083 1.797456e-02          179
+52  AOML_SFPSSS                10  0.033000000 4.919382e-03          271
+53  AOML_SFPSSS                35  0.210163636 8.247092e-04          127
+54    PalmBeach               18D  0.400000000 1.191694e-02           51
+55  AOML_SFPSSS                12  0.034615385 8.954981e-03          225
+56  AOML_SFPSSS                 7 -0.016865633 1.458830e-11          357
+57  AOML_SFPSSS                24  0.070221569 2.569533e-05          177
+58    PalmBeach               37B  0.077500000 1.219219e-03          116
+59    PalmBeach                16  0.056966912 1.397615e-02          120
+60  AOML_SFPSSS                13  0.027060185 6.482980e-03          259
+61  AOML_SFPSSS                 3 -0.015666667 1.890889e-04          204
+62    PalmBeach                11  0.034201681 1.057783e-04          208
+63  AOML_SFPSSS                15  0.048933333 4.049203e-03          173
+64         DERM              MR07  0.061250000 1.872837e-45         1024
+65         DERM              MR04  0.060869565 4.874669e-32          615
+66  AOML_SFPSSS                38  0.242450000 2.883084e-03          128
+67         DERM              BB23 -0.060000000 7.483378e-07          182
+68         DERM              BB07  0.060000000 1.536776e-06          552
+69  AOML_SFPSSS                 1  0.066720000 6.443087e-05          186
+70  AOML_SFPSSS                 9  0.045970588 1.677202e-03          243
+71         DERM              OL03  0.056250000 6.722318e-19          804
+72    PalmBeach               38B  0.044777778 1.923155e-02          118
+73    PalmBeach                64  0.448500000 9.906663e-03           50
+74    PalmBeach               31E  0.051666667 4.401220e-02          115
+75    PalmBeach                13  0.051458333 1.242907e-09          207
+76      BROWARD                13  0.555000000 1.237301e-02           38
+77         DERM              BB03 -0.050000000 2.921135e-04          171
+78         DERM              BB19 -0.050000000 2.365126e-11          234
+79         DERM              CM02  0.050000000 2.022554e-10          210
+80         DERM              TM03  0.050000000 1.347230e-05          510
+81    PalmBeach               12A  0.017894737 1.008508e-03          121
+82         DERM              FC15  0.047777778 7.377166e-29         1032
+83      BROWARD                 1  0.072916667 1.028926e-02           95
+84    PalmBeach               31C -0.060000000 1.019702e-03          108
+85    PalmBeach                22  0.098888889 1.333454e-03          100
+86         DERM              FC03  0.045000000 1.163791e-25          978
+87      BROWARD                49  1.206857143 7.903753e-03           57
+88  AOML_SFPSSS                15 -0.027113188 1.223198e-30          331
+89         DERM              WC04  0.042307692 1.612091e-26          760
+90         DERM              BB14  0.042139610 2.323445e-14          977
+91  AOML_SFPSSS                23 -0.009166667 3.190934e-03          195
+92  AOML_SFPSSS               KW1 -0.179916667 2.832611e-05          127
+93  AOML_SFPSSS                 3  0.071020833 2.964449e-05          185
+94         DERM              MR02  0.041052632 5.207874e-16          546
+95  AOML_SFPSSS                V3  0.193750000 1.547482e-04           65
+96         DERM              BB25  0.040322581 1.007066e-12          728
+97  AOML_SFPSSS                 1  0.005682620 2.022737e-04          335
+98         DERM              BB27 -0.040000000 4.284799e-09          231
+99         DERM              BB54 -0.040000000 3.292879e-13          186
+100        DERM              MR07  0.040000000 4.607069e-27         1062
+      slope.old   pvalue.old n_values.old rate_of_change_diff
+1    1.00833750 4.920279e-02           16         -0.97355536
+2    0.00000000 4.950655e-02          693          0.78923077
+3    0.68333333 1.814108e-02           24         -0.51666667
+4   -0.30000000 5.908711e-05           43         -0.50000000
+5    0.00000000 2.775608e-02          171          0.45000000
+6    0.43645455 3.606127e-04          119         -0.39639724
+7    0.44076250 1.811641e-03          127         -0.33509584
+8    0.47885865 8.614401e-05          134         -0.33395657
+9    0.15750000 2.114199e-02          144          0.31333333
+10   0.36980000 5.066682e-04          120         -0.29917500
+11   0.36526434 1.933060e-03          121         -0.29370347
+12   0.31020417 2.507107e-03          118         -0.27841469
+13   0.29342000 1.379429e-02          119         -0.27089646
+14   0.29487659 1.263164e-03          133         -0.26518909
+15   0.27048500 1.907554e-04          120         -0.25348500
+16   0.32250000 2.375926e-05           78         -0.23865385
+17   0.26929333 3.905903e-02          120         -0.22477979
+18   0.16578571 2.007155e-04          120         -0.20917033
+19   0.26333929 5.461467e-03          117         -0.18783929
+20   0.14385714 4.977060e-06          110         -0.16334878
+21   0.00000000 3.030412e-03          672          0.16173913
+22   0.17257750 8.017375e-03          126         -0.15967274
+23   0.20562500 1.628271e-02           54         -0.14950921
+24   0.00000000 1.688245e-02          561          0.14846154
+25   0.19561000 1.683339e-02          112         -0.13986000
+26   0.18900000 2.376802e-02           55         -0.13855861
+27  -0.06014091 4.709357e-04          113          0.13545299
+28   0.19333333 7.696948e-05           81         -0.13361111
+29   0.00000000 3.197671e-02          552          0.13333333
+30  -0.07441000 4.130871e-02          129          0.12759182
+31   0.25201167 8.004106e-03          118         -0.11890056
+32   0.20389000 2.605673e-03          111          0.11586143
+33   0.10166667 3.944336e-06          111         -0.11275758
+34   0.17942857 1.217996e-02           44         -0.11172901
+35   0.16377778 7.257987e-03           55         -0.11059596
+36   0.23528571 5.868701e-03          113         -0.11020536
+37   0.00000000 3.918773e-03          558          0.10841667
+38   0.24566667 8.382393e-03           53         -0.10733333
+39   0.24041667 2.928813e-03           52         -0.10625000
+40  -0.12720000 3.376337e-03           56          0.10420000
+41  -0.03166667 4.790038e-02           55          0.10322754
+42   0.25058333 3.243892e-03           56         -0.10169444
+43   0.00000000 9.736670e-07          561          0.10000000
+44   0.16166667 1.196025e-02           82         -0.09468137
+45   0.05950000 5.718036e-03          109         -0.09265385
+46   0.20350000 2.215731e-02           55         -0.08933333
+47   0.22917500 9.125826e-04          129          0.08732500
+48   0.16000000 1.064311e-02           80         -0.08279221
+49   0.00000000 2.082759e-02          694          0.08222222
+50   0.00000000 2.639379e-02          700          0.08180500
+51   0.09452083 3.906780e-03           53         -0.08104875
+52   0.11174000 4.730608e-02          117         -0.07874000
+53   0.13150000 5.676177e-03          117          0.07866364
+54   0.47750000 7.637197e-06          117         -0.07750000
+55   0.11029875 3.614617e-05           55         -0.07568337
+56  -0.09000665 2.244348e-07          127          0.07314102
+57   0.14232143 3.775850e-02           57         -0.07209986
+58   0.14777778 1.008070e-02           80         -0.07027778
+59   0.12618182 1.781477e-02           82         -0.06921491
+60   0.09605084 3.654004e-02          120         -0.06899066
+61   0.05025000 1.014978e-02          119         -0.06591667
+62   0.10000000 1.002137e-07          149         -0.06579832
+63   0.11225000 6.956505e-04           55         -0.06331667
+64   0.00000000 1.072612e-02          704          0.06125000
+65   0.00000000 2.342833e-03          519          0.06086957
+66   0.18234744 4.745449e-03          117          0.06010256
+67   0.00000000 4.994773e-02          182         -0.06000000
+68   0.00000000 1.808247e-02          553          0.06000000
+69   0.12666667 4.790038e-02           55         -0.05994667
+70   0.10316667 1.634339e-03           57         -0.05719608
+71   0.00000000 3.276080e-04          514          0.05625000
+72   0.10000000 4.694628e-02           80         -0.05522222
+73   0.50125000 9.306387e-03           53         -0.05275000
+74   0.10200000 4.990093e-02           78         -0.05033333
+75   0.10166667 2.574723e-07          148         -0.05020833
+76   0.50500000 1.265262e-02           40          0.05000000
+77   0.00000000 1.636747e-02          173         -0.05000000
+78   0.00000000 2.098161e-24          235         -0.05000000
+79   0.00000000 7.654482e-05          125          0.05000000
+80   0.00000000 1.054501e-04          509          0.05000000
+81   0.06700000 3.898992e-07           83         -0.04910526
+82   0.00000000 1.252331e-02          735          0.04777778
+83   0.12000000 4.846646e-02           81         -0.04708333
+84  -0.10700000 8.196570e-03           71          0.04700000
+85   0.14428571 3.603802e-02           78         -0.04539683
+86   0.00000000 4.231642e-02          665          0.04500000
+87   1.25000000 4.630620e-03           57         -0.04314286
+88  -0.07024663 9.079159e-06          119          0.04313345
+89   0.00000000 1.000929e-07          503          0.04230769
+90   0.00000000 1.839815e-03          674          0.04213961
+91   0.03250000 3.682170e-02          109         -0.04166667
+92  -0.22140000 3.009250e-02           34          0.04148333
+93   0.11237500 4.115081e-04           55         -0.04135417
+94   0.00000000 3.304498e-02          450          0.04105263
+95   0.23462500 2.293437e-02           29         -0.04087500
+96   0.00000000 3.096757e-02          558          0.04032258
+97  -0.03460000 7.129366e-03           55          0.04028262
+98   0.00000000 3.618876e-23          233         -0.04000000
+99   0.00000000 9.690511e-04          187         -0.04000000
+100  0.00000000 8.118009e-03          746          0.04000000
+                              ParameterName
+1                                  Salinity
+2                                  Salinity
+3                         Water Temperature
+4                                 Turbidity
+5                                  Salinity
+6                                  Salinity
+7                                  Salinity
+8                                  Salinity
+9   Chlorophyll a, Corrected for Pheophytin
+10                                 Salinity
+11                                 Salinity
+12                                 Salinity
+13                                 Salinity
+14                                 Salinity
+15                                 Salinity
+16                         Dissolved Oxygen
+17                                 Salinity
+18                          NO2+3, Filtered
+19                                 Salinity
+20                          NO2+3, Filtered
+21                                 Salinity
+22                                 Salinity
+23                        Water Temperature
+24                                 Salinity
+25                                 Salinity
+26                        Water Temperature
+27  Chlorophyll a, Corrected for Pheophytin
+28                         Dissolved Oxygen
+29                                 Salinity
+30                        Water Temperature
+31                                 Salinity
+32                                 Salinity
+33                          NO2+3, Filtered
+34                        Water Temperature
+35                        Water Temperature
+36                                 Salinity
+37                                 Salinity
+38                        Water Temperature
+39                        Water Temperature
+40  Chlorophyll a, Corrected for Pheophytin
+41                                 Salinity
+42                        Water Temperature
+43                                 Salinity
+44                        Water Temperature
+45                          NO2+3, Filtered
+46                        Water Temperature
+47                                 Salinity
+48                         Dissolved Oxygen
+49                         Dissolved Oxygen
+50                        Water Temperature
+51                                 Salinity
+52                                 Salinity
+53                                 Salinity
+54  Chlorophyll a, Corrected for Pheophytin
+55                        Water Temperature
+56  Chlorophyll a, Corrected for Pheophytin
+57                        Water Temperature
+58                        Water Temperature
+59                        Water Temperature
+60                                 Salinity
+61                          NO2+3, Filtered
+62                         Dissolved Oxygen
+63                        Water Temperature
+64                         Dissolved Oxygen
+65                         Dissolved Oxygen
+66                                 Salinity
+67                                Turbidity
+68                                 Salinity
+69                        Water Temperature
+70                        Water Temperature
+71                                 Salinity
+72                         Dissolved Oxygen
+73                         Dissolved Oxygen
+74                        Water Temperature
+75                         Dissolved Oxygen
+76                         Dissolved Oxygen
+77                                Turbidity
+78                                Turbidity
+79                                Turbidity
+80                         Dissolved Oxygen
+81                                       pH
+82                        Water Temperature
+83                        Water Temperature
+84                                Turbidity
+85                        Water Temperature
+86                        Water Temperature
+87                                 Salinity
+88  Chlorophyll a, Corrected for Pheophytin
+89                        Water Temperature
+90                        Water Temperature
+91                          NO2+3, Filtered
+92  Chlorophyll a, Corrected for Pheophytin
+93                        Water Temperature
+94                         Dissolved Oxygen
+95                                 Salinity
+96                                 Salinity
+97  Chlorophyll a, Corrected for Pheophytin
+98                                Turbidity
+99                                Turbidity
+100                       Water Temperature</code></pre>
 </div>
 </div>
 
