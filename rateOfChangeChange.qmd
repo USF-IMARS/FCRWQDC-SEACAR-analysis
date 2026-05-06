@@ -25,8 +25,8 @@ getRateOfChangeParameters <- function(){
 ```
 
 
-```{R, compare rate of change at each station}
-#| code-summary: compare rate of change at each station
+```{R, calculate differences in rate of change at each station}
+#| code-summary: calculate differences in rate of change at each station
 #| warning: false
 library(dplyr)
 library(glue)
@@ -78,8 +78,12 @@ for (parameter in getRateOfChangeParameters()){
     mutate(
       slope.new = slope.x,  # from seacar_rate_of_change
       pvalue.new = pvalue.x,
+      n_values.new = n_values.x,
+
       slope.old = slope.y,  # from old_rate_of_change
       pvalue.old = pvalue.y,
+      n_values.old = n_values.y,
+      
       rate_of_change_diff = slope.x - slope.y,
       # keep only columns we need
       ProgramName = ProgramName,
@@ -98,7 +102,39 @@ cat('\n\nMissing old parameters:', paste(missing_old_parameters, collapse = ', '
 ```
 
 
-# Distribution of Rate of Changes from slope.old and slope.new
+# Change in the number of values used to calculate slopes
+Slopes calculated with fewer values are less reliable.
+The new data source is expected to have a higher n_value at each station.
+
+## n_values old vs new correlation
+A line with slope 1 would indicate no change in the number of values used to calculate slopes.
+Data points below this line indicate a decrease in the number of values used to calculate slopes.
+Data points above this line indicate an increase in the number of values used to calculate slopes.
+
+```{R, plot scatter plot of old vs new n_values}
+#| code-summary: plot scatter plot of old vs new n_values
+library(ggplot2)
+
+# Calculate the range for both axes
+max_slope <- max(c(rate_of_change_comparison$n_values.old, rate_of_change_comparison$n_values.new), na.rm = TRUE)
+min_slope <- min(c(rate_of_change_comparison$n_values.old, rate_of_change_comparison$n_values.new), na.rm = TRUE)
+
+ggplot(rate_of_change_comparison, aes(x = n_values.old, y = n_values.new)) +
+  geom_point(shape=4, alpha=.2) +
+  coord_equal(xlim = c(min_slope, max_slope), ylim = c(min_slope, max_slope)) +
+  labs(title = "Old vs New Number of Values",
+       x = "Old Number of Values",
+       y = "New Number of Values")
+```
+
+Some station points can lines parallel to and above the 1:1 line.
+These lines represent a set of stations that have added a similar number of points to the time series.
+It is likely these points from the same data provider.
+
+
+# Rate of Changes from slope.old and slope.new
+The slopes calculated are expected to form a normal distribution around 0, with little change between the old and new data.
+
 ```{R, violin plot of slope.old and slope.new}
 #| code-summary: violin plot of slope.old and slope.new
 library(ggplot2)
@@ -117,22 +153,10 @@ ggplot(df_long, aes(x = version, y = slope, fill = version)) +
   theme(legend.position = "none")
 ```
 
+# New vs Old Slopes
+## New vs Old Slopes Correlation
+Slopes calculated from the new and old data should be highly correlated.
 
-# Distribution of Rate of Change Differences
-```{R, plot distribution of rate of change differences}
-#| code-summary: plot distribution of rate of change differences
-library(ggplot2)
-
-ggplot(rate_of_change_comparison, aes(x = rate_of_change_diff)) +
-  geom_histogram(bins = 50) +
-  labs(title = "Distribution of Rate of Change Differences",
-       x = "Rate of Change Difference",
-       y = "Count")
-```
-
-
-# New vs Old Correlations
-## New vs Old Slopes
 ```{R, plot scatter plot of old vs new rate of change}
 #| code-summary: plot scatter plot of old vs new rate of change
 library(ggplot2)
@@ -141,16 +165,26 @@ library(ggplot2)
 max_slope <- max(c(rate_of_change_comparison$slope.old, rate_of_change_comparison$slope.new), na.rm = TRUE)
 min_slope <- min(c(rate_of_change_comparison$slope.old, rate_of_change_comparison$slope.new), na.rm = TRUE)
 
+# Calculate quartiles for color scale
+color_min <- quantile(rate_of_change_comparison$n_values.new, 0.25, na.rm = TRUE)
+color_max <- quantile(rate_of_change_comparison$n_values.new, 0.75, na.rm = TRUE)
+
 ggplot(rate_of_change_comparison, aes(x = slope.old, y = slope.new)) +
-  geom_point(shape=4, alpha=.2) +
+  # color by n_values
+  geom_point(aes(color = n_values.new), shape=4, alpha=.3) +
+  scale_color_gradient(low = "red", high = "blue", limits = c(color_min, color_max)) +
   coord_equal(xlim = c(min_slope, max_slope), ylim = c(min_slope, max_slope)) +
   labs(title = "Old vs New Rate of Change",
        x = "Old Rate of Change",
-       y = "New Rate of Change")
+       y = "New Rate of Change",
+       color = "N Values \n(quartile bounded)")
 ```
 
 
 ## New vs Old p-values
+The p-values calculated from the new and old data should be highly correlated.
+The p-values should become more significant (lower) as more data is added, so the majority of points should be below the diagonal.
+
 ```{R, plot scatter plot of old vs new significances}
 #| code-summary: plot scatter plot of old vs new significances
 library(ggplot2)
@@ -168,8 +202,24 @@ ggplot(rate_of_change_comparison, aes(x = pvalue.old, y = pvalue.new)) +
 ```
 
 
-# Rate of Change Change Across Facets
-## Rate of Change Change Across ProgramName Facet
+
+# Rate of Change Differences
+The rate of change differences should be normally distributed around 0.
+```{R, plot distribution of rate of change differences}
+#| code-summary: plot distribution of rate of change differences
+library(ggplot2)
+
+ggplot(rate_of_change_comparison, aes(x = rate_of_change_diff)) +
+  geom_histogram(bins = 50) +
+  labs(title = "Distribution of Rate of Change Differences",
+       x = "Rate of Change Difference",
+       y = "Count")
+```
+
+## Rate of Change Change Across Facets
+Patterns in the rate of change differences may be apparent across parameters or data providers.
+
+### Rate of Change Change Across ProgramName Facet
 ```{R, violin plot of new vs old rate of change facet programName}
 #| code-summary: violin plot of new vs old rate of change facet programName
 library(ggplot2)
@@ -182,7 +232,7 @@ ggplot(rate_of_change_comparison, aes(x = ProgramName, y = rate_of_change_diff))
 ```
 
 
-## Rate of Change Change Across ParameterName Facet
+### Rate of Change Change Across ParameterName Facet
 ```{R, violin plot of new vs old rate of change facet parameterName}
 #| code-summary: violin plot of new vs old rate of change facet parameterName
 library(ggplot2)
@@ -197,6 +247,8 @@ ggplot(rate_of_change_comparison, aes(x = ParameterName, y = rate_of_change_diff
 
 
 # Top Differences
+The most different rate of change differences are plotted below.
+
 ```{R, plot time series of top differences}
 #| code-summary: plot time series of top differences
 library(here)
@@ -213,13 +265,41 @@ subset_to_plot <- rate_of_change_comparison %>%
 for (i in 1:nrow(subset_to_plot)) {
   station <- subset_to_plot$ProgramLocationID[i]
   parameter_name <- subset_to_plot$ParameterName[i]
+  program_name <- subset_to_plot$ProgramName[i]
 
   # Get data for the station+parameter
   df_station <- getStationData(station) %>%
-    filter(ParameterName == parameter_name)
+    filter(
+      ParameterName == parameter_name
+    )
 
-  # TODO: this function is slow; could do it more efficiently here.
-  plotStationParameterTimeSeriesComparison(df_station, station, parameter_name)
+  # get ParameterUnits for source = "SEACAR_STD"
+  seacar_units <- df_station %>% 
+      filter(source == "SEACAR_STD") %>% 
+      pull(ParameterUnits) %>% 
+      unique() %>% 
+      first()
+
+  # get ParameterUnits for source = "OLD_STD"
+  old_units <- df_station %>% 
+      filter(source == "OLD_STD") %>% 
+      pull(ParameterUnits) %>% 
+      unique() %>% 
+      first()
+
+
+  # Create plot
+  print(ggplot(df_station, aes(x = SampleDate, y = ResultValue, color = source)) +
+      # point data
+      geom_point(alpha = 0.4, shape=4) +
+      labs(
+      title = paste(program_name, "\n", station),
+      x = "Sample Date",
+      y = paste(parameter_name, "[", seacar_units, "||", old_units, "]")
+      ) +
+      theme_minimal() +
+      theme(legend.position = "none")
+  )
 }
 ```
 
