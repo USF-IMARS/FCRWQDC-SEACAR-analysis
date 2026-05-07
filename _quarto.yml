@@ -9,6 +9,7 @@ project:
 
   - index.qmd
   - usage_examples/map_program_parameter_subset.qmd
+  - usage_examples/plot_slopes.qmd
   - SEACAROverallCompare.qmd
   - SEACARDepthComparison.qmd
   - randomSampleDrilldown.qmd
@@ -43,6 +44,8 @@ website:
       menu:
         - href: usage_examples/map_program_parameter_subset.qmd
           text: Map Program Parameter Subset
+        - href: usage_examples/plot_slopes.qmd
+          text: Map of Slope Values
 
     - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis
       text: Source Code on GitHub

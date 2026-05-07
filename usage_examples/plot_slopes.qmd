@@ -1,0 +1,166 @@
+---
+title: "plot_slopes"
+format: html
+---
+
+A geographic map of slope values.
+
+```{R, load data}
+# code-summary: load data
+library(here)
+library(glue)
+parameter_to_plot <- "Salinity"
+df <- read.csv(here(glue("data/exports/parameterRateOfChange/{parameter_to_plot}.csv")))
+```
+
+```{R, plot slopes}
+library(dplyr)
+library(leaflet)
+library(h3jsr)
+library(htmlwidgets)
+library(jsonlite)
+library(sf)
+
+make_hex_layer <- function(df, res) {
+  agg <- df |>
+    mutate(h3 = point_to_cell(
+      cbind(OriginalLongitude, OriginalLatitude),
+      res = res
+    )) |>
+    group_by(h3) |>
+    summarise(avg_value = mean(significant_slope, na.rm = TRUE),
+              n         = n(), .groups = "drop")
+  polys <- cell_to_polygon(agg$h3)
+  st_sf(agg, geometry = polys, crs = 4326)
+}
+
+# Pre-build all resolutions you want to allow
+res_levels <- 2:8
+
+valid_vals <- df$significant_slope[is.finite(df$significant_slope)]
+stopifnot("No finite significant_slope values found" = length(valid_vals) > 0)
+val_min <- quantile(valid_vals, 0.25, na.rm = TRUE)
+val_max <- quantile(valid_vals, 0.75, na.rm = TRUE)
+pal <- colorNumeric("BrBG", domain = c(val_min, val_max))
+
+map <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
+  addProviderTiles(providers$CartoDB.DarkMatter) |>
+  setView(
+    lng  = mean(df$OriginalLongitude, na.rm = TRUE),
+    lat  = mean(df$OriginalLatitude,  na.rm = TRUE),
+    zoom = 7
+  ) |>
+  addLegend(
+    position = "bottomright",
+    pal      = pal,
+    values   = c(val_min, val_max),
+    title    = "Avg Significant Slope"
+  )
+
+for (res in res_levels) {
+  grp   <- paste0("res_", res)
+  hexsf <- make_hex_layer(df, res)
+
+  map <- map |>
+    addPolygons(
+      data        = hexsf,
+      group       = grp,
+      fillColor   = ~pal(avg_value),
+      fillOpacity = 0.75,
+      color       = "#ffffff",
+      weight      = 0.5,
+      popup       = ~paste0(
+        "<b>Avg significant slope:</b> ", round(avg_value, 3), "<br>",
+        "<b>Points in hex:</b> ",         n,                  "<br>",
+        "<b>H3 index:</b> ",              h3
+      )
+    )
+}
+
+default_res <- 4
+
+zoom_js <- sprintf(
+  "function(el, x) {
+    var map = this;
+    var resLevels = %s;
+    var currentRes = %d;
+
+    function showRes(res) {
+      resLevels.forEach(function(r) {
+        var grp = 'res_' + r;
+        var groupLayers = map.layerManager._byGroup[grp];
+        if (!groupLayers) return;
+        Object.keys(groupLayers).forEach(function(stamp) {
+          var layer = groupLayers[stamp];
+          if (r === res && !map.hasLayer(layer)) {
+            layer.addTo(map);
+          } else if (r !== res && map.hasLayer(layer)) {
+            map.removeLayer(layer);
+          }
+        });
+      });
+      document.getElementById('res-display').innerText = 'H3 Res: ' + res;
+    }
+
+    // Build control UI
+    var controlDiv = L.DomUtil.create('div');
+    controlDiv.style.cssText = [
+      'background: rgba(30,30,30,0.85)',
+      'border: 1px solid #555',
+      'border-radius: 6px',
+      'padding: 6px 10px',
+      'display: flex',
+      'align-items: center',
+      'gap: 8px',
+      'font-family: sans-serif',
+      'font-size: 13px',
+      'color: #eee',
+      'cursor: default',
+      'user-select: none'
+    ].join(';');
+
+    controlDiv.innerHTML =
+      '<button id=\"res-down\" style=\"' +
+        'background:#444;border:1px solid #666;color:#eee;' +
+        'border-radius:4px;width:24px;height:24px;font-size:16px;' +
+        'cursor:pointer;line-height:1;padding:0;\">-</button>' +
+      '<span id=\"res-display\">H3 Res: %d</span>' +
+      '<button id=\"res-up\" style=\"' +
+        'background:#444;border:1px solid #666;color:#eee;' +
+        'border-radius:4px;width:24px;height:24px;font-size:16px;' +
+        'cursor:pointer;line-height:1;padding:0;\">+</button>';
+
+    var ResControl = L.Control.extend({
+      options: { position: 'topleft' },
+      onAdd: function() { return controlDiv; }
+    });
+    new ResControl().addTo(map);
+
+    // Prevent map zoom/drag when interacting with control
+    L.DomEvent.disableClickPropagation(controlDiv);
+    L.DomEvent.disableScrollPropagation(controlDiv);
+
+    document.getElementById('res-down').addEventListener('click', function() {
+      if (currentRes > resLevels[0]) {
+        currentRes--;
+        showRes(currentRes);
+      }
+    });
+
+    document.getElementById('res-up').addEventListener('click', function() {
+      if (currentRes < resLevels[resLevels.length - 1]) {
+        currentRes++;
+        showRes(currentRes);
+      }
+    });
+
+    showRes(currentRes);
+  }",
+  toJSON(res_levels),
+  default_res,
+  default_res
+)
+
+map <- map |> htmlwidgets::onRender(zoom_js)
+map
+```
