@@ -41,8 +41,12 @@ res_levels <- 2:8
 
 valid_vals <- df$significant_slope[is.finite(df$significant_slope)]
 stopifnot("No finite significant_slope values found" = length(valid_vals) > 0)
-val_min <- quantile(valid_vals, 0.25, na.rm = TRUE)
-val_max <- quantile(valid_vals, 0.75, na.rm = TRUE)
+quantile_bound <- max(abs(c(
+  quantile(valid_vals, 0.25, na.rm = TRUE), 
+  quantile(valid_vals, 0.75, na.rm = TRUE)
+)))
+val_min <- -quantile_bound
+val_max <- quantile_bound
 pal <- colorNumeric("BrBG", domain = c(val_min, val_max))
 
 map <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
