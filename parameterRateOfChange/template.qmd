@@ -2,7 +2,7 @@
 title: "Total Ammonia (N) Rate of Change Analysis"
 format: html
 params:
-  batch_value: "Total Ammonia (N)"  # must match value in generate_batch_qmds.R
+  batch_value: "Salinity" #Total Ammonia (N)"  # must match value in generate_batch_qmds.R
   batch_name: "parameterRateOfChange"
 ---
 
@@ -28,7 +28,7 @@ source(here("R/seasonalMannKendall.R"))
 
 # add statistics for each station
 sample_stats_df <- df %>%
-  group_by(ProgramName, ProgramLocationID) %>%
+  group_by(ProgramName, ProgramLocationID, OriginalLongitude, OriginalLatitude) %>%
   summarize(
     mk_results = list(seasonalMannKendall(SampleDate, ResultValue)),
     n_values = n(),
