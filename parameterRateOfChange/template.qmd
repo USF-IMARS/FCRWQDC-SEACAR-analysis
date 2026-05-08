@@ -2,7 +2,7 @@
 title: "Total Ammonia (N) Rate of Change Analysis"
 format: html
 params:
-  batch_value: Total Ammonia (N)"  # must match value in generate_batch_qmds.R
+  batch_value: "Total Ammonia (N)"  # must match value in generate_batch_qmds.R
   batch_name: "parameterRateOfChange"
 ---
 
