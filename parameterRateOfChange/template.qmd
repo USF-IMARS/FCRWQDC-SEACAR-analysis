@@ -75,6 +75,8 @@ sample_stats_df %>%
   write.csv(paste0(dataDir, "/", params$batch_value, ".csv"))
 ```
 
+Distribution should be centered around zero.
+
 ```{R, plot distribution of slopes}
 #| code-summary: plot distribution of slopes
 #| warning: false  # suppress warning about NAs
@@ -82,9 +84,10 @@ library(ggplot2)
 
 ggplot(sample_stats_df, aes(x = slope)) +
   geom_density(fill = "steelblue", alpha = 0.7) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray")+
   labs(title = "Density Plot of Site Slopes",
        x = "Slope (rate of change)",
-       y = "Density (log scale)") +
+       y = "Density") +
   theme_minimal()
 ```
 
