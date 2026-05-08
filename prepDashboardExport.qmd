@@ -5,7 +5,8 @@ format: html
 
 This workflow prepares an export of the data modified for display on the [FCRWQDC Data Visualization Tool](https://github.com/USF-IMARS/FCRWQDC_data_dashboard).
 
-```{R, load and prep file}
+```{R, load and prep data}
+#| code-summary: load and prep data
 library(here)
 library(magrittr)
 library(dplyr)
