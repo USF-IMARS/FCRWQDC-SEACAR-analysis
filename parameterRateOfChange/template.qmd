@@ -28,7 +28,7 @@ source(here("R/seasonalMannKendall.R"))
 
 # add statistics for each station
 sample_stats_df <- df %>%
-  group_by(ProgramName, ProgramLocationID, OriginalLongitude, OriginalLatitude) %>%
+  group_by(ProgramName, ProgramLocationID, OriginalLongitude, OriginalLatitude, ParameterUnits) %>%
   summarize(
     mk_results = list(seasonalMannKendall(SampleDate, ResultValue)),
     n_values = n(),
