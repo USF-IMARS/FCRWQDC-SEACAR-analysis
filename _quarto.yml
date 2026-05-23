@@ -8,12 +8,14 @@ project:
   - prepDashboardExport.qmd
 
   - index.qmd
-  - usage_examples/map_program_parameter_subset.qmd
-  - usage_examples/plot_slopes.qmd
   - SEACAROverallCompare.qmd
   - SEACARDepthComparison.qmd
   - randomSampleDrilldown.qmd
   - rateOfChangeChange.qmd
+
+  - usage_examples/map_program_parameter_subset.qmd
+  - usage_examples/plot_slopes.qmd
+  - usage_examples/tidy-wide.qmd
 
   - parameterRateOfChange/batched_reports/*.qmd
   - parameterRateOfChange/listing.qmd
@@ -46,6 +48,8 @@ website:
           text: Map Program Parameter Subset
         - href: usage_examples/plot_slopes.qmd
           text: Map of Slope Values
+        - href: usage_examples/tidy-wide.qmd
+          text: Transform To Tidy Wide
 
     - href: https://github.com/USF-IMARS/FCRWQDC-SEACAR-analysis
       text: Source Code on GitHub

@@ -1,0 +1,282 @@
+---
+title: "Tidy Wide Format"
+---
+
+The default data file is in "long" format, with "analyte name" as a column. 
+This document transforms the data to "wide" "tidy" format, with "analyte name" on the columns.
+This is done by  pivoting on the analyte name column. 
+
+```{R setup}
+#| code-summary: load libraries
+#| message: false
+#| warning: false
+if (!requireNamespace("librarian", quietly = TRUE)) {
+  install.packages("librarian")
+}
+librarian::shelf(
+  dplyr,
+  tidyr,
+  here,
+  readr,
+  ggplot2,
+  skimr
+)
+```
+
+```{R load-data}
+#| code-summary: load dashboardData.csv
+source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
+
+df_long <- readr::read_delim(
+  here("data/Discrete WQ - 10006.txt"),
+  delim = "|"
+) %>%
+  mutate(ProgramName = mapProgramNameToShortName(ProgramName))
+
+
+# Show dimensions of long format data
+cat("Long format dimensions:\n")
+cat("  Rows:", nrow(df_long), "\n")
+cat("  Columns:", ncol(df_long), "\n")
+```
+
+## Transform to Wide Format
+
+### Pre-Pivot Collision Check
+
+Before pivoting we assess how many collisions will occur.
+
+```{R, check for ID collisions}
+#| code-summary: check for ID collisions
+df_long %>%
+  group_by(ProgramName, ProgramLocationID, SampleDate, ActivityDepth_m, ParameterName) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  filter(n > 1)
+```
+
+These rows will collide with `n` other rows (see column on far right).
+An example cause of this is samples that were taken at the same time on the same day.
+Collisions in this pivot are averaged with a mean.
+
+### Pivot
+The transformation uses `tidyr::pivot_wider()` to convert the dataset from long format (where each row is one measurement of one analyte) to wide format (where each row represents all measurements at a specific location and time).
+
+```{R transform-wide}
+#| code-summary: pivot from long to wide format
+library(dplyr)
+library(tidyr)
+
+# Pivot to wide format using the actual column names from dashboardData.csv
+df_wide <- df_long %>%
+  pivot_wider(
+    id_cols = c(
+      ProgramName, 
+      ProgramLocationID, 
+      SampleDate, 
+      ParameterUnits, 
+      OriginalLatitude, 
+      OriginalLongitude, 
+      ActivityDepth_m
+    ),
+    names_from = ParameterName,
+    values_from = ResultValue,
+    values_fn = mean  # aggregate duplicates by taking mean
+  )
+
+# Show dimensions of wide format data
+cat("Wide format dimensions:\n")
+cat("  Rows:", nrow(df_wide), "\n")
+cat("  Columns:", ncol(df_wide), "\n")
+cat("\nNumber of analyte columns created:", ncol(df_wide) - 7, "\n")
+```
+
+## Preview Wide Format Data
+
+```{R preview-wide}
+#| code-summary: preview the first few rows of wide format data
+# Display first 100 rows with scrolling
+DT::datatable(
+  head(df_wide, 100),
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    pageLength = 10
+  ),
+  caption = "First 100 rows of wide format data (scroll to see all columns)"
+)
+```
+
+```{R summary-stats}
+#| code-summary: summary statistics of wide format data
+library(skimr)
+
+# Skim the numeric columns (analyte measurements)
+numeric_cols <- sapply(df_wide, is.numeric)
+if (sum(numeric_cols) > 0) {
+  cat("Summary of numeric analyte columns:\n\n")
+  skim(df_wide[, numeric_cols])
+} else {
+  cat("No numeric columns found in wide format data.\n")
+}
+```
+
+## Additional Cleanup
+### ID column
+To make analysis easier, an unique ID is given to each row to identify the spatial location.
+This identifier can be built from `{ProgramName}-{ProgramLocationID}-{depth}`.
+
+#### ID column Creation
+```{R create-id-column}
+#| code-summary: create identifier column
+df_wide$site_id <- paste(
+  df_wide$ProgramName, 
+  df_wide$ProgramLocationID, 
+  ifelse(is.na(df_wide$ActivityDepth_m), "NA", df_wide$ActivityDepth_m), 
+  sep = "-"
+)
+
+# Display first 100 rows with scrolling
+DT::datatable(
+  head(df_wide, 100),
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    pageLength = 10
+  ),
+  caption = "Wide format data with site_id column (scroll to see all columns)"
+)
+```
+
+```{R column-subset}
+#| code-summary: reduce to only needed columns
+# desired remaining columns: analytes, SampleDate, site_id, depth
+# Get analyte column names (all columns except the id columns)
+id_columns <- c("ProgramName", "ProgramLocationID", "ParameterUnits", "OriginalLatitude", "OriginalLongitude", "ActivityDepth_m", "site_id", "SampleDate")
+analyte_columns <- setdiff(names(df_wide), id_columns)
+
+# Keep only SampleDate, site_id, ActivityDepth_m, and all analyte columns
+df_wide <- df_wide %>%
+  select(site_id, SampleDate, ActivityDepth_m, all_of(analyte_columns))
+
+# Display first 100 rows with scrolling
+DT::datatable(
+  head(df_wide, 100),
+  options = list(
+    scrollX = TRUE,
+    scrollY = "400px",
+    pageLength = 10
+  ),
+  caption = "Cleaned wide format data with selected columns (scroll to see all columns)"
+)
+```
+
+## Final Wide Table Stats/Visualizations
+
+```{R number of values for each analyte}
+#| code-summary: print number of non-na values for each analyte column
+id_columns <- c("ProgramName", "ProgramLocationID", "ParameterUnits", "OriginalLatitude", "OriginalLongitude", "ActivityDepth_m", "site_id", "SampleDate")
+analyte_columns <- setdiff(names(df_wide), id_columns)
+
+library(dplyr)
+library(tidyr)
+library(knitr)
+
+df_wide %>%
+  summarise(across(all_of(analyte_columns), ~ sum(!is.na(.)))) %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "Analyte",
+    values_to = "Valid_Count"
+  ) %>%
+  kable(caption = "Number of Valid Values per Analyte")
+```
+
+```{R summary-stats-final}
+#| code-summary: summary statistics of cleaned wide format data
+library(skimr)
+
+# Skim the numeric columns (analyte measurements)
+numeric_cols <- sapply(df_wide, is.numeric)
+if (sum(numeric_cols) > 0) {
+  cat("Summary of numeric analyte columns:\n\n")
+  skim(df_wide[, numeric_cols])
+} else {
+  cat("No numeric columns found in wide format data.\n")
+}
+```
+
+#### Analyte Co-Occurrence
+```{R, show co-occurrence matrix}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# 1. compute analyte order (most -> least)
+analyte_order <- df_wide %>%
+  summarise(across(all_of(analyte_columns), ~ sum(!is.na(.)))) %>%
+  pivot_longer(everything(), names_to = "Analyte", values_to = "Count") %>%
+  arrange(desc(Count)) %>%
+  pull(Analyte)
+
+# 2. presence matrix using sorted analytes
+presence <- df_wide %>%
+  mutate(across(all_of(analyte_order),
+                ~ !is.na(suppressWarnings(as.numeric(.))))) %>%
+  select(all_of(analyte_order))
+
+# 3. co-occurrence matrix (rows/cols are in analyte_order)
+cooccurrence_matrix <- t(presence) %*% as.matrix(presence)
+
+# 4. tidy it and set factor levels explicitly
+cooccurrence_df <- as.data.frame(cooccurrence_matrix) %>%
+  mutate(Analyte1 = row.names(.)) %>%
+  pivot_longer(-Analyte1,
+               names_to = "Analyte2",
+               values_to = "Cooccurrence") %>%
+  mutate(
+    Analyte1 = factor(Analyte1, levels = analyte_order),
+    Analyte2 = factor(Analyte2, levels = analyte_order)
+  ) %>%
+  # Keep only the lower triangle (row >= column)
+  filter(as.numeric(Analyte1) <= as.numeric(Analyte2))
+
+# 5. plot with y-axis reversed
+ggplot(cooccurrence_df, aes(x = Analyte1, y = Analyte2, fill = Cooccurrence)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = rainbow(7)) +
+  scale_y_discrete(limits = rev(levels(cooccurrence_df$Analyte2))) +  # <-- reverse y-axis
+  labs(
+    title = "Analyte Co-occurrence Matrix",
+    x = NULL,
+    y = NULL,
+    fill = "Co-occurrence"
+  ) +
+  coord_fixed() +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 90, size = 6, vjust = 0.5, hjust = 1),
+    axis.text.y = element_text(angle = 45, size = 6, hjust = 1),
+    panel.grid = element_blank()
+  )
+
+```
+
+## Export Wide Format Data
+
+```{R export-wide}
+#| code-summary: save wide format data to CSV
+#| eval: false
+
+# Export the wide format data
+write.csv(df_wide, here("data", "exports", "dashboardDataSEACAR_wide.csv"), row.names = FALSE)
+
+cat("Wide format data exported to: data/exports/dashboardDataSEACAR_wide.csv\n")
+```
+
+---
+
+**Note:** Ideas for next steps:
+- Multivariate analysis where you need multiple parameters as separate variables
+- Creating correlation matrices between different analytes
+- Machine learning tasks that expect features as columns
+- Quick comparison of multiple parameters at the same observation point
