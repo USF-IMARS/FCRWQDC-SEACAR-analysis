@@ -52,14 +52,19 @@ station_parameter_counts <- df %>%
   count(name = "point_count") %>%
   ungroup()
 
-# Calculate date range for each station
+# Calculate date range and sampling frequency for each station
 station_date_check <- df %>%
   group_by(ProgramName, ProgramLocationID) %>%
   summarise(
     startDate = min(SampleDate, na.rm = TRUE),
     endDate = max(SampleDate, na.rm = TRUE),
+    total_samples = n_distinct(SampleDate),
     .groups = "drop"
-  )
+  ) %>%
+  mutate(
+    samplingFrequencyInDays = as.numeric(difftime(endDate, startDate, units = "days")) / total_samples
+  ) %>%
+  select(-total_samples)
 
 # calculate min & max depths for station
 station_depth_check <- df %>%
