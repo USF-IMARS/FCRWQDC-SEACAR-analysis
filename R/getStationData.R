@@ -1,7 +1,7 @@
 # Loads data for a given station from both SEACAR_STD and OLD sources.
 library(here)
 library(dplyr)
-source(here("SEACARProgramCompare/mapProgramNameToShortName.R"))
+source(here("R/mapProgramNameToShortName.R"))
 
 getStationData <- function(station_id) {
   # Delimiter: "|"
