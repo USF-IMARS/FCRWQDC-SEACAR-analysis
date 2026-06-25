@@ -58,13 +58,14 @@ station_date_check <- df %>%
   summarise(
     startDate = min(SampleDate, na.rm = TRUE),
     endDate = max(SampleDate, na.rm = TRUE),
-    total_samples = n_distinct(SampleDate),
+    total_sampling_days = n_distinct(SampleDate),
     .groups = "drop"
   ) %>%
   mutate(
-    samplingFrequencyInDays = as.numeric(difftime(endDate, startDate, units = "days")) / total_samples
+    time_range_years = as.numeric(difftime(endDate, startDate, units = "days")) / 365.25,
+    averageSamplingDaysPerYear = total_sampling_days / time_range_years
   ) %>%
-  select(-total_samples)
+  select(-total_sampling_days, -time_range_years)
 
 # calculate min & max depths for station
 station_depth_check <- df %>%
