@@ -58,13 +58,13 @@ station_date_check <- df %>%
   summarise(
     startDate = min(SampleDate, na.rm = TRUE),
     endDate = max(SampleDate, na.rm = TRUE),
-    total_sampling_days = n_distinct(SampleDate),
+    total_sampling_days = n_distinct(as.Date(SampleDate)),
     .groups = "drop"
   ) %>%
   mutate(
     time_range_years = as.numeric(difftime(endDate, startDate, units = "days")) / 365.25,
     averageSamplingDaysPerYear = total_sampling_days / time_range_years,
-    averageSamplingDaysPerYear = ifelse(is.infinite(averageSamplingDaysPerYear), NA, averageSamplingDaysPerYear)
+    averageSamplingDaysPerYear = ifelse(is.infinite(averageSamplingDaysPerYear) | time_range_years < 1/365.25, NA, averageSamplingDaysPerYear)
   ) %>%
   select(-total_sampling_days, -time_range_years)
 
