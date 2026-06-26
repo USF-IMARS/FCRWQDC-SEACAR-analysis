@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add statistics for each station</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sample_stats_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ProgramName, ProgramLocationID, OriginalLongitude, OriginalLatitude, ParameterUnits) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ProgramName, ProgramLocationID, ParameterUnits) <span class="sc">%&gt;%</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mk_results =</span> <span class="fu">list</span>(<span class="fu">seasonalMannKendall</span>(SampleDate, ResultValue)),</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_values =</span> <span class="fu">n</span>(),</span>
@@ -477,23 +477,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="crlyjwtevo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#crlyjwtevo table {
+<div id="uqzmgeurjp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uqzmgeurjp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#crlyjwtevo thead, #crlyjwtevo tbody, #crlyjwtevo tfoot, #crlyjwtevo tr, #crlyjwtevo td, #crlyjwtevo th {
+#uqzmgeurjp thead, #uqzmgeurjp tbody, #uqzmgeurjp tfoot, #uqzmgeurjp tr, #uqzmgeurjp td, #uqzmgeurjp th {
   border-style: none;
 }
 
-#crlyjwtevo p {
+#uqzmgeurjp p {
   margin: 0;
   padding: 0;
 }
 
-#crlyjwtevo .gt_table {
+#uqzmgeurjp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -519,12 +519,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_caption {
+#uqzmgeurjp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#crlyjwtevo .gt_title {
+#uqzmgeurjp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -536,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#crlyjwtevo .gt_subtitle {
+#uqzmgeurjp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -548,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#crlyjwtevo .gt_heading {
+#uqzmgeurjp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -560,13 +560,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_bottom_border {
+#uqzmgeurjp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_col_headings {
+#uqzmgeurjp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -581,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_col_heading {
+#uqzmgeurjp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -601,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#crlyjwtevo .gt_column_spanner_outer {
+#uqzmgeurjp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -613,15 +613,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#crlyjwtevo .gt_column_spanner_outer:first-child {
+#uqzmgeurjp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#crlyjwtevo .gt_column_spanner_outer:last-child {
+#uqzmgeurjp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#crlyjwtevo .gt_column_spanner {
+#uqzmgeurjp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -633,11 +633,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#crlyjwtevo .gt_spanner_row {
+#uqzmgeurjp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#crlyjwtevo .gt_group_heading {
+#uqzmgeurjp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -663,7 +663,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#crlyjwtevo .gt_empty_group_heading {
+#uqzmgeurjp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -678,15 +678,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#crlyjwtevo .gt_from_md > :first-child {
+#uqzmgeurjp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#crlyjwtevo .gt_from_md > :last-child {
+#uqzmgeurjp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#crlyjwtevo .gt_row {
+#uqzmgeurjp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -705,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#crlyjwtevo .gt_stub {
+#uqzmgeurjp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -718,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crlyjwtevo .gt_stub_row_group {
+#uqzmgeurjp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -732,15 +732,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#crlyjwtevo .gt_row_group_first td {
+#uqzmgeurjp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#crlyjwtevo .gt_row_group_first th {
+#uqzmgeurjp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#crlyjwtevo .gt_summary_row {
+#uqzmgeurjp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -750,16 +750,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crlyjwtevo .gt_first_summary_row {
+#uqzmgeurjp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_first_summary_row.thick {
+#uqzmgeurjp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#crlyjwtevo .gt_last_summary_row {
+#uqzmgeurjp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -769,7 +769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_grand_summary_row {
+#uqzmgeurjp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -779,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crlyjwtevo .gt_first_grand_summary_row {
+#uqzmgeurjp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -789,7 +789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_last_grand_summary_row_top {
+#uqzmgeurjp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -799,11 +799,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_striped {
+#uqzmgeurjp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#crlyjwtevo .gt_table_body {
+#uqzmgeurjp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -812,7 +812,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_footnotes {
+#uqzmgeurjp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -826,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_footnote {
+#uqzmgeurjp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -835,7 +835,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crlyjwtevo .gt_sourcenotes {
+#uqzmgeurjp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -849,7 +849,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crlyjwtevo .gt_sourcenote {
+#uqzmgeurjp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -857,72 +857,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crlyjwtevo .gt_left {
+#uqzmgeurjp .gt_left {
   text-align: left;
 }
 
-#crlyjwtevo .gt_center {
+#uqzmgeurjp .gt_center {
   text-align: center;
 }
 
-#crlyjwtevo .gt_right {
+#uqzmgeurjp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#crlyjwtevo .gt_font_normal {
+#uqzmgeurjp .gt_font_normal {
   font-weight: normal;
 }
 
-#crlyjwtevo .gt_font_bold {
+#uqzmgeurjp .gt_font_bold {
   font-weight: bold;
 }
 
-#crlyjwtevo .gt_font_italic {
+#uqzmgeurjp .gt_font_italic {
   font-style: italic;
 }
 
-#crlyjwtevo .gt_super {
+#uqzmgeurjp .gt_super {
   font-size: 65%;
 }
 
-#crlyjwtevo .gt_footnote_marks {
+#uqzmgeurjp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#crlyjwtevo .gt_asterisk {
+#uqzmgeurjp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#crlyjwtevo .gt_indent_1 {
+#uqzmgeurjp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#crlyjwtevo .gt_indent_2 {
+#uqzmgeurjp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#crlyjwtevo .gt_indent_3 {
+#uqzmgeurjp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#crlyjwtevo .gt_indent_4 {
+#uqzmgeurjp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#crlyjwtevo .gt_indent_5 {
+#uqzmgeurjp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#crlyjwtevo .katex-display {
+#uqzmgeurjp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#crlyjwtevo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uqzmgeurjp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -932,8 +932,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="gt_col_headings header">
 <th id="ProgramName" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ProgramName</th>
 <th id="ProgramLocationID" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ProgramLocationID</th>
-<th id="OriginalLongitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">OriginalLongitude</th>
-<th id="OriginalLatitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">OriginalLatitude</th>
 <th id="ParameterUnits" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ParameterUnits</th>
 <th id="slope" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">slope</th>
 <th id="n_values" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_values</th>
@@ -949,8 +947,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BB14</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.15860</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.83003</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F5; color: #000000">-0.152400000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #CAEAC3; color: #000000">24</td>
@@ -964,8 +960,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">DM08</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.17035</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.83983</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F6F7; color: #000000">-0.045750000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DBF1D5; color: #000000">17</td>
@@ -979,8 +973,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">DM28</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.17753</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.83788</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E6EFF4; color: #000000">-0.304100000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #D1EDCB; color: #000000">21</td>
@@ -994,8 +986,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JFK03</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.16974</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.86282</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-0.061000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #CAEAC3; color: #000000">24</td>
@@ -1009,8 +999,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JT29</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14168</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.83980</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEDE5; color: #000000">0.245000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #C4E8BD; color: #000000">26</td>
@@ -1024,8 +1012,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JT61</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.17817</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.81688</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E8F0F4; color: #000000">-0.276400000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BAE4B4; color: #000000">29</td>
@@ -1039,8 +1025,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JT66</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.81647</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EBF1F5; color: #000000">-0.213300000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BAE4B4; color: #000000">29</td>
@@ -1054,8 +1038,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JT71</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.15125</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.82173</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E9F0F4; color: #000000">-0.243800000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #C4E8BD; color: #000000">26</td>
@@ -1069,8 +1051,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">LR03</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18286</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.84684</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-0.090000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B4E1AD; color: #000000">31</td>
@@ -1084,8 +1064,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">LR05</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.23104</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.87149</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">2</td>
@@ -1099,8 +1077,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">LR06</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.19291</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.85352</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">2</td>
@@ -1114,8 +1090,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">LRSC</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.84952</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">2</td>
@@ -1129,8 +1103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">TOW1</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18077</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.83276</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F7FCF5; color: #000000">1</td>
@@ -1144,8 +1116,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">TOW2</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.17939</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.82698</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F7FCF5; color: #000000">1</td>
@@ -1159,8 +1129,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">TOW3</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18041</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.83506</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F7FCF5; color: #000000">1</td>
@@ -1174,8 +1142,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">VR01</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.15256</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.80568</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-0.121900000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BAE4B4; color: #000000">29</td>
@@ -1189,8 +1155,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">VR11</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.17940</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.80472</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-0.091400000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BAE4B4; color: #000000">29</td>
@@ -1204,8 +1168,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">WQ01</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.17162</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.84901</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEBE3; color: #000000">0.280000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BAE4B4; color: #000000">29</td>
@@ -1219,8 +1181,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">WQ02</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14550</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.85331</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #DAE9F2; color: #000000">-0.520000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BAE4B4; color: #000000">29</td>
@@ -1234,8 +1194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">WQ03</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.13209</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.84950</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBEAE1; color: #000000">0.312000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #C4E8BD; color: #000000">26</td>
@@ -1249,8 +1207,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">WQ04</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.13408</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.82600</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F5; color: #000000">0.030000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BAE4B4; color: #000000">29</td>
@@ -1264,8 +1220,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">WQ05</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14081</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.80814</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FDDFCD; color: #000000">0.585000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #C4E8BD; color: #000000">26</td>
@@ -1279,8 +1233,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">North Biscayne Bay Discrete Water Quality Program</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">WQ05a</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.13521</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.80939</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F4FBF1; color: #000000">3</td>
@@ -1294,8 +1246,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK020</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.11971</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.90000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F0EB; color: #000000">0.166666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005C25; color: #FFFFFF">90</td>
@@ -1309,8 +1259,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK021</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.11971</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.90451</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -1324,8 +1272,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK022</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.11971</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.89549</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">0.071428571</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1339,8 +1285,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK023</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.11472</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.90000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F0EB; color: #000000">0.166666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1354,8 +1298,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK024</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10450</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.87298</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1369,8 +1311,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK025</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.11218</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.88526</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1384,8 +1324,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK026</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10497</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.87570</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F4; color: #000000">0.040685714</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1399,8 +1337,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK027</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10401</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.86261</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F3; color: #000000">0.057066667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -1414,8 +1350,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK028</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10287</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.95145</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -1429,8 +1363,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK029</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10250</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.93450</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -1444,8 +1376,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK030</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08608</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.92075</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EDF8E9; color: #000000">8</td>
@@ -1459,8 +1389,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK031</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08608</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.92525</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F2EE; color: #000000">0.125000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -1474,8 +1402,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK032</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08608</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.91490</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE5; color: #000000">0.257142857</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #1C833F; color: #FFFFFF">76</td>
@@ -1489,8 +1415,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BAK033</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08108</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.92075</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #289049; color: #FFFFFF">71</td>
@@ -1504,8 +1428,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC070</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06939</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.33576</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-0.070560000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005121; color: #FFFFFF">93</td>
@@ -1519,8 +1441,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC071</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06939</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.34027</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-0.077700000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">97</td>
@@ -1534,8 +1454,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC072</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06939</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.33125</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-0.092200000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">97</td>
@@ -1549,8 +1467,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC073</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06438</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.33576</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FCE2D3; color: #000000">0.500000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">94</td>
@@ -1564,8 +1480,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC074</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07222</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.32565</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-0.100000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1579,8 +1493,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC075</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07468</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.29860</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E9F0F4; color: #000000">-0.250000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">97</td>
@@ -1594,8 +1506,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC076</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06468</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.33692</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE6DA; color: #000000">0.400000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1609,8 +1519,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC077</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07405</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.30943</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EAF1F5; color: #000000">-0.233333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1624,8 +1532,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC078</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07425</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.30772</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #ECF2F5; color: #000000">-0.200000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1639,8 +1545,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC079</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07383</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.31207</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-0.188617143</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1654,8 +1558,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC080</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.05444</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.35000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5A987; color: #000000">1.300000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #E8F6E3; color: #000000">11</td>
@@ -1669,8 +1571,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC081</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.04943</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.35000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #19813D; color: #FFFFFF">77</td>
@@ -1684,8 +1584,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC082</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.05444</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.35451</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #077230; color: #FFFFFF">83</td>
@@ -1699,8 +1597,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOC083</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.05444</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.34549</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -1714,8 +1610,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY090</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.04057</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.54417</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1729,8 +1623,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY091</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03560</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.54502</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEDE5; color: #000000">0.250000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1744,8 +1636,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY092</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.04058</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.54954</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F3F0; color: #000000">0.100000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1759,8 +1649,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY093</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.04058</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.54051</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E7EFF4; color: #000000">-0.289066667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -1774,8 +1662,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY094</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.02833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.56462</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #077230; color: #FFFFFF">83</td>
@@ -1789,8 +1675,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY095</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03825</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.48942</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #0E7734; color: #FFFFFF">81</td>
@@ -1804,8 +1688,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY096</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.02467</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.58862</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #077230; color: #FFFFFF">83</td>
@@ -1819,8 +1701,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY097</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03367</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.50847</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EBF1F5; color: #000000">-0.216533333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00692B; color: #FFFFFF">86</td>
@@ -1834,8 +1714,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY098</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.05043</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.42242</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F4; color: #000000">0.040000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #19813D; color: #FFFFFF">77</td>
@@ -1849,8 +1727,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY099</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.04742</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.44222</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006228; color: #FFFFFF">88</td>
@@ -1864,8 +1740,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY100</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.02317</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.60867</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F0EB; color: #000000">0.166666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #19813D; color: #FFFFFF">77</td>
@@ -1879,8 +1753,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOY101</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03083</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.55160</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00692B; color: #FFFFFF">86</td>
@@ -1894,8 +1766,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">BOYPB4</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03908</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.48780</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #E7F6E2; color: #000000">12</td>
@@ -1909,8 +1779,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC001</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.12842</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.75649</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -1924,8 +1792,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC002</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.12842</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.76100</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F3; color: #000000">0.050000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #147C38; color: #FFFFFF">79</td>
@@ -1939,8 +1805,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC003</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.12362</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.76026</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9EFEA; color: #000000">0.183333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #147C38; color: #FFFFFF">79</td>
@@ -1954,8 +1818,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC004</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.12842</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.76551</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E6EFF4; color: #000000">-0.300000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -1969,8 +1831,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC005</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10415</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.84455</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E9F0F4; color: #000000">-0.250000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -1984,8 +1844,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC006</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10024</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.73414</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E6EFF4; color: #000000">-0.300000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -1999,8 +1857,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC007</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10323</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.84637</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F5; color: #000000">-0.150000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #147C38; color: #FFFFFF">79</td>
@@ -2014,8 +1870,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC008</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10928</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.83518</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-0.045000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2029,8 +1883,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC009</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09874</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.66822</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E6EFF4; color: #000000">-0.300000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2044,8 +1896,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC010</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09482</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.65916</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #ECF2F5; color: #000000">-0.200000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2059,8 +1909,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC011</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10008</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.71883</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E6EFF4; color: #000000">-0.300000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2074,8 +1922,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC012</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08611</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.73743</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3CA659; color: #FFFFFF">63</td>
@@ -2089,8 +1935,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC013</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08113</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.74194</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-0.187500000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #53B365; color: #FFFFFF">57</td>
@@ -2104,8 +1948,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC014</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08611</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.74194</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">2</td>
@@ -2119,8 +1961,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOC015</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08611</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.74646</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #37A055; color: #FFFFFF">65</td>
@@ -2134,8 +1974,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">GOCDC1</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10403</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.84217</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9EFE9; color: #000000">0.200000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #CCEBC5; color: #000000">23</td>
@@ -2149,8 +1987,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL050</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08020</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.25659</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #ECF2F5; color: #000000">-0.189066667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005121; color: #FFFFFF">93</td>
@@ -2164,8 +2000,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL051</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08020</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.26111</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEDE6; color: #000000">0.240000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2179,8 +2013,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL052</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08020</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.25208</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2194,8 +2026,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL053</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07519</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.25659</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9EFE9; color: #000000">0.200000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005522; color: #FFFFFF">92</td>
@@ -2209,8 +2039,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL054</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07512</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.28915</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2224,8 +2052,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL055</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08620</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.21693</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2239,8 +2065,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL056</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08382</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.22868</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-0.010800000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2254,8 +2078,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL057</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07822</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.24787</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F1; color: #000000">0.080000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2269,8 +2091,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL058</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09100</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.19612</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2284,8 +2104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL059</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07692</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.25617</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">0.066666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2299,8 +2117,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL060</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06210</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.25400</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EDF8E9; color: #000000">8</td>
@@ -2314,8 +2130,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL061</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06210</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.25851</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #177E3A; color: #FFFFFF">78</td>
@@ -2329,8 +2143,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL062</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06210</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.24949</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #19813D; color: #FFFFFF">77</td>
@@ -2344,8 +2156,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">HIL063</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.05710</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.25400</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #30984F; color: #FFFFFF">68</td>
@@ -2359,8 +2169,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW110</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03038</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.77245</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005522; color: #FFFFFF">92</td>
@@ -2374,8 +2182,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW111</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03038</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.77696</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">-0.008800000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2389,8 +2195,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW112</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03038</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.76794</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-0.124480000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2404,8 +2208,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW113</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.02535</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.77245</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005C25; color: #FFFFFF">90</td>
@@ -2419,8 +2221,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW114</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03040</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.69742</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-0.037760000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">94</td>
@@ -2434,8 +2234,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW115</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03025</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.70405</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-0.087600000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2449,8 +2247,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW116</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03150</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.72168</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-0.012800000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2464,8 +2260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW117</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.01652</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.69870</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE9DF; color: #000000">0.333333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #268E47; color: #FFFFFF">72</td>
@@ -2479,8 +2273,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW118</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03033</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.69683</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2494,8 +2286,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">ILW119</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.03013</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.69947</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-0.070560000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">94</td>
@@ -2509,8 +2299,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP120</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06911</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.94380</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005522; color: #FFFFFF">92</td>
@@ -2524,8 +2312,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP121</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06911</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.94831</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-0.100000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2539,8 +2325,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP122</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06911</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.93929</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-0.085800000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2554,8 +2338,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP123</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06407</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.94380</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2569,8 +2351,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP124</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06685</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.99485</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2584,8 +2364,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP125</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06595</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.00192</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-0.183333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">94</td>
@@ -2599,8 +2377,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP126</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06780</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.01158</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2614,8 +2390,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP127</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.07292</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.01775</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005121; color: #FFFFFF">93</td>
@@ -2629,8 +2403,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP128</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06655</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.02357</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005522; color: #FFFFFF">92</td>
@@ -2644,8 +2416,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">JUP129</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.06595</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.01597</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005C25; color: #FFFFFF">90</td>
@@ -2659,8 +2429,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV040</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09733</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.09301</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEDE5; color: #000000">0.250000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005522; color: #FFFFFF">92</td>
@@ -2674,8 +2442,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV041</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09733</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.09752</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2689,8 +2455,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV042</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09733</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.08849</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2704,8 +2468,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV043</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09234</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.09301</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEBE3; color: #000000">0.285714286</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2719,8 +2481,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV044</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09028</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.15998</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F6F6; color: #000000">-0.051520000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2734,8 +2494,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV045</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09883</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.11207</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2749,8 +2507,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV046</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.11190</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.02060</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.004666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2764,8 +2520,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV047</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09520</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.14840</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F1; color: #000000">0.083333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004B1E; color: #FFFFFF">95</td>
@@ -2779,8 +2533,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV048</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10980</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.97240</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2794,8 +2546,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV049</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10117</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.95423</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-0.011000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00471C; color: #FFFFFF">96</td>
@@ -2809,8 +2559,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV050</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.01630</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #053061; color: #FFFFFF">-3.375000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EEF9EA; color: #000000">7</td>
@@ -2824,8 +2572,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV051</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.02081</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005C25; color: #FFFFFF">90</td>
@@ -2839,8 +2585,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV052</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.01179</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-0.100000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006629; color: #FFFFFF">87</td>
@@ -2854,8 +2598,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEV053</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.08200</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.01630</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #ECF2F5; color: #000000">-0.200000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #0B7432; color: #FFFFFF">82</td>
@@ -2869,8 +2611,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">PEVBC1</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.09597</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">26.14787</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAC1A5; color: #000000">1.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #CFECC8; color: #000000">22</td>
@@ -2884,8 +2624,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL161</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.16313</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.16531</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2899,8 +2637,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL162</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14866</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.16252</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #147C38; color: #FFFFFF">79</td>
@@ -2914,8 +2650,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL163</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14412</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.16703</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2929,8 +2663,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL164</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.15104</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.17116</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F5; color: #000000">-0.150000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #0E7734; color: #FFFFFF">81</td>
@@ -2944,8 +2676,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL165</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14978</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.17298</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EEF3F5; color: #000000">-0.158333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #147C38; color: #FFFFFF">79</td>
@@ -2959,8 +2689,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL166</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14328</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.16066</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2974,8 +2702,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL167</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.12447</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.09932</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -2989,8 +2715,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL168</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.12798</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.12218</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -3004,8 +2728,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL169</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14882</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.15402</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -3019,8 +2741,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL170</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.13192</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.13447</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -3034,8 +2754,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL171</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14485</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.15983</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.000000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -3049,8 +2767,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STL172</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.12983</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.12525</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-0.037500000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #117936; color: #FFFFFF">80</td>
@@ -3064,8 +2780,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Southeast Florida Water Quality Assessment Survey</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">STLMC1</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.13403</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">27.13167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">m</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #CFE4EF; color: #000000">-0.700000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #CCEBC5; color: #000000">23</td>

@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add statistics for each station</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sample_stats_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ProgramName, ProgramLocationID, OriginalLongitude, OriginalLatitude, ParameterUnits) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ProgramName, ProgramLocationID, ParameterUnits) <span class="sc">%&gt;%</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mk_results =</span> <span class="fu">list</span>(<span class="fu">seasonalMannKendall</span>(SampleDate, ResultValue)),</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_values =</span> <span class="fu">n</span>(),</span>
@@ -477,23 +477,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="zawlbhdpfi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zawlbhdpfi table {
+<div id="gnbjkkekeq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gnbjkkekeq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zawlbhdpfi thead, #zawlbhdpfi tbody, #zawlbhdpfi tfoot, #zawlbhdpfi tr, #zawlbhdpfi td, #zawlbhdpfi th {
+#gnbjkkekeq thead, #gnbjkkekeq tbody, #gnbjkkekeq tfoot, #gnbjkkekeq tr, #gnbjkkekeq td, #gnbjkkekeq th {
   border-style: none;
 }
 
-#zawlbhdpfi p {
+#gnbjkkekeq p {
   margin: 0;
   padding: 0;
 }
 
-#zawlbhdpfi .gt_table {
+#gnbjkkekeq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -519,12 +519,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_caption {
+#gnbjkkekeq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zawlbhdpfi .gt_title {
+#gnbjkkekeq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -536,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#zawlbhdpfi .gt_subtitle {
+#gnbjkkekeq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -548,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#zawlbhdpfi .gt_heading {
+#gnbjkkekeq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -560,13 +560,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_bottom_border {
+#gnbjkkekeq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_col_headings {
+#gnbjkkekeq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -581,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_col_heading {
+#gnbjkkekeq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -601,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zawlbhdpfi .gt_column_spanner_outer {
+#gnbjkkekeq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -613,15 +613,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#zawlbhdpfi .gt_column_spanner_outer:first-child {
+#gnbjkkekeq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zawlbhdpfi .gt_column_spanner_outer:last-child {
+#gnbjkkekeq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zawlbhdpfi .gt_column_spanner {
+#gnbjkkekeq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -633,11 +633,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#zawlbhdpfi .gt_spanner_row {
+#gnbjkkekeq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zawlbhdpfi .gt_group_heading {
+#gnbjkkekeq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -663,7 +663,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#zawlbhdpfi .gt_empty_group_heading {
+#gnbjkkekeq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -678,15 +678,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#zawlbhdpfi .gt_from_md > :first-child {
+#gnbjkkekeq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zawlbhdpfi .gt_from_md > :last-child {
+#gnbjkkekeq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zawlbhdpfi .gt_row {
+#gnbjkkekeq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -705,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#zawlbhdpfi .gt_stub {
+#gnbjkkekeq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -718,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zawlbhdpfi .gt_stub_row_group {
+#gnbjkkekeq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -732,15 +732,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#zawlbhdpfi .gt_row_group_first td {
+#gnbjkkekeq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zawlbhdpfi .gt_row_group_first th {
+#gnbjkkekeq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zawlbhdpfi .gt_summary_row {
+#gnbjkkekeq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -750,16 +750,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zawlbhdpfi .gt_first_summary_row {
+#gnbjkkekeq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_first_summary_row.thick {
+#gnbjkkekeq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zawlbhdpfi .gt_last_summary_row {
+#gnbjkkekeq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -769,7 +769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_grand_summary_row {
+#gnbjkkekeq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -779,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zawlbhdpfi .gt_first_grand_summary_row {
+#gnbjkkekeq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -789,7 +789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_last_grand_summary_row_top {
+#gnbjkkekeq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -799,11 +799,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_striped {
+#gnbjkkekeq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zawlbhdpfi .gt_table_body {
+#gnbjkkekeq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -812,7 +812,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_footnotes {
+#gnbjkkekeq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -826,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_footnote {
+#gnbjkkekeq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -835,7 +835,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zawlbhdpfi .gt_sourcenotes {
+#gnbjkkekeq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -849,7 +849,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#zawlbhdpfi .gt_sourcenote {
+#gnbjkkekeq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -857,72 +857,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#zawlbhdpfi .gt_left {
+#gnbjkkekeq .gt_left {
   text-align: left;
 }
 
-#zawlbhdpfi .gt_center {
+#gnbjkkekeq .gt_center {
   text-align: center;
 }
 
-#zawlbhdpfi .gt_right {
+#gnbjkkekeq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zawlbhdpfi .gt_font_normal {
+#gnbjkkekeq .gt_font_normal {
   font-weight: normal;
 }
 
-#zawlbhdpfi .gt_font_bold {
+#gnbjkkekeq .gt_font_bold {
   font-weight: bold;
 }
 
-#zawlbhdpfi .gt_font_italic {
+#gnbjkkekeq .gt_font_italic {
   font-style: italic;
 }
 
-#zawlbhdpfi .gt_super {
+#gnbjkkekeq .gt_super {
   font-size: 65%;
 }
 
-#zawlbhdpfi .gt_footnote_marks {
+#gnbjkkekeq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zawlbhdpfi .gt_asterisk {
+#gnbjkkekeq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zawlbhdpfi .gt_indent_1 {
+#gnbjkkekeq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zawlbhdpfi .gt_indent_2 {
+#gnbjkkekeq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zawlbhdpfi .gt_indent_3 {
+#gnbjkkekeq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zawlbhdpfi .gt_indent_4 {
+#gnbjkkekeq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zawlbhdpfi .gt_indent_5 {
+#gnbjkkekeq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zawlbhdpfi .katex-display {
+#gnbjkkekeq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zawlbhdpfi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gnbjkkekeq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -932,8 +932,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="gt_col_headings header">
 <th id="ProgramName" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ProgramName</th>
 <th id="ProgramLocationID" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ProgramLocationID</th>
-<th id="OriginalLongitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">OriginalLongitude</th>
-<th id="OriginalLatitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">OriginalLatitude</th>
 <th id="ParameterUnits" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ParameterUnits</th>
 <th id="slope" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">slope</th>
 <th id="n_values" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_values</th>
@@ -949,8 +947,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">200</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.10000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.59000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-1.947958e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005723; color: #FFFFFF">189</td>
@@ -964,8 +960,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">201</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.16500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.51000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F4F6; color: #000000">-1.459565e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">195</td>
@@ -979,8 +973,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">202</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.15010</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.49380</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F6; color: #000000">1.515198e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3DA659; color: #FFFFFF">130</td>
@@ -994,8 +986,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">203</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.11768</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.48053</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.344528e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3CA558; color: #FFFFFF">131</td>
@@ -1009,8 +999,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">204</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.19553</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.43082</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.569487e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -1024,8 +1012,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">205</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18200</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.42798</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F1EC; color: #000000">2.269758e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #40AA5C; color: #FFFFFF">127</td>
@@ -1039,8 +1025,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">206</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.14300</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.41497</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-9.029271e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005120; color: #FFFFFF">193</td>
@@ -1054,8 +1038,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">207</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.21508</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.36443</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F4F6; color: #000000">-1.518721e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7BC77B; color: #000000">98</td>
@@ -1069,8 +1051,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">208</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.20052</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.35918</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEDE6; color: #000000">3.548863e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3FA95B; color: #FFFFFF">128</td>
@@ -1084,8 +1064,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">209</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.72272</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.58570</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F4F6; color: #000000">-1.495701e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #75C477; color: #000000">101</td>
@@ -1099,8 +1077,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">210</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.16360</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.32500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-9.294617e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005221; color: #FFFFFF">192</td>
@@ -1114,8 +1090,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">211</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.26165</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.30788</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.119285e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -1129,8 +1103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">212</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.24542</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.29452</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F6F6; color: #000000">-8.580917e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -1144,8 +1116,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">213</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18773</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.26312</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F6F7; color: #000000">-3.674300e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -1159,8 +1129,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">214</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.29918</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.24620</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F6F6; color: #000000">-7.744679e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3BA457; color: #FFFFFF">132</td>
@@ -1174,8 +1142,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">215</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.28897</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.23667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.326408e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #359D53; color: #FFFFFF">137</td>
@@ -1189,8 +1155,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">216</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.21700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.22000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-8.873747e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #51B264; color: #FFFFFF">119</td>
@@ -1204,8 +1168,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">216i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.24425</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.20450</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8B99B; color: #000000">1.697262e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EEF8EA; color: #000000">15</td>
@@ -1219,8 +1181,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">217</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.33985</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.17332</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F4F6; color: #000000">-1.454710e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #39A257; color: #FFFFFF">133</td>
@@ -1234,8 +1194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">218</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.29455</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.15897</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-9.072825e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -1249,8 +1207,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">219</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.25800</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.14200</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F6F7; color: #000000">-3.259433e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #026E2D; color: #FFFFFF">175</td>
@@ -1264,8 +1220,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">219i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.26477</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.12587</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8B495; color: #000000">1.788253e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EBF8E7; color: #000000">18</td>
@@ -1279,8 +1233,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">220</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.37342</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.11355</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.389394e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004C1E; color: #FFFFFF">196</td>
@@ -1294,8 +1246,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">221</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.36088</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.11025</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEEE7; color: #000000">3.332908e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3DA659; color: #FFFFFF">130</td>
@@ -1309,8 +1259,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">222</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.31277</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.07237</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.244417e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005422; color: #FFFFFF">191</td>
@@ -1324,8 +1272,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">223</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.42312</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.06018</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-2.700885e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -1339,8 +1285,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">224</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.39527</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.03082</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-2.668075e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3DA659; color: #FFFFFF">130</td>
@@ -1354,8 +1298,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">225</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.36740</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.01700</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-1.961095e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #077230; color: #FFFFFF">172</td>
@@ -1369,8 +1311,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">225i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.37000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.00667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #9CCAE1; color: #000000">-1.925922e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EBF8E7; color: #000000">18</td>
@@ -1384,8 +1324,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">226</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.50148</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.00840</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.600027e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #339C52; color: #FFFFFF">138</td>
@@ -1399,8 +1337,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">227</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.47490</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.00167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.624213e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005924; color: #FFFFFF">188</td>
@@ -1414,8 +1350,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">228</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.45000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.97667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.101714e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005221; color: #FFFFFF">192</td>
@@ -1429,8 +1363,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">229</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.56218</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.95012</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.322468e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #77C578; color: #000000">100</td>
@@ -1444,8 +1376,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">230</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.55162</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.93965</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F6; color: #000000">-2.104480e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004C1E; color: #FFFFFF">196</td>
@@ -1459,8 +1389,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">231</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.50300</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.92500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-2.662446e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">177</td>
@@ -1474,8 +1402,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">231i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.51533</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.91750</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #408EC1; color: #FFFFFF">-3.221327e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EBF8E7; color: #000000">18</td>
@@ -1489,8 +1415,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">232</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.59852</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.92703</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EEF3F5; color: #000000">-2.566145e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #359D53; color: #FFFFFF">137</td>
@@ -1504,8 +1428,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">233</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.58238</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.90185</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F2EF; color: #000000">1.756538e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -1519,8 +1441,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">234</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.56697</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.86277</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F4; color: #000000">5.472287e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #40AA5C; color: #FFFFFF">127</td>
@@ -1534,8 +1454,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">235</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.66865</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.87123</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F5; color: #000000">-2.245932e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #339C52; color: #FFFFFF">138</td>
@@ -1549,8 +1467,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">236</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.66240</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.85970</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F2EF; color: #000000">1.809149e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #42AB5D; color: #FFFFFF">126</td>
@@ -1564,8 +1480,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">237</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.64907</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.83265</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F5; color: #000000">-2.343324e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005120; color: #FFFFFF">193</td>
@@ -1579,8 +1493,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">238</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.74683</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.83442</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #ECF2F5; color: #000000">-3.078785e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #71C274; color: #000000">103</td>
@@ -1594,8 +1506,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">239</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.71620</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.80223</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EEF3F5; color: #000000">-2.357213e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005622; color: #FFFFFF">190</td>
@@ -1609,8 +1519,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">240</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.70570</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.78453</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9EFEA; color: #000000">2.888318e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3DA659; color: #FFFFFF">130</td>
@@ -1624,8 +1532,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">241</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.80890</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.80247</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-8.800319e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #77C578; color: #000000">100</td>
@@ -1639,8 +1545,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">242</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.81225</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.79150</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F6; color: #000000">-2.126648e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">201</td>
@@ -1654,8 +1558,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">243</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.78333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.74500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EEF3F5; color: #000000">-2.479800e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #0E7734; color: #FFFFFF">168</td>
@@ -1669,8 +1571,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">243i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.79348</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.72935</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EF9978; color: #000000">2.263127e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #ECF8E8; color: #000000">17</td>
@@ -1684,8 +1584,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">244</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.86333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.79333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F5; color: #000000">-2.245721e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005B24; color: #FFFFFF">187</td>
@@ -1699,8 +1597,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">244i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.89945</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77095</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F3FAF0; color: #000000">8</td>
@@ -1714,8 +1610,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">245</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.86167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.76167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F4F6; color: #000000">-1.473789e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #51B264; color: #FFFFFF">119</td>
@@ -1729,8 +1623,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">246</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.85813</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.71317</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F6; color: #000000">-2.191341e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005E26; color: #FFFFFF">185</td>
@@ -1744,8 +1636,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">247</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.01115</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.71318</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.159482e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #39A257; color: #FFFFFF">133</td>
@@ -1759,8 +1649,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">248</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.96667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F6F7; color: #000000">-3.405475e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #0F7835; color: #FFFFFF">167</td>
@@ -1774,8 +1662,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">248i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.98310</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.68392</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #9DCAE1; color: #000000">-1.898759e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EDF8E9; color: #000000">16</td>
@@ -1789,8 +1675,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">249</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.95830</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.67500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-5.691692e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #187F3B; color: #FFFFFF">161</td>
@@ -1804,8 +1688,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">249i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.97762</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.66560</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #BB3033; color: #FFFFFF">3.892612e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #ECF8E8; color: #000000">17</td>
@@ -1819,8 +1701,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">250</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.18245</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69193</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">-5.588000e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3BA457; color: #FFFFFF">132</td>
@@ -1834,8 +1714,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">251</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.16508</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.64502</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">-8.434036e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #47AD5F; color: #FFFFFF">124</td>
@@ -1849,8 +1727,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">252</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.15442</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.60693</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-9.152710e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005E26; color: #FFFFFF">185</td>
@@ -1864,8 +1740,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">253</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.30723</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.64537</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-2.259145e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #75C477; color: #000000">101</td>
@@ -1879,8 +1753,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">254</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.26502</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65792</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.035522e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7CC87D; color: #000000">97</td>
@@ -1894,8 +1766,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">255</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.24308</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.62168</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.715294e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">183</td>
@@ -1909,8 +1779,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">256</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.23408</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.58497</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.096190e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006027; color: #FFFFFF">184</td>
@@ -1924,8 +1792,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">257</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.33732</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.63333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E3EDF3; color: #000000">-5.536056e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B6E2AF; color: #000000">63</td>
@@ -1939,8 +1805,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">258</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.32422</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.59323</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F2EF; color: #000000">1.686859e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #49AE60; color: #FFFFFF">123</td>
@@ -1954,8 +1818,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">259</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.32167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.57037</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.148230e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005422; color: #FFFFFF">191</td>
@@ -1969,8 +1831,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">260</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.41662</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.62550</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.342290e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #79C67A; color: #000000">99</td>
@@ -1984,8 +1844,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">261</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.50000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.58333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">5.324450e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #51B264; color: #FFFFFF">119</td>
@@ -1999,8 +1857,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">261i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.41487</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.60065</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">4</td>
@@ -2014,8 +1870,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">262</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.41887</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.58618</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F6; color: #000000">-2.161203e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #49AE60; color: #FFFFFF">123</td>
@@ -2029,8 +1883,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">263</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.39742</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.54843</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-4.802250e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005B24; color: #FFFFFF">187</td>
@@ -2044,8 +1896,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">264</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.45947</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.94677</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.035158e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">183</td>
@@ -2059,8 +1909,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">265</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.08333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.81667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEDE6; color: #000000">3.629222e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B4E1AE; color: #000000">64</td>
@@ -2074,8 +1922,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">266</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.50527</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.61105</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.137920e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #79C67A; color: #000000">99</td>
@@ -2089,8 +1935,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">267</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.48730</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.53008</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-4.870489e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005924; color: #FFFFFF">188</td>
@@ -2104,8 +1948,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">268</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.57698</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.58782</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-9.316375e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #38A156; color: #FFFFFF">134</td>
@@ -2119,8 +1961,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">269</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.55955</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.55943</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.237355e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -2134,8 +1974,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">270</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.56432</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.52162</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-4.439786e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005723; color: #FFFFFF">189</td>
@@ -2149,8 +1987,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">271</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.66667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.55667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">-1.210249e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00491D; color: #FFFFFF">198</td>
@@ -2164,8 +2000,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">272</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.65433</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.50548</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-5.672833e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005622; color: #FFFFFF">190</td>
@@ -2179,8 +2013,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">273</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.65710</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.49290</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">8.210595e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00682A; color: #FFFFFF">179</td>
@@ -2194,8 +2026,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">273i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.65048</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.49103</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #D5E7F1; color: #000000">-9.194763e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #EBF8E7; color: #000000">18</td>
@@ -2209,8 +2039,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">274</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.75000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.54167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F2EE; color: #000000">1.945069e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #40AA5C; color: #FFFFFF">127</td>
@@ -2224,8 +2052,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">275</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.74422</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.52143</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.074778e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">195</td>
@@ -2239,8 +2065,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">276</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.73742</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.47538</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.542704e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -2254,8 +2078,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">277</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.82110</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.51762</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F1ED; color: #000000">2.193141e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #42AB5D; color: #FFFFFF">126</td>
@@ -2269,8 +2091,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">278</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.81895</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.49862</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-5.160546e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -2284,8 +2104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">279</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.81297</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.45803</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEBE2; color: #000000">4.495809e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #42AB5D; color: #FFFFFF">126</td>
@@ -2299,8 +2117,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">280</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.84365</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.45363</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.423567e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004C1E; color: #FFFFFF">196</td>
@@ -2314,8 +2130,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">281</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.89167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.49500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F4; color: #000000">5.474255e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005622; color: #FFFFFF">190</td>
@@ -2329,8 +2143,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">282</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.88500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.86667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F5; color: #000000">4.014520e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7BC77B; color: #000000">98</td>
@@ -2344,8 +2156,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">283</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.00000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.90000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-8.893550e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B6E2AF; color: #000000">63</td>
@@ -2359,8 +2169,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">284</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.95833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.87667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">-7.601563e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7EC97E; color: #000000">96</td>
@@ -2374,8 +2182,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">285</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.92028</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.80998</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-4.922325e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7BC77B; color: #000000">98</td>
@@ -2389,8 +2195,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">286</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.92395</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.78333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F6; color: #000000">-2.140907e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B6E2AF; color: #000000">63</td>
@@ -2404,8 +2208,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">287</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.00833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.84667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F3F0; color: #000000">1.457064e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #79C67A; color: #000000">99</td>
@@ -2419,8 +2221,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">288</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.08333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.88333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F3F0; color: #000000">1.414137e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7CC87D; color: #000000">97</td>
@@ -2434,8 +2234,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">289</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.03300</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77775</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F5; color: #000000">5.011262e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #75C477; color: #000000">101</td>
@@ -2449,8 +2247,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">290</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.21623</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.86267</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-2.314380e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #84CB83; color: #000000">93</td>
@@ -2464,8 +2260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">291</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.14678</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.81682</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-5.709111e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7EC97E; color: #000000">96</td>
@@ -2479,8 +2273,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">292</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.11248</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.76312</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F4; color: #000000">7.208175e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #77C578; color: #000000">100</td>
@@ -2494,8 +2286,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">293</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.10930</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.73753</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE7DB; color: #000000">6.003716e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B3E1AC; color: #000000">65</td>
@@ -2509,8 +2299,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">294</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.17218</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.75550</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F4; color: #000000">7.066888e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #79C67A; color: #000000">99</td>
@@ -2524,8 +2312,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">295</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.35123</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.85163</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-6.640776e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #84CB83; color: #000000">93</td>
@@ -2539,8 +2325,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">296</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.28908</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.79152</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">9.627902e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #80CA80; color: #000000">95</td>
@@ -2554,8 +2338,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">297</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.21118</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.74077</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F2EF; color: #000000">1.808404e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B3E1AC; color: #000000">65</td>
@@ -2569,8 +2351,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">298</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.43112</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.84085</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-2.794193e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B4E1AE; color: #000000">64</td>
@@ -2584,8 +2364,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">299</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.34182</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.68737</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E4EEF4; color: #000000">-5.103972e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B3E1AC; color: #000000">65</td>
@@ -2599,8 +2377,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">300</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.30923</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.70882</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EBF1F5; color: #000000">-3.293205e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B3E1AC; color: #000000">65</td>
@@ -2614,8 +2390,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">301</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.39665</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77258</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.089157e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #79C67A; color: #000000">99</td>
@@ -2629,8 +2403,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">302</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.48227</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.80128</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.680911e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7CC87D; color: #000000">97</td>
@@ -2644,8 +2416,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">303</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.39198</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69242</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EAF1F5; color: #000000">-3.616248e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B7E2B1; color: #000000">62</td>
@@ -2659,8 +2429,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">304</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.45157</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.71220</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E8F0F4; color: #000000">-4.219644e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B4E1AE; color: #000000">64</td>
@@ -2674,8 +2442,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">305</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.55500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.76852</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-2.002566e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7CC87D; color: #000000">97</td>
@@ -2689,8 +2455,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">306</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.59247</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.73770</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F6; color: #000000">1.271024e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B4E1AE; color: #000000">64</td>
@@ -2704,8 +2468,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">307</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.52052</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.72503</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.688788e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7CC87D; color: #000000">97</td>
@@ -2719,8 +2481,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">308</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.48820</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69430</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E7EFF4; color: #000000">-4.520023e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B3E1AC; color: #000000">65</td>
@@ -2734,8 +2494,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">309</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.68318</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69772</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.113108e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7BC77B; color: #000000">98</td>
@@ -2749,8 +2507,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">310</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.63265</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65752</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-9.587621e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #75C477; color: #000000">101</td>
@@ -2764,8 +2520,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">311</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.65008</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.61762</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EEF3F5; color: #000000">-2.462029e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B4E1AE; color: #000000">64</td>
@@ -2779,8 +2533,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">312</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.76343</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65978</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.370054e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7CC87D; color: #000000">97</td>
@@ -2794,8 +2546,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">313</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.73210</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.64157</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #ECF2F5; color: #000000">-3.140646e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B6E2AF; color: #000000">63</td>
@@ -2809,8 +2559,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">314</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.43578</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.75043</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EBF1F5; color: #000000">-3.228531e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #79C67A; color: #000000">99</td>
@@ -2824,8 +2572,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">315</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.82827</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.63325</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.725329e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #80CA80; color: #000000">95</td>
@@ -2839,8 +2585,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">316</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.80240</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.58577</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F5; color: #000000">-2.343350e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7BC77B; color: #000000">98</td>
@@ -2854,8 +2598,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">317</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.78833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.57500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-1.703064e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #75C477; color: #000000">101</td>
@@ -2869,8 +2611,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">318</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.90467</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65083</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F6; color: #000000">2.592861e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006629; color: #FFFFFF">180</td>
@@ -2884,8 +2624,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">319</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.07133</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.62900</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-5.815375e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005B24; color: #FFFFFF">187</td>
@@ -2899,8 +2637,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">320</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.96667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F0EB; color: #000000">2.541694e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #4BAF61; color: #FFFFFF">122</td>
@@ -2914,8 +2650,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">320i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.06033</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.58600</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">4</td>
@@ -2929,8 +2663,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">321</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.94000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.64167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEEE8; color: #000000">3.227213e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #49AE60; color: #FFFFFF">123</td>
@@ -2944,8 +2676,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">321i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.02833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.55000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">4</td>
@@ -2959,8 +2689,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">322</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.98167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.45833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F3; color: #000000">9.253319e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005622; color: #FFFFFF">190</td>
@@ -2974,8 +2702,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">323</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.17000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.70500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F0EB; color: #000000">2.547947e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3DA659; color: #FFFFFF">130</td>
@@ -2989,8 +2715,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">324</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.15833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-1.851615e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005221; color: #FFFFFF">192</td>
@@ -3004,8 +2728,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">325</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.10000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.54167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.137453e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005422; color: #FFFFFF">191</td>
@@ -3019,8 +2741,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">326</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.25000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.70833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F3F1; color: #000000">1.343947e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -3034,8 +2754,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">327</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.22333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.61667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9EFEA; color: #000000">2.799780e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3DA659; color: #FFFFFF">130</td>
@@ -3049,8 +2767,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">328</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.22400</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.45400</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F4; color: #000000">6.659706e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -3064,8 +2780,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">329</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.54167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.71667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE9DF; color: #000000">5.264983e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #4DB062; color: #FFFFFF">121</td>
@@ -3079,8 +2793,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">329i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.33667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">4</td>
@@ -3094,8 +2806,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">330</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.37400</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.66533</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F2EE; color: #000000">1.852219e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -3109,8 +2819,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">331</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.28767</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.50683</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE8DE; color: #000000">5.436402e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -3124,8 +2832,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">332</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.36733</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.53550</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">1.133172e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004F20; color: #FFFFFF">194</td>
@@ -3139,8 +2845,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">333</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.49133</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.57717</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F3; color: #000000">8.444624e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005B24; color: #FFFFFF">187</td>
@@ -3154,8 +2858,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">334</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.45033</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.51217</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEBE2; color: #000000">4.579255e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3FA95B; color: #FFFFFF">128</td>
@@ -3169,8 +2871,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">335</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.38317</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.46083</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F1; color: #000000">1.176283e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005221; color: #FFFFFF">192</td>
@@ -3184,8 +2884,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">336</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.64633</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65483</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE4; color: #000000">4.181569e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -3199,8 +2897,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">337</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.58783</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.59133</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">1.089343e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005422; color: #FFFFFF">191</td>
@@ -3214,8 +2910,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">338</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.87700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.63680</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE4; color: #000000">4.158390e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #49AE60; color: #FFFFFF">123</td>
@@ -3229,8 +2923,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">338i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.54517</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.56683</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F7FCF5; color: #000000">2</td>
@@ -3244,8 +2936,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">339</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.51083</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.42833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE4; color: #000000">4.000361e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3FA95B; color: #FFFFFF">128</td>
@@ -3259,8 +2949,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">340</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.65333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.48500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEBE2; color: #000000">4.559765e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3FA95B; color: #FFFFFF">128</td>
@@ -3274,8 +2962,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">341</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.88333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEBE2; color: #000000">4.577768e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #49AE60; color: #FFFFFF">123</td>
@@ -3289,8 +2975,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">341i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.59450</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.44717</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FCF4; color: #000000">3</td>
@@ -3304,8 +2988,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">342</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.74567</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.70600</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FCE5D8; color: #000000">6.622934e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #49AE60; color: #FFFFFF">123</td>
@@ -3319,8 +3001,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">343</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.85500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.75500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE7DB; color: #000000">6.069892e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #4BAF61; color: #FFFFFF">122</td>
@@ -3334,8 +3014,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">344</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.80500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.56333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE7DC; color: #000000">5.794050e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #42AB5D; color: #FFFFFF">126</td>
@@ -3349,8 +3027,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">345</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.70467</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.37900</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FCE5D8; color: #000000">6.641821e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -3364,8 +3040,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">346</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-83.08333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.66667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE8DD; color: #000000">5.646307e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #42AB5D; color: #FFFFFF">126</td>
@@ -3379,8 +3053,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">347</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.99667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65400</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBEAE0; color: #000000">4.898671e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #47AD5F; color: #FFFFFF">124</td>
@@ -3394,8 +3066,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">348</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.85500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.64167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBEAE0; color: #000000">4.985372e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #4DB062; color: #FFFFFF">121</td>
@@ -3409,8 +3079,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">348i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.85333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.52833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F6FBF3; color: #000000">4</td>
@@ -3424,8 +3092,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">349</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.93113</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.63795</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE4; color: #000000">4.146840e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #47AD5F; color: #FFFFFF">124</td>
@@ -3439,8 +3105,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">349i</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-83.00000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.55000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #808080; color: #FFFFFF">NA</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F7FCF5; color: #000000">2</td>
@@ -3454,8 +3118,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">350</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.86667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.45000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE9DF; color: #000000">5.236873e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #3EA85A; color: #FFFFFF">129</td>
@@ -3469,8 +3131,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">351</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.79167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E9F0F4; color: #000000">-3.863442e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3484,8 +3144,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">352</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.78300</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77583</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-1.810804e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3499,8 +3157,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">353</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.77667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.85833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F6; color: #000000">-2.108903e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3514,8 +3170,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">354</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.76867</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.94133</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-5.859279e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3529,8 +3183,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">355</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.76250</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.02467</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F6F7; color: #000000">-3.002610e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3544,8 +3196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">356</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.75383</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.10767</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-2.834400e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3559,8 +3209,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">357</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.74533</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.19117</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-4.836717e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3574,8 +3222,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">358</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.73817</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.27467</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-1.165981e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3589,8 +3235,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">359</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.73000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.35833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-5.523429e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -3604,8 +3248,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">360</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.72100</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.44117</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F2EF; color: #000000">1.753842e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -3619,8 +3261,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">361</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.71500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.52467</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-1.989824e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BEE5B7; color: #000000">58</td>
@@ -3634,8 +3274,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">362</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.70667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.60867</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">-5.363843e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -3649,8 +3287,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">363</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.69833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.69200</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F6; color: #000000">2.461522e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -3664,8 +3300,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">364</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.53333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.69167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F3; color: #000000">9.525382e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3679,8 +3313,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">365</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.53933</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.60850</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F1EC; color: #000000">2.284475e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3694,8 +3326,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">366</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.54883</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.52600</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F3; color: #000000">7.798400e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -3709,8 +3339,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">367</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.55500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.44250</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">1.050297e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -3724,8 +3352,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">368</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.56333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.35850</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.419568e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3739,8 +3365,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">369</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.57200</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.27550</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-1.676517e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3754,8 +3378,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">370</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.57917</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.19183</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">1.112037e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3769,8 +3391,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">371</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.58683</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.10833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">1.144231e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3784,8 +3404,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">372</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.59533</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.02500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE3; color: #000000">4.216216e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3799,8 +3417,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">373</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.60300</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.94217</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEEE8; color: #000000">3.290792e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3814,8 +3430,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">374</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.61083</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.85883</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F3F1; color: #000000">1.369743e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3829,8 +3443,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">375</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.61783</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77567</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">1.018382e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3844,8 +3456,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">376</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.43833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.84333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAEBE3; color: #000000">4.302905e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3859,8 +3469,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">377</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.43167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.93500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F9F1EC; color: #000000">2.339631e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3874,8 +3482,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">378</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.41583</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.01667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F5; color: #000000">3.768017e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3889,8 +3495,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">379</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.40883</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.10000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F6; color: #000000">2.960629e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3904,8 +3508,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">380</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.40000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.18333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE5; color: #000000">3.936300e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3919,8 +3521,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">381</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.39500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.26667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F3; color: #000000">7.495238e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -3934,8 +3534,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">382</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.38667</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.35000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">-1.539500e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -3949,8 +3547,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">383</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.37783</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.43250</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F5F3; color: #000000">8.572574e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3964,8 +3560,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">384</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.37000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.51550</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-1.846362e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BEE5B7; color: #000000">58</td>
@@ -3979,8 +3573,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">385</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.36317</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.60017</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F5F4; color: #000000">5.737550e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -3994,8 +3586,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">386</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.34050</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.55550</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F6; color: #000000">1.351267e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4009,8 +3599,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">387</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.31683</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.50883</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F3; color: #000000">9.516444e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4024,8 +3612,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">388</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.29700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.42500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F2F5F6; color: #000000">-1.301705e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4039,8 +3625,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">389</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.27700</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.34167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F6F7F7; color: #000000">-2.125980e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4054,8 +3638,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">390</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.26017</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.26000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F2; color: #000000">1.035215e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4069,8 +3651,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">391</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.23867</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.17500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EBF1F5; color: #000000">-3.268390e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4084,8 +3664,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">392</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.24833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.09167</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E8F0F4; color: #000000">-4.231544e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4099,8 +3677,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">393</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.25333</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.00833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-1.899150e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -4114,8 +3690,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">394</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.26000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.92500</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E8F0F4; color: #000000">-4.146721e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #B9E3B2; color: #000000">61</td>
@@ -4129,8 +3703,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">395</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.19167</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.87833</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E9F0F4; color: #000000">-3.823951e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4144,8 +3716,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">396</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.12833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.83333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EEF3F5; color: #000000">-2.401302e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -4159,8 +3729,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">397</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.11833</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.91667</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E9F0F4; color: #000000">-3.782074e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4174,8 +3742,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">398</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.11000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.00000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">1.982333e-05</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BCE4B5; color: #000000">59</td>
@@ -4189,8 +3755,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">399</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.09933</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.08333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #DCEAF2; color: #000000">-7.344010e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #BBE4B4; color: #000000">60</td>
@@ -4204,8 +3768,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">400</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.30640</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.10730</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F0F4F6; color: #000000">-1.939574e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #077230; color: #FFFFFF">172</td>
@@ -4219,8 +3781,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">401</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.62200</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.85300</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EDF2F5; color: #000000">-2.719357e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006D2C; color: #FFFFFF">176</td>
@@ -4234,8 +3794,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">402</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.11200</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.63000</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F5F6; color: #000000">-9.095295e-04</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #0F7835; color: #FFFFFF">167</td>
@@ -4249,8 +3807,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">403</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.70000</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.48300</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EFF3F6; color: #000000">-2.129099e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #026E2D; color: #FFFFFF">175</td>
@@ -4264,8 +3820,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">404</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-82.89500</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.64133</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #DA6953; color: #FFFFFF">2.991004e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #E1F4DC; color: #000000">30</td>
@@ -4279,8 +3833,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">500</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.43346</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.08535</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FCD0B9; color: #000000">1.245587e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #D6EFD0; color: #000000">39</td>
@@ -4294,8 +3846,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">501</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.43421</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.11052</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #67001F; color: #FFFFFF">5.195297e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #D9F0D3; color: #000000">37</td>
@@ -4309,8 +3859,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">502</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.62067</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.92650</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FDDECD; color: #000000">9.092445e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DCF2D7; color: #000000">34</td>
@@ -4324,8 +3872,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">503</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.63477</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.92050</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAC4AA; color: #000000">1.474586e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DAF1D4; color: #000000">36</td>
@@ -4339,8 +3885,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">504</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.04337</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.72254</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FDD6C1; color: #000000">1.128113e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DAF1D4; color: #000000">36</td>
@@ -4354,8 +3898,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">505</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.10071</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.71207</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBE7DC; color: #000000">5.857805e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DBF1D5; color: #000000">35</td>
@@ -4369,8 +3911,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">506</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.38327</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.65941</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FCCCB4; color: #000000">1.323927e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DAF1D4; color: #000000">36</td>
@@ -4384,8 +3924,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">507</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.35463</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.69309</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8B798; color: #000000">1.734456e-02</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DBF1D5; color: #000000">35</td>
@@ -4399,8 +3937,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">508</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.76014</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.57375</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FCE3D5; color: #000000">7.268792e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DAF1D4; color: #000000">36</td>
@@ -4414,8 +3950,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Florida Keys National Marine Sanctuary Water Quality Monitoring Project</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">509</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.74941</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.55229</td>
 <td class="gt_row gt_left" headers="ParameterUnits">mg/L</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FDDCC9; color: #000000">9.981082e-03</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #DBF1D5; color: #000000">35</td>

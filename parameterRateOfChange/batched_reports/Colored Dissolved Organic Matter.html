@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># add statistics for each station</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sample_stats_df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ProgramName, ProgramLocationID, OriginalLongitude, OriginalLatitude, ParameterUnits) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ProgramName, ProgramLocationID, ParameterUnits) <span class="sc">%&gt;%</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mk_results =</span> <span class="fu">list</span>(<span class="fu">seasonalMannKendall</span>(SampleDate, ResultValue)),</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_values =</span> <span class="fu">n</span>(),</span>
@@ -477,23 +477,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a>gt_tbl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div id="tzoeddhnmk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tzoeddhnmk table {
+<div id="rpikdgzjda" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rpikdgzjda table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tzoeddhnmk thead, #tzoeddhnmk tbody, #tzoeddhnmk tfoot, #tzoeddhnmk tr, #tzoeddhnmk td, #tzoeddhnmk th {
+#rpikdgzjda thead, #rpikdgzjda tbody, #rpikdgzjda tfoot, #rpikdgzjda tr, #rpikdgzjda td, #rpikdgzjda th {
   border-style: none;
 }
 
-#tzoeddhnmk p {
+#rpikdgzjda p {
   margin: 0;
   padding: 0;
 }
 
-#tzoeddhnmk .gt_table {
+#rpikdgzjda .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -519,12 +519,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_caption {
+#rpikdgzjda .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tzoeddhnmk .gt_title {
+#rpikdgzjda .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -536,7 +536,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#tzoeddhnmk .gt_subtitle {
+#rpikdgzjda .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -548,7 +548,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#tzoeddhnmk .gt_heading {
+#rpikdgzjda .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -560,13 +560,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_bottom_border {
+#rpikdgzjda .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_col_headings {
+#rpikdgzjda .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -581,7 +581,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_col_heading {
+#rpikdgzjda .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -601,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#tzoeddhnmk .gt_column_spanner_outer {
+#rpikdgzjda .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -613,15 +613,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#tzoeddhnmk .gt_column_spanner_outer:first-child {
+#rpikdgzjda .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tzoeddhnmk .gt_column_spanner_outer:last-child {
+#rpikdgzjda .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tzoeddhnmk .gt_column_spanner {
+#rpikdgzjda .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -633,11 +633,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#tzoeddhnmk .gt_spanner_row {
+#rpikdgzjda .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tzoeddhnmk .gt_group_heading {
+#rpikdgzjda .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -663,7 +663,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#tzoeddhnmk .gt_empty_group_heading {
+#rpikdgzjda .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -678,15 +678,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#tzoeddhnmk .gt_from_md > :first-child {
+#rpikdgzjda .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tzoeddhnmk .gt_from_md > :last-child {
+#rpikdgzjda .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tzoeddhnmk .gt_row {
+#rpikdgzjda .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -705,7 +705,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#tzoeddhnmk .gt_stub {
+#rpikdgzjda .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -718,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tzoeddhnmk .gt_stub_row_group {
+#rpikdgzjda .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -732,15 +732,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#tzoeddhnmk .gt_row_group_first td {
+#rpikdgzjda .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tzoeddhnmk .gt_row_group_first th {
+#rpikdgzjda .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tzoeddhnmk .gt_summary_row {
+#rpikdgzjda .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -750,16 +750,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tzoeddhnmk .gt_first_summary_row {
+#rpikdgzjda .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_first_summary_row.thick {
+#rpikdgzjda .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tzoeddhnmk .gt_last_summary_row {
+#rpikdgzjda .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -769,7 +769,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_grand_summary_row {
+#rpikdgzjda .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -779,7 +779,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tzoeddhnmk .gt_first_grand_summary_row {
+#rpikdgzjda .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -789,7 +789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_last_grand_summary_row_top {
+#rpikdgzjda .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -799,11 +799,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_striped {
+#rpikdgzjda .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tzoeddhnmk .gt_table_body {
+#rpikdgzjda .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -812,7 +812,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_footnotes {
+#rpikdgzjda .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -826,7 +826,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_footnote {
+#rpikdgzjda .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -835,7 +835,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tzoeddhnmk .gt_sourcenotes {
+#rpikdgzjda .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -849,7 +849,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#tzoeddhnmk .gt_sourcenote {
+#rpikdgzjda .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -857,72 +857,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#tzoeddhnmk .gt_left {
+#rpikdgzjda .gt_left {
   text-align: left;
 }
 
-#tzoeddhnmk .gt_center {
+#rpikdgzjda .gt_center {
   text-align: center;
 }
 
-#tzoeddhnmk .gt_right {
+#rpikdgzjda .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tzoeddhnmk .gt_font_normal {
+#rpikdgzjda .gt_font_normal {
   font-weight: normal;
 }
 
-#tzoeddhnmk .gt_font_bold {
+#rpikdgzjda .gt_font_bold {
   font-weight: bold;
 }
 
-#tzoeddhnmk .gt_font_italic {
+#rpikdgzjda .gt_font_italic {
   font-style: italic;
 }
 
-#tzoeddhnmk .gt_super {
+#rpikdgzjda .gt_super {
   font-size: 65%;
 }
 
-#tzoeddhnmk .gt_footnote_marks {
+#rpikdgzjda .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tzoeddhnmk .gt_asterisk {
+#rpikdgzjda .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tzoeddhnmk .gt_indent_1 {
+#rpikdgzjda .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tzoeddhnmk .gt_indent_2 {
+#rpikdgzjda .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tzoeddhnmk .gt_indent_3 {
+#rpikdgzjda .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tzoeddhnmk .gt_indent_4 {
+#rpikdgzjda .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tzoeddhnmk .gt_indent_5 {
+#rpikdgzjda .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tzoeddhnmk .katex-display {
+#rpikdgzjda .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tzoeddhnmk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rpikdgzjda div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -932,8 +932,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="gt_col_headings header">
 <th id="ProgramName" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ProgramName</th>
 <th id="ProgramLocationID" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ProgramLocationID</th>
-<th id="OriginalLongitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">OriginalLongitude</th>
-<th id="OriginalLatitude" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">OriginalLatitude</th>
 <th id="ParameterUnits" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">ParameterUnits</th>
 <th id="slope" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">slope</th>
 <th id="n_values" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n_values</th>
@@ -949,8 +947,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">1</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.31363</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.41024</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #D1E5F0; color: #000000">-0.3058166667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">68</td>
@@ -964,8 +960,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">10</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.92481</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.93983</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #3F8CBF; color: #FFFFFF">-0.9614000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">67</td>
@@ -979,8 +973,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">11</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.91957</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.90527</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #2D72B2; color: #FFFFFF">-1.1330000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">67</td>
@@ -994,8 +986,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">12</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.94092</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.89959</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #418FC1; color: #FFFFFF">-0.9401818182</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">67</td>
@@ -1009,8 +999,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">13</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.06128</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.89657</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #72AFD2; color: #000000">-0.7427375000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005723; color: #FFFFFF">66</td>
@@ -1024,8 +1012,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">14</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.02604</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.85157</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #B9D9E9; color: #000000">-0.4218482143</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005723; color: #FFFFFF">66</td>
@@ -1039,8 +1025,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">15</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.98455</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77961</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #D9E9F2; color: #000000">-0.2381883117</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005723; color: #FFFFFF">66</td>
@@ -1054,8 +1038,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">16</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.02738</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.76750</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E4EEF3; color: #000000">-0.1538989899</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005723; color: #FFFFFF">66</td>
@@ -1069,8 +1051,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">17</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.96101</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77255</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #D8E8F1; color: #000000">-0.2532500000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1084,8 +1064,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">18</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.91780</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.77380</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #CCE2EE; color: #000000">-0.3320000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1099,8 +1077,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">19</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.00241</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.80966</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #D9E9F1; color: #000000">-0.2408958333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #005723; color: #FFFFFF">66</td>
@@ -1114,8 +1090,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">2</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.32572</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.41282</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #77B2D4; color: #000000">-0.7256875000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">68</td>
@@ -1129,8 +1103,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">20</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.98710</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.80362</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #D8E8F1; color: #000000">-0.2519222222</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1144,8 +1116,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">21</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.88658</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.87484</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #DAE9F2; color: #000000">-0.2310000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1159,8 +1129,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">22</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.25722</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.75557</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #87BDDA; color: #000000">-0.6580000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1174,8 +1142,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">23</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.26681</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.75194</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #D3E6F0; color: #000000">-0.2914444444</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1189,8 +1155,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">24</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.28412</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.78335</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E4EEF4; color: #000000">-0.1528888889</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1204,8 +1168,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">25</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.41273</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.83377</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #70ADD1; color: #000000">-0.7523125000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1219,8 +1181,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">26</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.37915</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.85346</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #BAD9E9; color: #000000">-0.4200000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1234,8 +1194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">27</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.40956</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.86979</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #B7D7E8; color: #000000">-0.4334000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1249,8 +1207,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">28</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.49701</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.90185</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E0ECF3; color: #000000">-0.1818750000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1264,8 +1220,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">29</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.43426</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.02244</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #3984BB; color: #FFFFFF">-1.0150476190</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1279,8 +1233,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">3</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.34841</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.40010</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #DAE9F2; color: #000000">-0.2330500000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">68</td>
@@ -1294,8 +1246,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">30</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.54415</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.19548</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #60A3CC; color: #FFFFFF">-0.8151714286</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1309,8 +1259,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">31</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.43758</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.39761</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #3178B5; color: #FFFFFF">-1.0980000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1324,8 +1272,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">32</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.41248</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.47344</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #347CB8; color: #FFFFFF">-1.0663571429</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1339,8 +1285,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">33</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.38007</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.50204</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #053061; color: #FFFFFF">-1.5236458333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1354,8 +1298,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">34</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.39526</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.50814</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #84BAD8; color: #000000">-0.6720000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #137A37; color: #FFFFFF">62</td>
@@ -1369,8 +1311,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">35</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.01582</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.14907</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #A8D0E4; color: #000000">-0.5073333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1384,8 +1324,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">36</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.94329</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.12738</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #99C8E0; color: #000000">-0.5772777778</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1399,8 +1337,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">37</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.95047</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.12713</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #CFE4EF; color: #000000">-0.3142500000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1414,8 +1350,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">38</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.89945</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.15951</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #97C7DF; color: #000000">-0.5881388889</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1429,8 +1363,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">39</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.07608</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.40518</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #C4DEEC; color: #000000">-0.3720888889</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1444,8 +1376,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">4</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.52974</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.12019</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #B5D6E8; color: #000000">-0.4438000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #00441B; color: #FFFFFF">68</td>
@@ -1459,8 +1389,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">40</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-81.09621</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.41633</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #DBEAF2; color: #000000">-0.2264166667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006C2B; color: #FFFFFF">64</td>
@@ -1474,8 +1402,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">5</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.53855</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.10463</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #589EC9; color: #FFFFFF">-0.8430000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">67</td>
@@ -1489,8 +1415,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">6</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.53613</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.06735</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #A3CDE3; color: #000000">-0.5316666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #006127; color: #FFFFFF">65</td>
@@ -1504,8 +1428,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">7</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.77413</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.96683</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #CBE2EE; color: #000000">-0.3364444444</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">67</td>
@@ -1519,8 +1441,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">8</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.79947</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.95060</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #286DB0; color: #FFFFFF">-1.1720000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">67</td>
@@ -1534,8 +1454,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">9</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.81166</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">24.93791</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #195797; color: #FFFFFF">-1.3021666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #004E1F; color: #FFFFFF">67</td>
@@ -1549,8 +1467,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B1</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18311</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.73919</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #C8E0ED; color: #000000">-0.3510500000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #63BB6D; color: #000000">53</td>
@@ -1564,8 +1480,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B10</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.36151</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.29705</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FAECE3; color: #000000">0.1244571429</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #63BB6D; color: #000000">53</td>
@@ -1579,8 +1493,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B11</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.37595</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.23872</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F6F5; color: #000000">0.0108750000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1594,8 +1506,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B12</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.42246</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.25572</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #4A96C5; color: #FFFFFF">-0.8930000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1609,8 +1519,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B13</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.42324</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.17490</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #B0D4E6; color: #000000">-0.4700000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1624,8 +1532,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B14</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.21336</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.46780</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F5F6F7; color: #000000">-0.0140000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1639,8 +1545,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B15</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.19836</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.58023</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F3F5F6; color: #000000">-0.0351666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1654,8 +1558,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B16</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.18718</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.66213</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F4F6F7; color: #000000">-0.0218833333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1669,8 +1571,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B17</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.29133</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.61505</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #C8483F; color: #FFFFFF">1.0341000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #F7FCF5; color: #000000">35</td>
@@ -1684,8 +1584,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B2</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.24794</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.69038</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #FBEAE0; color: #000000">0.1460000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #63BB6D; color: #000000">53</td>
@@ -1699,8 +1597,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B3</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.26368</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.65428</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F7F7F7; color: #000000">0.0002777778</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1714,8 +1610,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B4</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.26372</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.59146</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #E4EEF3; color: #000000">-0.1540333333</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #7AC77A; color: #000000">51</td>
@@ -1729,8 +1623,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B5</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.31391</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.53003</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #3A84BC; color: #FFFFFF">-1.0118571429</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #63BB6D; color: #000000">53</td>
@@ -1744,8 +1636,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B6</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.25184</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.49237</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #EAF1F5; color: #000000">-0.1056250000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1759,8 +1649,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B7</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.32531</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.46321</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #DDEBF2; color: #000000">-0.2076000000</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #63BB6D; color: #000000">53</td>
@@ -1774,8 +1662,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B8</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.24347</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.40512</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F8F4F1; color: #000000">0.0368714286</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
@@ -1789,8 +1675,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td class="gt_row gt_left" headers="ProgramName">Atlantic Oceanographic and Meteorological Laboratory (AOML) South Florida Program Synoptic Shipboard Surveys</td>
 <td class="gt_row gt_left" headers="ProgramLocationID">B9</td>
-<td class="gt_row gt_right" headers="OriginalLongitude">-80.32137</td>
-<td class="gt_row gt_right" headers="OriginalLatitude">25.33333</td>
 <td class="gt_row gt_left" headers="ParameterUnits">PCU</td>
 <td class="gt_row gt_right" headers="slope" style="background-color: #F1F4F6; color: #000000">-0.0521666667</td>
 <td class="gt_row gt_right" headers="n_values" style="background-color: #6EC173; color: #000000">52</td>
