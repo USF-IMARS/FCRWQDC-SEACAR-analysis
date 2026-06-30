@@ -29,7 +29,7 @@ library(sf)
 make_hex_layer <- function(df, res) {
   agg <- df |>
     mutate(h3 = point_to_cell(
-      cbind(OriginalLongitude, OriginalLatitude),
+      cbind(AverageLongitude, AverageLatitude),
       res = res
     )) |>
     group_by(h3) |>
@@ -55,15 +55,15 @@ pal <- colorNumeric("BrBG", domain = c(val_min, val_max))
 map <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
   addProviderTiles(providers$CartoDB.DarkMatter) |>
   setView(
-    lng  = mean(df$OriginalLongitude, na.rm = TRUE),
-    lat  = mean(df$OriginalLatitude,  na.rm = TRUE),
+    lng  = mean(df$AverageLongitude, na.rm = TRUE),
+    lat  = mean(df$AverageLatitude,  na.rm = TRUE),
     zoom = 7
   ) |>
   addLegend(
     position = "bottomright",
     pal      = pal,
     values   = c(val_min, val_max),
-    title    = glue("Avg {parameter_to_plot} change\n[{ParameterUnit}]")
+    title    = glue("Avg {parameter_to_plot} change\n[{ParameterUnits}]")
   )
 
 for (res in res_levels) {

@@ -30,6 +30,8 @@ source(here("R/seasonalMannKendall.R"))
 sample_stats_df <- df %>%
   group_by(ProgramName, ProgramLocationID, ParameterUnits) %>%
   summarize(
+    AverageLatitude  = mean(OriginalLatitude,  na.rm = TRUE),
+    AverageLongitude = mean(OriginalLongitude, na.rm = TRUE),
     mk_results = list(seasonalMannKendall(SampleDate, ResultValue)),
     n_values = n(),
     mean = mean(ResultValue, na.rm = TRUE),
