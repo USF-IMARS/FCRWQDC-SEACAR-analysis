@@ -5,8 +5,6 @@ project:
   - SEACARParameterCompare/generate_batch_qmds.R
   - SEACARProgramCompare/generate_batch_qmds.R
   render:
-  - prepDashboardExport.qmd
-
   - index.qmd
   - SEACAROverallCompare.qmd
   - SEACARDepthComparison.qmd
@@ -15,17 +13,21 @@ project:
   - parameterRateOfChange/batched_reports/*.qmd
   - parameterRateOfChange/listing.qmd
 
-  - rateOfChangeChange.qmd
+  - rateOfChangeChange.qmd  # prereq: parameterRateOfChange
 
-  - usage_examples/map_program_parameter_subset.qmd
-  - usage_examples/plot_slopes.qmd
-  - usage_examples/tidy-wide.qmd
-  
   - SEACARParameterCompare/batched_reports/*.qmd
   - SEACARParameterCompare/listing.qmd
   
   - SEACARProgramCompare/batched_reports/*.qmd
   - SEACARProgramCompare/listing.qmd
+  
+  - prepDashboardExport.qmd
+  
+  # usage examples should run last
+  - usage_examples/map_program_parameter_subset.qmd
+  - usage_examples/plot_slopes.qmd
+  - usage_examples/tidy-wide.qmd
+
   
 website:
   title: FCRWQDC SEACAR Analysis

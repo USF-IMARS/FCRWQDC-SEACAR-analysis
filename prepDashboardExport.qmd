@@ -48,7 +48,7 @@ library(lubridate)
 
 # Count points for each parameter at each station
 station_parameter_counts <- df %>%
-  group_by(ProgramName, ProgramLocationID, OriginalLatitude, OriginalLongitude, ParameterName) %>%
+  group_by(ProgramName, ProgramLocationID, ParameterName) %>%
   count(name = "point_count") %>%
   ungroup()
 
@@ -68,12 +68,17 @@ station_date_check <- df %>%
   ) %>%
   select(-total_sampling_days, -time_range_years)
 
-# calculate min & max depths for station
-station_depth_check <- df %>%
+station_depth_and_coords <- df %>%
   group_by(ProgramName, ProgramLocationID) %>%
   summarise(
+    # calculate min & max depths for station
     minDepth = min(ActivityDepth_m, na.rm = TRUE),
     maxDepth = max(ActivityDepth_m, na.rm = TRUE),
+    
+    # calculate average coordinates for each station
+    AverageLatitude  = mean(OriginalLatitude,  na.rm = TRUE),
+    AverageLongitude = mean(OriginalLongitude, na.rm = TRUE),
+
     .groups = "drop"
   )
 
@@ -84,8 +89,8 @@ dashboard_stations <- station_parameter_counts %>%
     values_from = point_count,
     values_fill = 0
   ) %>%
+  left_join(station_depth_and_coords, by = c("ProgramName", "ProgramLocationID")) %>%
   left_join(station_date_check, by = c("ProgramName", "ProgramLocationID")) %>%
-  left_join(station_depth_check, by = c("ProgramName", "ProgramLocationID")) %>%
   arrange(ProgramName, ProgramLocationID)
 
 # Save dashboard stations file
