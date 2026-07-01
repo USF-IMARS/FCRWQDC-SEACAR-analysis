@@ -63,7 +63,7 @@ map <- leaflet(options = leafletOptions(preferCanvas = TRUE)) |>
     position = "bottomright",
     pal      = pal,
     values   = c(val_min, val_max),
-    title    = glue("Avg {parameter_to_plot} change\n[{ParameterUnits}]")
+    title    = glue("Avg {parameter_to_plot} change\n[{ParameterUnit}]")
   )
 
 for (res in res_levels) {
